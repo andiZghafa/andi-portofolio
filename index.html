@@ -463,12 +463,7 @@
         </p>
         <div class="hero-links">
           <a class="btn btn-primary" href="#projects">View projects</a>
-          <a
-            class="btn btn-ghost"
-            id="download-cv"
-            href="#"
-            onclick="downloadCV(event)"
-            style="cursor: pointer"
+          <a class="btn btn-ghost" href="Andi_Ghafa_CV.pdf" download
             >Download CV</a
           >
         </div>
@@ -721,9 +716,7 @@
             <a href="https://www.linkedin.com/in/andighafa/" target="_blank"
               >LinkedIn</a
             >
-            <a id="resume-pdf-link" href="#" onclick="downloadCV(event)"
-              >Résumé (PDF)</a
-            >
+            <a href="Andi_Ghafa_CV.pdf" download>Résumé (PDF)</a>
           </div>
         </div>
       </div>
@@ -734,9 +727,7 @@
     <script>
       function downloadCV(e) {
         e.preventDefault();
-        alert(
-          "To enable CV download: place your CV file named 'Andi_Ghafa_CV.pdf' in the same folder as this HTML file, then the link will work. For now, contact me at ghafaat@gmail.com to request my CV.",
-        );
+        alert("For now, contact me at ghafaat@gmail.com to request my CV.");
       }
     </script>
   </body>
