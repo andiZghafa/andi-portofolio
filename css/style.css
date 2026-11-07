@@ -34,10 +34,13 @@
   --border-subtle: rgba(20, 33, 61, 0.12); /* Crisp navy-tinted boundary */
   --border-strong: rgba(20, 33, 61, 0.24); /* Interactive boundary */
   
-  --accent: #FF6B5B;               /* Sunset Coral */
-  --accent-hover: #E85545;         /* Deepened Coral press state */
-  --accent-tint: rgba(255, 107, 91, 0.12); /* Soft Coral-Cream badge background */
-  --accent-text: #D94534;          /* High-contrast coral text on tint (4.9:1 on cream) */
+  --accent: #14213D;               /* Oxford Navy (swapped from Coral) */
+  --accent-hover: #0A1222;         /* Deepened Navy press state */
+  --accent-tint: rgba(20, 33, 61, 0.08); /* Soft Navy badge background */
+  --accent-text: #14213D;          /* High-contrast navy text */
+  --coral-accent: #FF6B5B;         /* Sunset Coral energy accent */
+  --coral-tint: rgba(255, 107, 91, 0.14);
+  --coral-text: #D94534;
 
   --status-online: #16803d;        /* Solid emerald indicator (no endless glowing pulse) */
   --status-online-bg: #dcfce7;
@@ -47,8 +50,8 @@
     0 6px 16px -2px rgba(20, 33, 61, 0.05),
     0 0 0 1px rgba(20, 33, 61, 0.05);
   --card-shadow-active: 
-    0 14px 30px -4px rgba(20, 33, 61, 0.14),
-    0 0 0 1px #FF6B5B;
+    0 14px 30px -4px rgba(255, 107, 91, 0.18),
+    0 0 0 1px #14213D;
 
   --glass-bg: rgba(244, 237, 224, 0.92);
   --glass-border: rgba(20, 33, 61, 0.12);
@@ -444,9 +447,9 @@ textarea:focus-visible,
 }
 
 .btn-primary {
-  background: var(--coral);
-  color: #14213D;
-  border: 1px solid var(--coral);
+  background: var(--navy);
+  color: var(--cream);
+  border: 1px solid var(--navy);
   font-weight: 700;
 }
 
@@ -459,9 +462,16 @@ textarea:focus-visible,
 
 @media (hover: hover) and (pointer: fine) {
   .btn-primary:hover {
-    background: var(--accent-hover);
-    border-color: var(--accent-hover);
+    background: #0A1222;
+    border-color: var(--coral);
+    color: var(--cream);
+    box-shadow: 0 4px 14px rgba(20, 33, 61, 0.3);
+  }
+  [data-theme="dark"] .btn-primary:hover {
+    background: #FF8577;
+    border-color: #FF8577;
     color: #14213D;
+    box-shadow: 0 4px 14px rgba(255, 107, 91, 0.35);
   }
 }
 
@@ -529,7 +539,7 @@ textarea:focus-visible,
     transform: translateY(-2px);
   }
   .stat-card:hover::before {
-    background: var(--accent);
+    background: var(--coral);
   }
 }
 
@@ -546,8 +556,12 @@ textarea:focus-visible,
   font-family: var(--font-display);
   font-size: 21px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--navy);
   line-height: 1.2;
+}
+
+[data-theme="dark"] .stat-card-value {
+  color: var(--coral);
 }
 
 .stat-card-desc {
@@ -643,9 +657,9 @@ textarea:focus-visible,
 }
 
 .filter-btn.active {
-  background: var(--coral);
-  color: #14213D;
-  border-color: var(--coral);
+  background: var(--navy);
+  color: var(--cream);
+  border-color: var(--navy);
   font-weight: 700;
 }
 
@@ -732,7 +746,7 @@ textarea:focus-visible,
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--coral), var(--navy));
+  background: linear-gradient(90deg, var(--navy), var(--coral));
   z-index: 2;
 }
 
@@ -1072,13 +1086,13 @@ textarea:focus-visible,
    CONTACT SECTION
    ========================================================================== */
 .contact-card {
-  background: var(--navy);
-  color: var(--cream);
-  border: 1px solid rgba(255, 107, 91, 0.35);
+  background: var(--coral);
+  color: var(--navy);
+  border: 1px solid rgba(20, 33, 61, 0.2);
   border-radius: var(--radius-lg);
   padding: 48px 36px;
   text-align: center;
-  box-shadow: 0 16px 36px -8px rgba(20, 33, 61, 0.45);
+  box-shadow: 0 16px 36px -8px rgba(255, 107, 91, 0.35);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1094,7 +1108,15 @@ textarea:focus-visible,
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--coral), rgba(244, 237, 224, 0.5), var(--coral));
+  background: linear-gradient(90deg, var(--navy), rgba(20, 33, 61, 0.4), var(--navy));
+}
+
+.contact-card .section-label {
+  color: var(--navy);
+  background: rgba(20, 33, 61, 0.12);
+  padding: 3px 10px;
+  border-radius: var(--radius-xs);
+  font-weight: 700;
 }
 
 .contact-card h2 {
@@ -1102,14 +1124,44 @@ textarea:focus-visible,
   font-size: clamp(1.8rem, 3.5vw, 2.3rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--cream);
+  color: var(--navy);
   max-width: 600px;
 }
 
 .contact-card p {
   font-size: 15.5px;
-  color: #C8D1DF;
+  color: rgba(20, 33, 61, 0.9);
+  font-weight: 500;
   max-width: 520px;
+}
+
+.contact-card .btn-primary {
+  background: var(--navy);
+  color: var(--cream);
+  border: 1px solid var(--navy);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-card .btn-primary:hover {
+    background: #0A1222;
+    border-color: var(--cream);
+    color: var(--cream);
+  }
+}
+
+.contact-card .btn-secondary {
+  background: var(--cream);
+  color: var(--navy);
+  border: 1px solid rgba(20, 33, 61, 0.25);
+  font-weight: 600;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-card .btn-secondary:hover {
+    background: #FFFFFF;
+    color: var(--navy);
+    border-color: var(--navy);
+  }
 }
 
 .contact-buttons {
