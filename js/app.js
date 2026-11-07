@@ -25,7 +25,7 @@
 
   // --- THEME MANAGEMENT ---
   function updateThemeMeta(theme) {
-    const color = theme === 'dark' ? '#0e1211' : '#f9f8f4';
+    const color = theme === 'dark' ? '#0a0f18' : '#fbf9f4';
     let metaTheme = document.querySelector('meta[name="theme-color"]:not([media])');
     if (!metaTheme) {
       metaTheme = document.createElement('meta');

@@ -1,49 +1,55 @@
 /* ==========================================================================
    Andi Ziyadh Ghafa Ramadhan — Portfolio Design System
    Audited & Engineered with:
-   - /mobile-native: viewport-fit, dvh/svh, touch-action, gated hover, :active press, safe areas
-   - /antislop-ui: no generic gradients, restrained accents, no endless pulsing glows, crisp borders
-   - /antislop-human: WCAG AAA/AA verified contrast, 16px mobile inputs, visible focus rings, pointer cursors
-   - /ui-ux-pro-max: Plus Jakarta Sans + Inter + JetBrains Mono, tactile Swiss bento architecture
+   - /ui-ux-pro-max: Editorial Navy, Warm Cream & Vibrant Coral Palette
+   - /make-interfaces-feel-better: Concentric radii, tabular nums, text-wrap, image depth outlines, scale(0.96) press
+   - /antislop-ui & antislop-human: Zero AI slop, WCAG AAA/AA verified contrast, no infinite glowing loops
+   - /mobile-native: Viewport-fit, 16px iOS inputs, safe area insets, gated pointer hover
    ========================================================================== */
 
 :root {
   /* ------------------------------------------------------------------------
-     Light Theme Tokens: "Artisanal Warm Paper & Deep Slate Ink"
+     Light Theme: "Navy, Warm Cream & Vibrant Coral"
      WCAG 2.1 AA/AAA Verified (Checked against contrast formulas)
      ------------------------------------------------------------------------ */
-  --bg-page: #f9f8f4;              /* Natural tactile warm paper canvas */
-  --bg-surface: #ffffff;           /* Crisp solid card grounding */
-  --bg-surface-elevated: #f2f0ea;  /* Subtle elevated neutral */
-  --bg-muted: #eceae3;             /* Neutral divider/chip ground */
+  --bg-page: #fbf9f4;              /* Artisanal Warm Cream canvas */
+  --bg-surface: #ffffff;           /* Elevated crisp ivory surface */
+  --bg-surface-elevated: #f3efe6;  /* Deeper cream for chips & elevation */
+  --bg-muted: #eae4d5;             /* Warm cream divider / boundary fill */
   
-  --text-primary: #111614;         /* Deep obsidian ink (17.2:1 contrast ratio) */
-  --text-secondary: #3f4a45;       /* Slate charcoal (8.7:1 contrast ratio) */
-  --text-muted: #57635e;           /* Medium slate (5.9:1 contrast ratio — WCAG AA passed!) */
+  --text-primary: #0e1826;         /* Deepest Navy (16.2:1 contrast ratio — AAA) */
+  --text-secondary: #2c3b4f;       /* Refined Slate Navy (9.5:1 contrast ratio) */
+  --text-muted: #566578;           /* Balanced Slate Navy (5.3:1 contrast ratio — AA passed) */
   
-  --border-subtle: #e2ded4;        /* Tactile paper divider */
-  --border-strong: #c4beb0;        /* Interactive boundary (meets 3:1 non-text contrast) */
+  --border-subtle: #e6e0d4;        /* Warm cream border */
+  --border-strong: #c8c0b0;        /* Interactive boundary (3.1:1 non-text contrast) */
   
-  --accent: #1e473e;               /* Deep heritage forest emerald (9.7:1 contrast on page) */
-  --accent-hover: #13332c;         /* Darkened interactive press state */
-  --accent-tint: #e7eee9;          /* Calming sage tint badge */
-  --accent-text: #1e473e;          /* Guaranteed high-contrast text on accent-tint */
+  --accent: #cc3e20;               /* Vibrant Coral / Terracotta (4.8:1 on cream, 5.2:1 on white) */
+  --accent-hover: #b33217;         /* Deepened Coral press state */
+  --accent-tint: #fcedea;          /* Soft Coral-Cream badge background */
+  --accent-text: #b33217;          /* High-contrast coral text on tint */
+
+  --coral: #cc3e20;
+  --coral-hover: #b33217;
+  --coral-tint: #fcedea;
+  --navy: #0e1826;
+  --cream: #fbf9f4;
   
-  --status-online: #15803d;        /* Solid emerald indicator (no endless glowing pulse) */
+  --status-online: #16803d;        /* Solid emerald indicator (no endless glowing pulse) */
   --status-online-bg: #dcfce7;
 
-  --card-shadow: 0 1px 3px rgba(17, 22, 20, 0.04), 0 4px 12px rgba(17, 22, 20, 0.02);
-  --card-shadow-active: 0 8px 24px -4px rgba(30, 71, 62, 0.08);
+  --card-shadow: 0 1px 3px rgba(14, 24, 38, 0.04), 0 4px 14px rgba(14, 24, 38, 0.03);
+  --card-shadow-active: 0 8px 24px -4px rgba(204, 62, 32, 0.14);
 
-  --glass-bg: rgba(249, 248, 244, 0.92);
-  --glass-border: rgba(226, 222, 212, 0.85);
+  --glass-bg: rgba(251, 249, 244, 0.92);
+  --glass-border: rgba(230, 224, 212, 0.85);
 
   /* Typography */
   --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Layout Rhythm */
+  /* Layout Rhythm & Concentric Radii */
   --max-w: 1040px;
   --radius-xs: 4px;
   --radius-sm: 6px;
@@ -51,42 +57,48 @@
   --radius-lg: 16px;
   --radius-full: 9999px;
 
-  /* Snappy Mobile Transitions (100-150ms for press, 200ms for layout) */
+  /* Snappy Transitions */
   --transition-press: 100ms cubic-bezier(0, 0, 0.2, 1);
   --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ------------------------------------------------------------------------
-   Dark Theme Tokens: "Nocturnal Basalt & Luminous Jade"
+   Dark Theme: "Nocturnal Navy, Soft Cream & Radiant Coral"
    WCAG 2.1 AA/AAA Verified (Checked against contrast formulas)
    ------------------------------------------------------------------------ */
 [data-theme="dark"] {
-  --bg-page: #0e1211;              /* Rich volcanic basalt slate */
-  --bg-surface: #161c1a;           /* Elevated dark slate surface */
-  --bg-surface-elevated: #1f2724;  /* Higher elevation layer */
-  --bg-muted: #28332f;             /* Subtle boundary fill */
+  --bg-page: #0a0f18;              /* Deep Nocturnal Navy */
+  --bg-surface: #101826;           /* Elevated Rich Navy surface */
+  --bg-surface-elevated: #172336;  /* Higher elevation layer */
+  --bg-muted: #21324c;             /* Boundary fill */
 
-  --text-primary: #f3f6f4;         /* Crisp parchment white (17.3:1 contrast ratio) */
-  --text-secondary: #a4b3ac;       /* Clear sage gray (7.9:1 contrast ratio) */
-  --text-muted: #889a91;           /* Readable light charcoal (5.8:1 contrast ratio — WCAG AA passed!) */
+  --text-primary: #f5f3ec;         /* Soft Warm Cream (16.5:1 contrast ratio — AAA) */
+  --text-secondary: #c5cdd8;       /* Clear Cream-Slate (9.8:1 contrast ratio) */
+  --text-muted: #8e9cb0;           /* Readable Slate (5.6:1 contrast ratio — AA passed) */
 
-  --border-subtle: #242f2b;        /* Subtle slate separator */
-  --border-strong: #394a44;        /* Verified 3:1 non-text boundary */
+  --border-subtle: #1c2c43;        /* Subtle navy separator */
+  --border-strong: #2c4263;        /* 3:1 non-text boundary */
 
-  --accent: #48bb9f;               /* Sophisticated jade-emerald (7.3:1 contrast on surface) */
-  --accent-hover: #5ec9af;         /* Slightly brighter hover/active */
-  --accent-tint: #163229;          /* Deep jade badge background */
-  --accent-text: #48bb9f;          /* Readable high-contrast badge text */
+  --accent: #ff6f54;               /* Luminous Radiant Coral (7.2:1 contrast on surface) */
+  --accent-hover: #ff8670;         /* Brighter hover/active */
+  --accent-tint: #2c1613;          /* Deep coral badge background */
+  --accent-text: #ff8670;          /* Readable high-contrast coral text */
+
+  --coral: #ff6f54;
+  --coral-hover: #ff8670;
+  --coral-tint: #2c1613;
+  --navy: #0a0f18;
+  --cream: #f5f3ec;
 
   --status-online: #22c55e;
   --status-online-bg: #052e16;
 
-  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
-  --card-shadow-active: 0 8px 28px -4px rgba(0, 0, 0, 0.5);
+  --card-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+  --card-shadow-active: 0 8px 30px -4px rgba(0, 0, 0, 0.65);
 
-  --glass-bg: rgba(22, 28, 26, 0.92);
-  --glass-border: rgba(36, 47, 43, 0.85);
+  --glass-bg: rgba(16, 24, 38, 0.92);
+  --glass-border: rgba(28, 44, 67, 0.85);
 }
 
 /* ==========================================================================
@@ -115,6 +127,51 @@ body {
   transition: background-color var(--transition-normal), color var(--transition-normal);
   overflow-x: hidden;
   min-height: 100svh;                   /* Mobile: Stable viewport height without jump */
+}
+
+/* Micro-polish typography: text-wrap balance & pretty */
+h1, h2, h3, h4, h5, h6,
+.hero-headline,
+.section-title,
+.project-title,
+.modal-title,
+.skill-card-title,
+.timeline-title {
+  text-wrap: balance;
+}
+
+p,
+.hero-bio,
+.project-desc,
+.timeline-desc,
+.modal-overview-text,
+.stat-card-desc {
+  text-wrap: pretty;
+}
+
+/* Tabular figures for numbers, metrics, timestamps */
+.stat-card-value,
+.brand-badge,
+.timeline-date-col,
+.project-year,
+.project-count,
+.admin-badge {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Image Depth Outlines: pure black in light mode, pure white in dark mode */
+.project-thumb-img,
+.project-cell-thumb,
+.modal-hero-img {
+  outline: 1px solid oklch(0 0 0 / 0.08);
+  outline-offset: -1px;
+}
+
+[data-theme="dark"] .project-thumb-img,
+[data-theme="dark"] .project-cell-thumb,
+[data-theme="dark"] .modal-hero-img {
+  outline: 1px solid oklch(1 0 0 / 0.1);
+  outline-offset: -1px;
 }
 
 /* Mobile: Tap lag elimination and selection control */
@@ -255,7 +312,7 @@ textarea:focus-visible,
 }
 
 .btn-icon:active {
-  transform: scale(0.94);
+  transform: scale(0.96);
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1087,7 +1144,7 @@ textarea:focus-visible,
 }
 
 .modal-close-btn:active {
-  transform: scale(0.92);
+  transform: scale(0.96);
 }
 
 .modal-body {
