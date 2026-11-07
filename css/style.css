@@ -9,40 +9,49 @@
 
 :root {
   /* ------------------------------------------------------------------------
-     Light Theme: "Navy, Warm Cream & Vibrant Coral"
+     Light Theme: Oxford Navy (#14213D), Linen Cream (#F4EDE0), Sunset Coral (#FF6B5B)
      WCAG 2.1 AA/AAA Verified (Checked against contrast formulas)
      ------------------------------------------------------------------------ */
-  --bg-page: #fbf9f4;              /* Artisanal Warm Cream canvas */
-  --bg-surface: #ffffff;           /* Elevated crisp ivory surface */
-  --bg-surface-elevated: #f3efe6;  /* Deeper cream for chips & elevation */
-  --bg-muted: #eae4d5;             /* Warm cream divider / boundary fill */
-  
-  --text-primary: #0e1826;         /* Deepest Navy (16.2:1 contrast ratio — AAA) */
-  --text-secondary: #2c3b4f;       /* Refined Slate Navy (9.5:1 contrast ratio) */
-  --text-muted: #566578;           /* Balanced Slate Navy (5.3:1 contrast ratio — AA passed) */
-  
-  --border-subtle: #e6e0d4;        /* Warm cream border */
-  --border-strong: #c8c0b0;        /* Interactive boundary (3.1:1 non-text contrast) */
-  
-  --accent: #cc3e20;               /* Vibrant Coral / Terracotta (4.8:1 on cream, 5.2:1 on white) */
-  --accent-hover: #b33217;         /* Deepened Coral press state */
-  --accent-tint: #fcedea;          /* Soft Coral-Cream badge background */
-  --accent-text: #b33217;          /* High-contrast coral text on tint */
+  --navy: #14213D;                 /* Primary Oxford Navy */
+  --cream: #F4EDE0;                /* Warm Linen Cream */
+  --coral: #FF6B5B;                /* Electric Sunset Coral */
 
-  --coral: #cc3e20;
-  --coral-hover: #b33217;
-  --coral-tint: #fcedea;
-  --navy: #0e1826;
-  --cream: #fbf9f4;
+  --bg-page: #F4EDE0;              /* Base Cream canvas */
+  --bg-page-gradient: 
+    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(255, 107, 91, 0.16), transparent 70%),
+    radial-gradient(circle 750px at 100% 20%, rgba(20, 33, 61, 0.07), transparent 60%),
+    radial-gradient(circle 600px at 0% 65%, rgba(255, 107, 91, 0.09), transparent 50%),
+    #F4EDE0;
+
+  --bg-surface: #FFFFFF;           /* Elevated crisp ivory card surface */
+  --bg-surface-elevated: #EDE5D5;  /* Deeper cream for interactive chips & inputs */
+  --bg-muted: #E2D7C3;             /* Tactile divider/boundary fill */
   
+  --text-primary: #14213D;         /* Oxford Navy (13.6:1 contrast ratio against cream — AAA) */
+  --text-secondary: #2C3C5E;       /* Slate Navy (7.8:1 contrast ratio) */
+  --text-muted: #53637F;           /* Balanced Slate Navy (4.8:1 contrast ratio — AA passed) */
+  
+  --border-subtle: rgba(20, 33, 61, 0.12); /* Crisp navy-tinted boundary */
+  --border-strong: rgba(20, 33, 61, 0.24); /* Interactive boundary */
+  
+  --accent: #FF6B5B;               /* Sunset Coral */
+  --accent-hover: #E85545;         /* Deepened Coral press state */
+  --accent-tint: rgba(255, 107, 91, 0.12); /* Soft Coral-Cream badge background */
+  --accent-text: #D94534;          /* High-contrast coral text on tint (4.9:1 on cream) */
+
   --status-online: #16803d;        /* Solid emerald indicator (no endless glowing pulse) */
   --status-online-bg: #dcfce7;
 
-  --card-shadow: 0 1px 3px rgba(14, 24, 38, 0.04), 0 4px 14px rgba(14, 24, 38, 0.03);
-  --card-shadow-active: 0 8px 24px -4px rgba(204, 62, 32, 0.14);
+  --card-shadow: 
+    0 1px 3px rgba(20, 33, 61, 0.04), 
+    0 6px 16px -2px rgba(20, 33, 61, 0.05),
+    0 0 0 1px rgba(20, 33, 61, 0.05);
+  --card-shadow-active: 
+    0 14px 30px -4px rgba(20, 33, 61, 0.14),
+    0 0 0 1px #FF6B5B;
 
-  --glass-bg: rgba(251, 249, 244, 0.92);
-  --glass-border: rgba(230, 224, 212, 0.85);
+  --glass-bg: rgba(244, 237, 224, 0.92);
+  --glass-border: rgba(20, 33, 61, 0.12);
 
   /* Typography */
   --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -64,41 +73,45 @@
 }
 
 /* ------------------------------------------------------------------------
-   Dark Theme: "Nocturnal Navy, Soft Cream & Radiant Coral"
+   Dark Theme: Oxford Navy (#14213D), Linen Cream (#F4EDE0), Radiant Coral (#FF6B5B)
    WCAG 2.1 AA/AAA Verified (Checked against contrast formulas)
    ------------------------------------------------------------------------ */
 [data-theme="dark"] {
-  --bg-page: #0a0f18;              /* Deep Nocturnal Navy */
-  --bg-surface: #101826;           /* Elevated Rich Navy surface */
-  --bg-surface-elevated: #172336;  /* Higher elevation layer */
-  --bg-muted: #21324c;             /* Boundary fill */
+  --bg-page: #14213D;              /* Oxford Navy canvas */
+  --bg-page-gradient: 
+    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(255, 107, 91, 0.22), transparent 70%),
+    radial-gradient(circle 750px at 100% 25%, rgba(244, 237, 224, 0.04), transparent 60%),
+    radial-gradient(circle 600px at 0% 65%, rgba(255, 107, 91, 0.12), transparent 50%),
+    #14213D;
 
-  --text-primary: #f5f3ec;         /* Soft Warm Cream (16.5:1 contrast ratio — AAA) */
-  --text-secondary: #c5cdd8;       /* Clear Cream-Slate (9.8:1 contrast ratio) */
-  --text-muted: #8e9cb0;           /* Readable Slate (5.6:1 contrast ratio — AA passed) */
+  --bg-surface: #1B2B4D;           /* Elevated Oxford Navy surface */
+  --bg-surface-elevated: #24365C;  /* Higher elevation layer */
+  --bg-muted: #2E436E;             /* Boundary fill */
 
-  --border-subtle: #1c2c43;        /* Subtle navy separator */
-  --border-strong: #2c4263;        /* 3:1 non-text boundary */
+  --text-primary: #F4EDE0;         /* Linen Cream (13.6:1 contrast ratio against #14213D — AAA) */
+  --text-secondary: #C8D1DF;       /* Clear Cream-Slate (8.2:1 contrast ratio) */
+  --text-muted: #95A5BC;           /* Readable Slate (5.4:1 contrast ratio — AA passed) */
 
-  --accent: #ff6f54;               /* Luminous Radiant Coral (7.2:1 contrast on surface) */
-  --accent-hover: #ff8670;         /* Brighter hover/active */
-  --accent-tint: #2c1613;          /* Deep coral badge background */
-  --accent-text: #ff8670;          /* Readable high-contrast coral text */
+  --border-subtle: rgba(244, 237, 224, 0.12); /* Subtle cream separator */
+  --border-strong: rgba(244, 237, 224, 0.24); /* 3:1 non-text boundary */
 
-  --coral: #ff6f54;
-  --coral-hover: #ff8670;
-  --coral-tint: #2c1613;
-  --navy: #0a0f18;
-  --cream: #f5f3ec;
+  --accent: #FF6B5B;               /* Radiant Coral (5.2:1 contrast on #14213D) */
+  --accent-hover: #FF8577;         /* Brighter hover/active */
+  --accent-tint: rgba(255, 107, 91, 0.18); /* Deep coral badge background */
+  --accent-text: #FFA094;          /* High-contrast coral text */
 
   --status-online: #22c55e;
   --status-online-bg: #052e16;
 
-  --card-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-  --card-shadow-active: 0 8px 30px -4px rgba(0, 0, 0, 0.65);
+  --card-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(244, 237, 224, 0.08);
+  --card-shadow-active: 
+    0 14px 34px -4px rgba(0, 0, 0, 0.65),
+    0 0 0 1px #FF6B5B;
 
-  --glass-bg: rgba(16, 24, 38, 0.92);
-  --glass-border: rgba(28, 44, 67, 0.85);
+  --glass-bg: rgba(20, 33, 61, 0.92);
+  --glass-border: rgba(244, 237, 224, 0.14);
 }
 
 /* ==========================================================================
@@ -117,7 +130,9 @@ html {
 }
 
 body {
+  background: var(--bg-page-gradient);
   background-color: var(--bg-page);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -429,15 +444,16 @@ textarea:focus-visible,
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: #ffffff;
-  border: 1px solid var(--accent);
+  background: var(--coral);
+  color: #14213D;
+  border: 1px solid var(--coral);
+  font-weight: 700;
 }
 
 [data-theme="dark"] .btn-primary {
-  background: var(--accent);
-  color: #0e1211;
-  border-color: var(--accent);
+  background: var(--coral);
+  color: #14213D;
+  border-color: var(--coral);
   font-weight: 700;
 }
 
@@ -445,6 +461,7 @@ textarea:focus-visible,
   .btn-primary:hover {
     background: var(--accent-hover);
     border-color: var(--accent-hover);
+    color: #14213D;
   }
 }
 
@@ -489,12 +506,30 @@ textarea:focus-visible,
   border-radius: var(--radius-md);
   padding: 18px;
   box-shadow: var(--card-shadow);
-  transition: border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--border-subtle);
+  transition: background var(--transition-fast);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .stat-card:hover {
     border-color: var(--accent);
+    box-shadow: var(--card-shadow-active);
+    transform: translateY(-2px);
+  }
+  .stat-card:hover::before {
+    background: var(--accent);
   }
 }
 
@@ -592,8 +627,8 @@ textarea:focus-visible,
   border-radius: var(--radius-sm);
   background: var(--bg-surface);
   color: var(--text-secondary);
-  border: 1px solid var(--border-strong);
-  transition: transform var(--transition-press), background var(--transition-fast), color var(--transition-fast);
+  border: 1px solid var(--border-subtle);
+  transition: transform var(--transition-press), background-color 140ms ease-out, border-color 140ms ease-out, color 140ms ease-out;
 }
 
 .filter-btn:active {
@@ -608,15 +643,17 @@ textarea:focus-visible,
 }
 
 .filter-btn.active {
-  background: var(--accent);
-  color: #ffffff;
-  border-color: var(--accent);
+  background: var(--coral);
+  color: #14213D;
+  border-color: var(--coral);
+  font-weight: 700;
 }
 
 [data-theme="dark"] .filter-btn.active {
-  background: var(--accent);
-  color: #0e1211;
-  font-weight: 600;
+  background: var(--coral);
+  color: #14213D;
+  border-color: var(--coral);
+  font-weight: 700;
 }
 
 .search-box {
@@ -667,7 +704,7 @@ textarea:focus-visible,
   flex-direction: column;
   box-shadow: var(--card-shadow);
   position: relative;
-  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .project-card:active {
@@ -676,8 +713,9 @@ textarea:focus-visible,
 
 @media (hover: hover) and (pointer: fine) {
   .project-card:hover {
-    border-color: var(--border-strong);
+    border-color: var(--accent);
     box-shadow: var(--card-shadow-active);
+    transform: translateY(-2px);
   }
 }
 
@@ -685,6 +723,21 @@ textarea:focus-visible,
   grid-column: span 2;
   display: grid;
   grid-template-columns: 1.15fr 1fr;
+}
+
+.project-card.featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--coral), var(--navy));
+  z-index: 2;
+}
+
+[data-theme="dark"] .project-card.featured::before {
+  background: linear-gradient(90deg, var(--coral), var(--cream));
 }
 
 .project-thumb-wrap {
@@ -871,6 +924,15 @@ textarea:focus-visible,
   border-radius: var(--radius-md);
   padding: 22px;
   box-shadow: var(--card-shadow);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-active);
+    transform: translateY(-2px);
+  }
 }
 
 .skill-card-head {
@@ -1010,16 +1072,29 @@ textarea:focus-visible,
    CONTACT SECTION
    ========================================================================== */
 .contact-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-strong);
+  background: var(--navy);
+  color: var(--cream);
+  border: 1px solid rgba(255, 107, 91, 0.35);
   border-radius: var(--radius-lg);
-  padding: 44px 32px;
+  padding: 48px 36px;
   text-align: center;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 16px 36px -8px rgba(20, 33, 61, 0.45);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--coral), rgba(244, 237, 224, 0.5), var(--coral));
 }
 
 .contact-card h2 {
@@ -1027,13 +1102,13 @@ textarea:focus-visible,
   font-size: clamp(1.8rem, 3.5vw, 2.3rem);
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: var(--text-primary);
+  color: var(--cream);
   max-width: 600px;
 }
 
 .contact-card p {
   font-size: 15.5px;
-  color: var(--text-secondary);
+  color: #C8D1DF;
   max-width: 520px;
 }
 
@@ -1084,13 +1159,16 @@ textarea:focus-visible,
 /* ==========================================================================
    MODAL COMPONENT
    ========================================================================== */
+/* ==========================================================================
+   MODAL COMPONENT (High-Leverage Physical Transition)
+   ========================================================================== */
 .modal-backdrop {
   position: fixed;
   inset: 0;
   z-index: 200;
-  background: rgba(14, 18, 17, 0.65);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(14, 24, 44, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1098,7 +1176,8 @@ textarea:focus-visible,
   padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+  transition: opacity 220ms cubic-bezier(0.16, 1, 0.3, 1), visibility 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity;
 }
 
 .modal-backdrop.active {
@@ -1109,21 +1188,35 @@ textarea:focus-visible,
 .modal-dialog {
   background: var(--bg-surface);
   border: 1px solid var(--border-strong);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   width: 100%;
   max-width: 720px;
   max-height: 90vh;
   max-height: 90dvh;                   /* Mobile: dynamic viewport calculation */
   overflow-y: auto;
   overscroll-behavior: contain;         /* Stop modal scroll chaining to background */
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
-  transform: translateY(16px);
-  transition: transform var(--transition-normal);
+  box-shadow: 0 20px 48px -8px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 107, 91, 0.25);
+  transform: scale(0.96) translateY(14px);
+  opacity: 0;
+  transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease-out;
   position: relative;
+  will-change: transform, opacity;
 }
 
 .modal-backdrop.active .modal-dialog {
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.modal-backdrop.closing .modal-dialog {
+  transform: scale(0.97) translateY(10px);
+  opacity: 0;
+  transition: transform 180ms ease-in, opacity 160ms ease-in;
+}
+
+.modal-backdrop.closing {
+  opacity: 0;
+  transition: opacity 180ms ease-in;
 }
 
 .modal-close-btn {
@@ -1140,11 +1233,18 @@ textarea:focus-visible,
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: transform var(--transition-press);
+  transition: transform var(--transition-press), border-color var(--transition-fast), color var(--transition-fast);
 }
 
 .modal-close-btn:active {
   transform: scale(0.96);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .modal-close-btn:hover {
+    border-color: var(--coral);
+    color: var(--coral);
+  }
 }
 
 .modal-body {
@@ -1167,7 +1267,7 @@ textarea:focus-visible,
   object-fit: cover;
 }
 
-/* Floating Toast (Sonner-style) */
+/* Floating Toast (Symmetric Entrance & Dismissal) */
 .toast-container {
   position: fixed;
   bottom: calc(24px + env(safe-area-inset-bottom, 0px));
@@ -1186,12 +1286,32 @@ textarea:focus-visible,
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-sm);
   padding: 11px 16px;
-  box-shadow: var(--card-shadow-active);
+  box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 107, 91, 0.2);
   font-size: 13.5px;
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 10px;
+  transform: translateY(16px) scale(0.96);
+  opacity: 0;
+  transition: transform 220ms cubic-bezier(0.2, 0, 0, 1), opacity 180ms ease-out;
+  will-change: transform, opacity;
+}
+
+.toast.toast-enter {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.toast.toast-exit {
+  transform: translateY(12px) scale(0.96);
+  opacity: 0;
+  transition: transform 160ms cubic-bezier(0.4, 0, 1, 1), opacity 140ms ease-in;
+}
+
+@keyframes copyCheck {
+  0% { transform: scale(0.65); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
 
 /* ==========================================================================

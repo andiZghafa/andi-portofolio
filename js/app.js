@@ -25,7 +25,7 @@
 
   // --- THEME MANAGEMENT ---
   function updateThemeMeta(theme) {
-    const color = theme === 'dark' ? '#0a0f18' : '#fbf9f4';
+    const color = theme === 'dark' ? '#14213D' : '#F4EDE0';
     let metaTheme = document.querySelector('meta[name="theme-color"]:not([media])');
     if (!metaTheme) {
       metaTheme = document.createElement('meta');
@@ -109,8 +109,8 @@
         title: "Prambanan & Ratu Boko Enterprise Point of Sale (POS)",
         subtitle: "Mission-Critical Cashier & Multi-Warehouse System across UNESCO Heritage Parks",
         category: "system",
-        role: "Full-Stack & Mobile Engineer",
-        period: "2026",
+        role: "IT Development and Data Management Intern",
+        period: "Aug 2026 - Present",
         description: "Enterprise point-of-sale ecosystem deployed across cashier ticketing counters in Candi Prambanan and Candi Ratu Boko, featuring offline-first resilience, multi-warehouse inventory mutations, and direct Bluetooth thermal ESC/POS printing.",
         overview: "Engineered a high-concurrency point-of-sale and retail management system operating live at ticketing and merchant locations across Prambanan and Ratu Boko tourist complexes under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). Built as a reactive Single Page Application (SPA) combining Laravel 13, Inertia.js 3, and React 19, alongside a native Android APK build via Capacitor that bridges directly to Bluetooth Classic (SPP) thermal printers (BP-LITE80D) for instantaneous receipt printing without browser print dialogs. Manages multi-warehouse inventory, cashier shift reconciliation, and automated WhatsApp transaction dispatch.",
         keyFeatures: [
@@ -135,7 +135,7 @@
         title: "TWC Multi-Destination Venue Booking & Scheduling Platform",
         subtitle: "Internal Enterprise Scheduling & Seating Layout System across Borobudur, Prambanan & Ratu Boko",
         category: "web",
-        role: "Full-Stack Developer",
+        role: "IT Development and Data Management Intern",
         period: "2026",
         description: "Internal enterprise scheduling platform utilized by PT Taman Wisata Candi to coordinate multi-day venue bookings, load-in setup windows, and tiered seating layouts without double-booking conflicts.",
         overview: "Designed and developed an internal web enterprise platform for PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system coordinates high-capacity venue rentals across 3 premier heritage destinations (such as Lapangan Garuda, Trimurti Stage, and Ramayana Ballet stages). It features an atomic scheduling validation engine that accounts for multi-phase windows (load-in setup, main event, and tear-down unload) to eliminate scheduling collisions, coupled with an interactive seat allocation module and destination-scoped user permissions.",
@@ -160,8 +160,8 @@
         title: "Museum Candi Prambanan — Official Web Portal & Digital Catalog",
         subtitle: "Public Heritage Museum Platform & Historical Artifact Catalog",
         category: "web",
-        role: "Full-Stack Developer",
-        period: "2026",
+        role: "IT Development and Data Management Intern",
+        period: "Aug 2026 - Present",
         description: "Official public web portal and digital museum catalog for Prambanan Temple Museum, featuring interactive archaeological artifact galleries, visitor counters, and a curator CMS dashboard.",
         overview: "Architected and built the official web portal for Museum Candi Prambanan (`museumprambanan.twc.id`) under PT Taman Wisata Candi. The platform provides global tourists, archaeologists, and researchers with an immersive digital window into historical stone inscriptions (such as Prasasti Siwagrha and Prasasti Klurak), temple relics, and cultural stories. Includes a real-time visitor counter, curated educational exhibitions, and an administrative content management system for museum curators.",
         keyFeatures: [
@@ -494,30 +494,36 @@
   }
 
   function closeProjectModal() {
-    if (!projectModal) return;
-    projectModal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (!projectModal || !projectModal.classList.contains('active')) return;
+    projectModal.classList.add('closing');
+    setTimeout(() => {
+      projectModal.classList.remove('active', 'closing');
+      document.body.style.overflow = '';
+    }, 180);
   }
 
-  // --- TOAST MANAGER ---
+  // --- TOAST MANAGER (Symmetric Smooth Transitions) ---
   function showToast(message, type = 'success') {
     if (!toastContainer) return;
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     
     const icon = type === 'success'
-      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>`
+      ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>`
       : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
 
     toast.innerHTML = `${icon}<span>${escapeHTML(message)}</span>`;
     toastContainer.appendChild(toast);
 
+    requestAnimationFrame(() => {
+      toast.classList.add('toast-enter');
+    });
+
     setTimeout(() => {
-      toast.style.opacity = '0';
-      toast.style.transform = 'translateY(10px)';
-      toast.style.transition = 'all 200ms ease';
-      setTimeout(() => toast.remove(), 200);
-    }, 3200);
+      toast.classList.remove('toast-enter');
+      toast.classList.add('toast-exit');
+      setTimeout(() => toast.remove(), 160);
+    }, 2800);
   }
 
   // Helper: Escape HTML
@@ -589,14 +595,23 @@
       }
     });
 
-    // Copy Email to Clipboard
+    // Copy Email to Clipboard with Tactile Icon & State Transition
     const copyEmailBtns = document.querySelectorAll('[data-copy-email]');
     copyEmailBtns.forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.preventDefault();
         const email = btn.dataset.copyEmail || 'ghafaat@gmail.com';
+        const originalHTML = btn.innerHTML;
+
         navigator.clipboard.writeText(email).then(() => {
+          btn.innerHTML = `
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" style="animation: copyCheck 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span style="color: #22c55e; font-weight: 700;">Copied!</span>
+          `;
           showToast(`Copied ${email} to clipboard!`, 'success');
+          setTimeout(() => {
+            btn.innerHTML = originalHTML;
+          }, 2000);
         }).catch(() => {
           showToast(`Contact: ${email}`, 'info');
         });

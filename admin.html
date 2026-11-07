@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
     <title>CMS Studio — Andi Ghafa Portfolio Manager</title>
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fbf9f4" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0a0f18" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4EDE0" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14213D" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +18,8 @@
     <style>
       .admin-layout {
         min-height: 100vh;
-        background: var(--bg-page);
+        background: var(--bg-page-gradient);
+        background-color: var(--bg-page);
         display: flex;
         flex-direction: column;
       }
@@ -842,8 +843,12 @@
         }
 
         function closeModal() {
-          modal.classList.remove('active');
-          document.body.style.overflow = '';
+          if (!modal || !modal.classList.contains('active')) return;
+          modal.classList.add('closing');
+          setTimeout(() => {
+            modal.classList.remove('active', 'closing');
+            document.body.style.overflow = '';
+          }, 180);
         }
 
         modalClose.addEventListener('click', closeModal);
@@ -857,10 +862,12 @@
           toast.className = `toast toast-${type}`;
           toast.innerHTML = `<span>${escapeHTML(message)}</span>`;
           toastContainer.appendChild(toast);
+          requestAnimationFrame(() => toast.classList.add('toast-enter'));
           setTimeout(() => {
-            toast.style.opacity = '0';
-            setTimeout(() => toast.remove(), 200);
-          }, 3000);
+            toast.classList.remove('toast-enter');
+            toast.classList.add('toast-exit');
+            setTimeout(() => toast.remove(), 160);
+          }, 2800);
         }
 
         function escapeHTML(str) {

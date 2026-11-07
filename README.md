@@ -10,7 +10,7 @@ Personal portfolio website showcasing my work in enterprise software, web applic
 
 ## Overview
 
-I built this portfolio to document and present the systems I've worked on, ranging from enterprise production tools at PT Taman Wisata Candi (TWC / InJourney) to academic and freelance projects. 
+I built this portfolio to document and present the systems I've worked on, ranging from enterprise production tools during my role as **IT Development and Data Management Intern** at PT Taman Wisata Candi (TWC / InJourney) to academic and freelance projects.
 
 Instead of heavy frontend frameworks that require multi-gigabyte build chains, this site is built with vanilla HTML5, CSS3, and JavaScript. It loads instantly, works offline, and renders smoothly on mobile and desktop.
 
@@ -32,6 +32,7 @@ To make it easy to add new portfolio cards or update descriptions without editin
 There are two ways to use it:
 
 ### 1. Local Server Mode (Direct Disk Save)
+
 When running locally with Node:
 
 ```bash
@@ -42,7 +43,9 @@ npm start
 Open `http://localhost:3000/admin.html` (or press `Ctrl` + `Shift` + `A` on the main page). Any edits or new project additions save directly to `data/projects.json` on disk, and uploaded screenshots go straight to `assets/images/`.
 
 ### 2. Static / GitHub Pages Mode
+
 If opened directly in a browser without Node running:
+
 - Open `admin.html`
 - Fill in the project fields and click **Save** (it updates the browser session)
 - Click **Export JSON** to download the updated `projects.json`
@@ -88,6 +91,7 @@ You don't need any npm dependencies to run this site:
 The site is fully static and can be deployed anywhere:
 
 ### GitHub Pages
+
 1. Push the repository to GitHub:
    ```bash
    git add .
@@ -97,4 +101,5 @@ The site is fully static and can be deployed anywhere:
 2. In your repo on GitHub, go to **Settings** &rarr; **Pages**, set branch to `main`, and save.
 
 ### Vercel / Netlify
+
 Import the repository. No build command is required, output directory is `./`.
