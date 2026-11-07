@@ -1,0 +1,13 @@
+{
+  "name": "andi-portfolio",
+  "version": "2.0.0",
+  "description": "Andi Ziyadh Ghafa Ramadhan — Professional Portfolio with Built-in CMS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["portfolio", "cms", "full-stack", "nextjs", "flutter", "developer"],
+  "author": "Andi Ziyadh Ghafa Ramadhan <ghafaat@gmail.com>",
+  "license": "MIT"
+}

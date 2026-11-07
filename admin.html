@@ -1,0 +1,877 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>CMS Studio — Andi Ghafa Portfolio Manager</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f9f8f4" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0e1211" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <style>
+      .admin-layout {
+        min-height: 100vh;
+        background: var(--bg-page);
+        display: flex;
+        flex-direction: column;
+      }
+      .admin-header {
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 16px 24px;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+      .admin-header-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .admin-title-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .admin-badge {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 4px 8px;
+        border-radius: var(--radius-sm);
+        background: var(--accent-light);
+        color: var(--accent);
+        text-transform: uppercase;
+      }
+      .server-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        padding: 4px 10px;
+        border-radius: var(--radius-full);
+        border: 1px solid var(--border-subtle);
+        background: var(--bg-surface-elevated);
+      }
+      .server-pill.online {
+        color: var(--status-online);
+        border-color: rgba(22, 163, 74, 0.3);
+      }
+      .server-pill.offline {
+        color: var(--text-muted);
+      }
+      .pill-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: currentColor;
+      }
+      .admin-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 32px 24px;
+        flex-grow: 1;
+        width: 100%;
+      }
+      .admin-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+        flex-wrap: wrap;
+      }
+      .admin-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--card-shadow);
+        overflow: hidden;
+      }
+      .table-responsive {
+        width: 100%;
+        overflow-x: auto;
+      }
+      table.admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 14px;
+      }
+      table.admin-table th {
+        background: var(--bg-surface-elevated);
+        padding: 14px 16px;
+        font-family: var(--font-mono);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-muted);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+      table.admin-table td {
+        padding: 16px;
+        border-bottom: 1px solid var(--border-subtle);
+        vertical-align: middle;
+      }
+      table.admin-table tr:hover td {
+        background: var(--bg-surface-elevated);
+      }
+      .project-cell-title {
+        font-weight: 600;
+        color: var(--text-primary);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .project-cell-thumb {
+        width: 54px;
+        height: 38px;
+        border-radius: var(--radius-sm);
+        object-fit: cover;
+        background: var(--bg-muted);
+      }
+      .btn-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 6px 10px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        font-weight: 600;
+        border: 1px solid var(--border-subtle);
+        background: var(--bg-surface);
+        color: var(--text-primary);
+        transition: all var(--transition-fast);
+      }
+      .btn-action:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .btn-action.danger:hover {
+        border-color: #ef4444;
+        color: #ef4444;
+      }
+      /* Form Modal */
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .form-group.full {
+        grid-column: span 2;
+      }
+      .form-label {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .form-input, .form-textarea, .form-select {
+        font-family: var(--font-sans);
+        font-size: 15px;
+        padding: 10px 14px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-subtle);
+        background: var(--bg-surface);
+        color: var(--text-primary);
+        transition: all var(--transition-fast);
+      }
+      .form-input:focus, .form-textarea:focus, .form-select:focus {
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px var(--accent-glow);
+      }
+      .btn-action:active {
+        transform: scale(0.97);
+      }
+      .features-list-builder {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .feature-item-row {
+        display: flex;
+        gap: 8px;
+      }
+      .preview-box {
+        margin-top: 24px;
+        padding: 20px;
+        border-radius: var(--radius-lg);
+        background: var(--bg-surface-elevated);
+        border: 1px solid var(--border-subtle);
+      }
+      @media (max-width: 768px) {
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .form-group.full {
+          grid-column: span 1;
+        }
+        .form-input, .form-textarea, .form-select {
+          font-size: 16px; /* Stop iOS Safari automatic auto-zoom */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="admin-layout">
+      <!-- Admin Top Nav -->
+      <header class="admin-header">
+        <div class="admin-header-wrap">
+          <div class="admin-title-group">
+            <a href="index.html" class="nav-brand" title="Return to Live Website">
+              /andighafa
+            </a>
+            <span class="admin-badge">CMS Studio</span>
+            <div id="serverStatusPill" class="server-pill offline" title="Status of the local Node CMS Server">
+              <span class="pill-dot"></span>
+              <span id="serverStatusText">Checking Server...</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <button id="themeToggle" class="btn-icon" aria-label="Toggle theme"></button>
+            <a href="index.html" class="btn btn-secondary" style="font-size: 13px; padding: 7px 14px;">
+              &larr; View Live Site
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Admin Content -->
+      <main class="admin-container">
+        <!-- Toolbar -->
+        <div class="admin-toolbar">
+          <div>
+            <h1 style="font-family: var(--font-display); font-size: 26px; font-weight: 700; color: var(--text-primary);">
+              Portfolio Projects Manager
+            </h1>
+            <p style="font-size: 14.5px; color: var(--text-secondary); margin-top: 4px;">
+              Add new showcase projects, edit descriptions, adjust tags, or reorder cards.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <button id="btnNewProject" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 18px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              Add New Project
+            </button>
+            <button id="btnExportJSON" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 16px;" title="Download projects.json for Git commit or static hosting">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export JSON
+            </button>
+            <button id="btnCopyJSON" class="btn btn-outline" style="font-size: 13.5px; padding: 9px 14px;" title="Copy projects JSON data to clipboard">
+              Copy JSON
+            </button>
+          </div>
+        </div>
+
+        <!-- Mode Notification Alert -->
+        <div id="modeAlert" style="margin-bottom: 24px; padding: 14px 18px; border-radius: var(--radius-md); font-size: 13.5px; display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--bg-surface); border: 1px solid var(--border-subtle);">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <svg id="modeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent);"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <span id="modeMessage">Detecting configuration...</span>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">JSON Data Layer</span>
+        </div>
+
+        <!-- Projects Table Card -->
+        <div class="admin-card">
+          <div class="table-responsive">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th style="width: 50px;">#</th>
+                  <th>Project</th>
+                  <th>Category</th>
+                  <th>Role</th>
+                  <th>Tags</th>
+                  <th style="text-align: center;">Featured</th>
+                  <th style="text-align: right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="projectsTableBody">
+                <tr>
+                  <td colspan="7" style="text-align: center; padding: 36px; color: var(--text-muted);">
+                    Loading projects data...
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </main>
+
+      <!-- Edit / Add Project Modal -->
+      <div id="projectEditModal" class="modal-backdrop">
+        <div class="modal-dialog" style="max-width: 820px;">
+          <button id="modalEditClose" class="modal-close-btn" aria-label="Close dialog">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <div class="modal-body">
+            <h2 id="modalFormTitle" style="font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 20px; color: var(--text-primary);">
+              Add New Portfolio Project
+            </h2>
+
+            <form id="projectForm">
+              <input type="hidden" id="editId" />
+              
+              <div class="form-grid">
+                <!-- Title -->
+                <div class="form-group full">
+                  <label class="form-label" for="editTitle">Project Title *</label>
+                  <input type="text" id="editTitle" class="form-input" required placeholder="e.g. ASPIRE — Career Recommendation Platform" />
+                </div>
+
+                <!-- Subtitle -->
+                <div class="form-group">
+                  <label class="form-label" for="editSubtitle">Subtitle / Tagline</label>
+                  <input type="text" id="editSubtitle" class="form-input" placeholder="e.g. AI-Powered Academic Guidance System" />
+                </div>
+
+                <!-- Category -->
+                <div class="form-group">
+                  <label class="form-label" for="editCategory">Category *</label>
+                  <select id="editCategory" class="form-select" required>
+                    <option value="web">Full-Stack Web</option>
+                    <option value="mobile">Mobile App</option>
+                    <option value="ai">AI &amp; Machine Learning</option>
+                    <option value="system">Systems &amp; OOP</option>
+                  </select>
+                </div>
+
+                <!-- Role -->
+                <div class="form-group">
+                  <label class="form-label" for="editRole">Your Role</label>
+                  <input type="text" id="editRole" class="form-input" placeholder="e.g. Project Manager & Lead Full-Stack" />
+                </div>
+
+                <!-- Period -->
+                <div class="form-group">
+                  <label class="form-label" for="editPeriod">Timeline / Period</label>
+                  <input type="text" id="editPeriod" class="form-input" placeholder="e.g. 2025 - 2026 or Jul 2025" />
+                </div>
+
+                <!-- Card Summary -->
+                <div class="form-group full">
+                  <label class="form-label" for="editDescription">Card Summary (Short) *</label>
+                  <textarea id="editDescription" class="form-textarea" rows="2" required placeholder="Punchy 2-sentence summary that appears on the card preview..."></textarea>
+                </div>
+
+                <!-- Detailed Overview -->
+                <div class="form-group full">
+                  <label class="form-label" for="editOverview">Full Overview &amp; Background (For Modal View)</label>
+                  <textarea id="editOverview" class="form-textarea" rows="4" placeholder="Detailed architectural walkthrough, challenge addressed, and technical strategy..."></textarea>
+                </div>
+
+                <!-- Key Features Builder -->
+                <div class="form-group full">
+                  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+                    <label class="form-label">Key Features &amp; Contributions (Bullets)</label>
+                    <button type="button" id="btnAddFeature" class="btn-action" style="font-size: 11px; padding: 3px 8px;">
+                      + Add Feature
+                    </button>
+                  </div>
+                  <div id="featuresContainer" class="features-list-builder">
+                    <!-- Feature rows inserted dynamically -->
+                  </div>
+                </div>
+
+                <!-- Tags -->
+                <div class="form-group full">
+                  <label class="form-label" for="editTags">Technologies / Tags (comma separated)</label>
+                  <input type="text" id="editTags" class="form-input" placeholder="Next.js, TypeScript, MongoDB, Tailwind CSS" />
+                </div>
+
+                <!-- Image URL or File Upload -->
+                <div class="form-group">
+                  <label class="form-label" for="editImage">Project Image Path or URL</label>
+                  <input type="text" id="editImage" class="form-input" placeholder="assets/images/project.png or external URL" />
+                </div>
+
+                <!-- Image File Picker -->
+                <div class="form-group">
+                  <label class="form-label" for="editImageFile">Upload Image from Device</label>
+                  <input type="file" id="editImageFile" class="form-input" accept="image/*" />
+                </div>
+
+                <!-- Links -->
+                <div class="form-group">
+                  <label class="form-label" for="linkDemo">Live Demo URL</label>
+                  <input type="url" id="linkDemo" class="form-input" placeholder="https://example.com" />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="linkManual">Manual / Documentation (PDF or Link)</label>
+                  <input type="text" id="linkManual" class="form-input" placeholder="porto 2.pdf or https://..." />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="linkGithub">GitHub Repo URL</label>
+                  <input type="url" id="linkGithub" class="form-input" placeholder="https://github.com/..." />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="linkDrive">Google Drive / Other Link</label>
+                  <input type="url" id="linkDrive" class="form-input" placeholder="https://drive.google.com/..." />
+                </div>
+
+                <!-- Featured & Order -->
+                <div class="form-group" style="display: flex; flex-direction: row; align-items: center; gap: 10px; margin-top: 14px;">
+                  <input type="checkbox" id="editFeatured" style="width: 18px; height: 18px;" />
+                  <label class="form-label" for="editFeatured" style="margin: 0; cursor: pointer;">
+                    Featured Project (Wide Bento Card)
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="editOrder">Display Order</label>
+                  <input type="number" id="editOrder" class="form-input" min="1" max="99" value="1" />
+                </div>
+              </div>
+
+              <!-- Action buttons -->
+              <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: flex-end; gap: 12px;">
+                <button type="button" id="btnCancelEdit" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
+                  Cancel
+                </button>
+                <button type="submit" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 22px;">
+                  Save Project
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toast Container -->
+      <div id="toastContainer" class="toast-container"></div>
+    </div>
+
+    <!-- CMS Studio Logic Script -->
+    <script>
+      (function() {
+        let projects = [];
+        let isServerOnline = false;
+
+        const tableBody = document.getElementById('projectsTableBody');
+        const modal = document.getElementById('projectEditModal');
+        const modalClose = document.getElementById('modalEditClose');
+        const btnCancel = document.getElementById('btnCancelEdit');
+        const btnNew = document.getElementById('btnNewProject');
+        const form = document.getElementById('projectForm');
+        const toastContainer = document.getElementById('toastContainer');
+        const serverPill = document.getElementById('serverStatusPill');
+        const serverText = document.getElementById('serverStatusText');
+        const modeAlert = document.getElementById('modeAlert');
+        const modeMessage = document.getElementById('modeMessage');
+        const btnExport = document.getElementById('btnExportJSON');
+        const btnCopy = document.getElementById('btnCopyJSON');
+        const featuresContainer = document.getElementById('featuresContainer');
+        const btnAddFeature = document.getElementById('btnAddFeature');
+        const imageFileInput = document.getElementById('editImageFile');
+        const imageUrlInput = document.getElementById('editImage');
+
+        // Theme management
+        const savedTheme = localStorage.getItem('andi-portfolio-theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        function updateThemeBtnIcon(theme) {
+          if (!themeBtn) return;
+          themeBtn.innerHTML = theme === 'dark' 
+            ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>'
+            : '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+        }
+
+        if (themeBtn) {
+          updateThemeBtnIcon(savedTheme);
+          themeBtn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme') || 'light';
+            const next = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('andi-portfolio-theme', next);
+            updateThemeBtnIcon(next);
+          });
+        }
+
+        // Check if server is running
+        async function checkServerStatus() {
+          try {
+            const res = await fetch('/api/status', { method: 'GET' });
+            if (res.ok) {
+              const data = await res.json();
+              if (data.status === 'online') {
+                isServerOnline = true;
+                serverPill.className = 'server-pill online';
+                serverText.textContent = 'Server: Live Disk-Write';
+                modeMessage.innerHTML = '<strong>Live Mode:</strong> Server is running. All changes save directly to <code>data/projects.json</code> on disk!';
+                return;
+              }
+            }
+          } catch (e) {
+            // Server offline
+          }
+          isServerOnline = false;
+          serverPill.className = 'server-pill offline';
+          serverText.textContent = 'Static Browser Mode';
+          modeMessage.innerHTML = '<strong>Static Mode:</strong> Edits save to browser storage. Click <strong>Export JSON</strong> when ready to update <code>data/projects.json</code>.';
+        }
+
+        // Load project data
+        async function loadData() {
+          try {
+            const res = await fetch('data/projects.json?t=' + Date.now());
+            if (res.ok) {
+              projects = await res.json();
+            } else {
+              throw new Error('Fallback to localStorage');
+            }
+          } catch (err) {
+            const cached = localStorage.getItem('andi-cms-drafts');
+            if (cached) {
+              projects = JSON.parse(cached);
+            } else {
+              projects = [];
+            }
+          }
+
+          // Check if drafts exist in localStorage
+          const drafts = localStorage.getItem('andi-cms-drafts');
+          if (drafts) {
+            try {
+              const parsed = JSON.parse(drafts);
+              if (parsed && parsed.length >= projects.length) {
+                projects = parsed;
+              }
+            } catch(e) {}
+          }
+
+          renderTable();
+        }
+
+        // Render Table
+        function renderTable() {
+          projects.sort((a, b) => (a.order || 99) - (b.order || 99));
+          if (projects.length === 0) {
+            tableBody.innerHTML = `
+              <tr>
+                <td colspan="7" style="text-align: center; padding: 48px; color: var(--text-muted);">
+                  No projects in the CMS yet. Click <strong>Add New Project</strong> above to get started!
+                </td>
+              </tr>
+            `;
+            return;
+          }
+
+          tableBody.innerHTML = projects.map((p, index) => {
+            const imgSrc = p.image || p.fallbackImage || 'assets/images/aspire.png';
+            const catBadge = p.category ? `<span class="category-tag" style="font-size: 10px;">${p.category.toUpperCase()}</span>` : '';
+            const featuredBadge = p.featured 
+              ? `<span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--status-online);" title="Featured"></span>`
+              : `<span style="color: var(--text-muted); font-size: 12px;">—</span>`;
+            
+            const tagsHTML = (p.tags || []).slice(0, 3).map(t => `<span class="tech-chip" style="font-size: 11px;">${escapeHTML(t)}</span>`).join(' ');
+
+            return `
+              <tr>
+                <td style="font-family: var(--font-mono); font-size: 12px; color: var(--text-muted);">${p.order || index + 1}</td>
+                <td>
+                  <div class="project-cell-title">
+                    <img src="${escapeHTML(imgSrc)}" class="project-cell-thumb" onerror="this.src='assets/images/aspire.png';" />
+                    <div>
+                      <div style="font-size: 14.5px;">${escapeHTML(p.title)}</div>
+                      <div style="font-size: 12px; color: var(--text-muted);">${escapeHTML(p.subtitle || p.period || '')}</div>
+                    </div>
+                  </div>
+                </td>
+                <td>${catBadge}</td>
+                <td style="font-size: 13px; color: var(--text-secondary);">${escapeHTML(p.role || '')}</td>
+                <td>${tagsHTML}</td>
+                <td style="text-align: center;">${featuredBadge}</td>
+                <td style="text-align: right;">
+                  <div style="display: inline-flex; gap: 6px;">
+                    <button class="btn-action" onclick="window.editProject('${p.id}')" title="Edit Project">Edit</button>
+                    <button class="btn-action danger" onclick="window.deleteProject('${p.id}')" title="Delete Project">Delete</button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join('');
+        }
+
+        // Open Modal for New Project
+        btnNew.addEventListener('click', () => {
+          document.getElementById('modalFormTitle').textContent = 'Add New Portfolio Project';
+          form.reset();
+          document.getElementById('editId').value = 'project-' + Date.now();
+          document.getElementById('editOrder').value = projects.length + 1;
+          renderFeatureInputs([]);
+          openModal();
+        });
+
+        // Open Modal for Edit
+        window.editProject = function(id) {
+          const p = projects.find(item => item.id === id);
+          if (!p) return;
+          document.getElementById('modalFormTitle').textContent = 'Edit Project: ' + p.title;
+          document.getElementById('editId').value = p.id;
+          document.getElementById('editTitle').value = p.title || '';
+          document.getElementById('editSubtitle').value = p.subtitle || '';
+          document.getElementById('editCategory').value = p.category || 'web';
+          document.getElementById('editRole').value = p.role || '';
+          document.getElementById('editPeriod').value = p.period || '';
+          document.getElementById('editDescription').value = p.description || '';
+          document.getElementById('editOverview').value = p.overview || '';
+          document.getElementById('editTags').value = (p.tags || []).join(', ');
+          document.getElementById('editImage').value = p.image || '';
+          document.getElementById('linkDemo').value = p.links && p.links.demo ? p.links.demo : '';
+          document.getElementById('linkManual').value = p.links && p.links.manual ? p.links.manual : '';
+          document.getElementById('linkGithub').value = p.links && p.links.github ? p.links.github : '';
+          document.getElementById('linkDrive').value = p.links && p.links.drive ? p.links.drive : '';
+          document.getElementById('editFeatured').checked = Boolean(p.featured);
+          document.getElementById('editOrder').value = p.order || 1;
+
+          renderFeatureInputs(p.keyFeatures || []);
+          openModal();
+        };
+
+        // Delete Project
+        window.deleteProject = async function(id) {
+          const p = projects.find(item => item.id === id);
+          if (!confirm(`Are you sure you want to remove "${p ? p.title : id}"?`)) return;
+
+          if (isServerOnline) {
+            try {
+              const res = await fetch(`/api/projects/${encodeURIComponent(id)}`, { method: 'DELETE' });
+              if (!res.ok) throw new Error('Server delete failed');
+            } catch(e) {
+              console.error(e);
+            }
+          }
+
+          projects = projects.filter(item => item.id !== id);
+          saveLocally();
+          renderTable();
+          showToast(`Project removed successfully`, 'success');
+        };
+
+        // Render dynamic feature bullets
+        function renderFeatureInputs(features) {
+          featuresContainer.innerHTML = '';
+          if (!features || features.length === 0) {
+            addFeatureRow('');
+            return;
+          }
+          features.forEach(f => addFeatureRow(f));
+        }
+
+        function addFeatureRow(value = '') {
+          const row = document.createElement('div');
+          row.className = 'feature-item-row';
+          row.innerHTML = `
+            <input type="text" class="form-input feature-input" value="${escapeHTML(value)}" placeholder="Key achievement or feature bullet..." style="flex-grow: 1;" />
+            <button type="button" class="btn-action danger" onclick="this.parentElement.remove()" style="padding: 6px 10px;">&times;</button>
+          `;
+          featuresContainer.appendChild(row);
+        }
+
+        btnAddFeature.addEventListener('click', () => addFeatureRow(''));
+
+        // Handle File Upload to Base64 or Server
+        imageFileInput.addEventListener('change', async (e) => {
+          const file = e.target.files[0];
+          if (!file) return;
+
+          const reader = new FileReader();
+          reader.onload = async (event) => {
+            const base64 = event.target.result;
+
+            if (isServerOnline) {
+              try {
+                showToast('Uploading image to server...', 'info');
+                const res = await fetch('/api/upload', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ filename: file.name, base64 })
+                });
+                if (res.ok) {
+                  const data = await res.json();
+                  imageUrlInput.value = data.url;
+                  showToast('Image uploaded: ' + data.url, 'success');
+                  return;
+                }
+              } catch(err) {
+                console.warn('Server upload failed, falling back to data URL', err);
+              }
+            }
+
+            // Fallback for static mode: use data URI or filename
+            imageUrlInput.value = base64;
+            showToast('Loaded image preview', 'success');
+          };
+          reader.readAsDataURL(file);
+        });
+
+        // Form Submit: Save Project
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+
+          const id = document.getElementById('editId').value.trim() || 'project-' + Date.now();
+          const title = document.getElementById('editTitle').value.trim();
+          const subtitle = document.getElementById('editSubtitle').value.trim();
+          const category = document.getElementById('editCategory').value;
+          const role = document.getElementById('editRole').value.trim();
+          const period = document.getElementById('editPeriod').value.trim();
+          const description = document.getElementById('editDescription').value.trim();
+          const overview = document.getElementById('editOverview').value.trim();
+          const tags = document.getElementById('editTags').value.split(',').map(t => t.trim()).filter(Boolean);
+          const image = document.getElementById('editImage').value.trim();
+          const featured = document.getElementById('editFeatured').checked;
+          const order = parseInt(document.getElementById('editOrder').value, 10) || projects.length + 1;
+
+          // Features
+          const keyFeatures = [];
+          document.querySelectorAll('.feature-input').forEach(input => {
+            if (input.value.trim()) keyFeatures.push(input.value.trim());
+          });
+
+          // Links
+          const links = {};
+          const demo = document.getElementById('linkDemo').value.trim();
+          const manual = document.getElementById('linkManual').value.trim();
+          const github = document.getElementById('linkGithub').value.trim();
+          const drive = document.getElementById('linkDrive').value.trim();
+          if (demo) links.demo = demo;
+          if (manual) links.manual = manual;
+          if (github) links.github = github;
+          if (drive) links.drive = drive;
+
+          const projectData = {
+            id,
+            title,
+            subtitle,
+            category,
+            role,
+            period,
+            description,
+            overview,
+            keyFeatures,
+            tags,
+            image,
+            links,
+            featured,
+            order
+          };
+
+          // Save to server if online
+          if (isServerOnline) {
+            try {
+              const res = await fetch('/api/projects', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(projectData)
+              });
+              if (!res.ok) throw new Error('Failed to save to server');
+            } catch(err) {
+              console.error('Server save error:', err);
+            }
+          }
+
+          // Update local state
+          const existingIdx = projects.findIndex(p => p.id === id);
+          if (existingIdx >= 0) {
+            projects[existingIdx] = projectData;
+          } else {
+            projects.push(projectData);
+          }
+
+          saveLocally();
+          renderTable();
+          closeModal();
+          showToast(`Saved "${title}"!`, 'success');
+        });
+
+        // Persist to localStorage
+        function saveLocally() {
+          localStorage.setItem('andi-cms-drafts', JSON.stringify(projects, null, 2));
+        }
+
+        // Export JSON Download
+        btnExport.addEventListener('click', () => {
+          const jsonStr = JSON.stringify(projects, null, 2);
+          const blob = new Blob([jsonStr], { type: 'application/json' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'projects.json';
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+          URL.revokeObjectURL(url);
+          showToast('Downloaded projects.json! Replace in data/projects.json to commit.', 'success');
+        });
+
+        // Copy JSON
+        btnCopy.addEventListener('click', () => {
+          const jsonStr = JSON.stringify(projects, null, 2);
+          navigator.clipboard.writeText(jsonStr).then(() => {
+            showToast('Copied JSON to clipboard!', 'success');
+          }).catch(() => {
+            showToast('Error copying to clipboard', 'error');
+          });
+        });
+
+        function openModal() {
+          modal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+          modal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closeModal);
+        btnCancel.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+
+        function showToast(message, type = 'success') {
+          const toast = document.createElement('div');
+          toast.className = `toast toast-${type}`;
+          toast.innerHTML = `<span>${escapeHTML(message)}</span>`;
+          toastContainer.appendChild(toast);
+          setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 200);
+          }, 3000);
+        }
+
+        function escapeHTML(str) {
+          if (!str) return '';
+          return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        // Boot
+        checkServerStatus();
+        loadData();
+      })();
+    </script>
+  </body>
+</html>

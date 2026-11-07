@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Venue Booking System — Technical &amp; Operational Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #0f766e;
+        --primary-light: #ccfbf1;
+        --primary-dark: #115e59;
+        --bg-page: #f8fafc;
+        --bg-surface: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --border: #cbd5e1;
+        --font-sans: "Inter", sans-serif;
+        --font-display: "Plus Jakarta Sans", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-sans);
+        color: var(--text-main);
+        background: var(--bg-page);
+        line-height: 1.65;
+        padding-bottom: 60px;
+      }
+      .doc-header {
+        background: var(--bg-surface);
+        border-bottom: 1px solid var(--border);
+        padding: 32px 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(8px);
+      }
+      .container {
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .badge-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .badge {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 600;
+        padding: 3px 9px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      .badge-neutral {
+        background: #f1f5f9;
+        color: var(--text-muted);
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.25;
+      }
+      .doc-meta {
+        font-size: 14px;
+        color: var(--text-muted);
+      }
+      .doc-nav-btn {
+        margin-top: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        border: 1px solid var(--primary);
+        padding: 6px 14px;
+        border-radius: 6px;
+        transition: all 0.15s ease;
+      }
+      .doc-nav-btn:hover {
+        background: var(--primary);
+        color: #ffffff;
+      }
+      .content-body {
+        padding: 40px 0;
+      }
+      .section-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 28px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+      }
+      h2 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+        color: var(--primary-dark);
+      }
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 20px 0 8px;
+      }
+      p { margin-bottom: 14px; font-size: 15px; }
+      ul, ol { padding-left: 24px; margin-bottom: 16px; font-size: 14.5px; }
+      li { margin-bottom: 6px; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 13.5px;
+      }
+      th, td {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      th { background: #f8fafc; font-weight: 600; }
+      code {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        background: #f1f5f9;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: #0f766e;
+      }
+      pre {
+        background: #0f172a;
+        color: #f8fafc;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        margin: 14px 0;
+      }
+      .callout {
+        border-left: 4px solid var(--primary);
+        background: var(--primary-light);
+        padding: 14px 18px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14px;
+        margin: 16px 0;
+      }
+      @media print {
+        .doc-header { position: static; }
+        .doc-nav-btn { display: none; }
+        .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="doc-header">
+      <div class="container">
+        <div class="badge-row">
+          <span class="badge">Enterprise Internal System</span>
+          <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
+          <span class="badge badge-neutral">Confidential Technical Manual</span>
+        </div>
+        <h1>Venue Booking System &mdash; Architectural &amp; Operational Documentation</h1>
+        <div class="doc-meta">
+          <strong>Author:</strong> Andi Ziyadh Ghafa Ramadhan (Full-Stack Engineer) &middot;
+          <strong>Organization:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
+          <strong>Year:</strong> 2026
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a href="../index.html#projects" class="doc-nav-btn">&larr; Back to Portfolio</a>
+          <button onclick="window.print()" class="doc-nav-btn">Print / Save as PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container content-body">
+      <!-- 1. Executive Summary -->
+      <section class="section-card">
+        <h2>1. Ringkasan Eksekutif &amp; Konteks Produk</h2>
+        <p>
+          <strong>Venue Booking System</strong> adalah platform web internal enterprise yang dirancang dan dikembangkan untuk mengelola penjadwalan peminjaman venue, kapasitas acara, dan pemetaan kursi (<em>seating management</em>) di seluruh destinasi pariwisata heritage kelas dunia di bawah naungan <strong>PT Taman Wisata Candi Borobudur, Prambanan, dan Ratu Boko (TWC / InJourney)</strong>.
+        </p>
+        <p>
+          Sebelum sistem ini diimplementasikan, koordinasi pemesanan lokasi acara besar (konser musik internasional, konferensi BUMN, gala dinner, dan pertunjukan seni Ramayana Ballet) dilakukan secara manual atau semi-terpisah. Hal tersebut berisiko menimbulkan <strong>tumpang-tindih jadwal (double-booking)</strong>, ketidaksesuaian waktu <em>loading/setup</em>, dan miskomunikasi tim operasional di lapangan.
+        </p>
+        <div class="callout">
+          <strong>Tujuan Utama Sistem:</strong> Mencegah <em>double-booking</em> secara mutlak, memperhitungkan waktu persiapan (load-in/setup) dan pembongkaran (tear-down), menyelaraskan hak akses berbasis destinasi (destination-scoping), serta mengotomatisasi notifikasi perubahan jadwal secara real-time kepada seluruh pemangku kepentingan.
+        </div>
+      </section>
+
+      <!-- 2. Arsitektur Destinasi & Venue -->
+      <section class="section-card">
+        <h2>2. Struktur Destinasi &amp; Venue</h2>
+        <p>Sistem mengelola beragam venue multifungsi yang tersebar di 3 destinasi utama:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Destinasi</th>
+              <th>Nama Venue</th>
+              <th>Tipe</th>
+              <th>Kapasitas</th>
+              <th>Karakteristik &amp; Peruntukan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td rowspan="4"><strong>Candi Prambanan</strong></td>
+              <td>Lapangan Garuda</td>
+              <td>Outdoor</td>
+              <td>5.000 pax</td>
+              <td>Area terbuka kompleks Prambanan untuk festival akbar &amp; konser.</td>
+            </tr>
+            <tr>
+              <td>Trimurti Open Stage</td>
+              <td>Outdoor</td>
+              <td>1.200 pax</td>
+              <td>Panggung terbuka berlatar belakang relief Candi Siwa.</td>
+            </tr>
+            <tr>
+              <td>Ramayana Outdoor Stage</td>
+              <td>Outdoor Seated</td>
+              <td>1.500 kursi</td>
+              <td>Panggung pertunjukan Ramayana Ballet musim kemarau dengan denah kursi berjenjang.</td>
+            </tr>
+            <tr>
+              <td>Ramayana Indoor Stage</td>
+              <td>Indoor Seated</td>
+              <td>800 kursi</td>
+              <td>Gedung pertunjukan teater berpendingin ruangan dengan tata suara akustik.</td>
+            </tr>
+            <tr>
+              <td><strong>Candi Ratu Boko</strong></td>
+              <td>Plaza Andrawina &amp; Sunset Hill</td>
+              <td>Outdoor</td>
+              <td>800 pax</td>
+              <td>Area pemandangan matahari terbenam (sunset) untuk gala dinner &amp; VIP gathering.</td>
+            </tr>
+            <tr>
+              <td><strong>Candi Borobudur</strong></td>
+              <td>Taman Lumbini &amp; Aksobya</td>
+              <td>Outdoor</td>
+              <td>3.500 pax</td>
+              <td>Area pelataran hijau untuk upacara keagamaan, perayaan Waisak, dan forum global.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 3. Engine Pencegah Konflik Jadwal -->
+      <section class="section-card">
+        <h2>3. Conflict-Aware Scheduling Engine</h2>
+        <p>
+          Fitur paling kritis dari sistem ini adalah <strong>algoritma pendeteksi konflik multi-fase</strong>. Peminjaman venue tidak hanya menghitung durasi acara utama (<em>event duration</em>), melainkan mencakup jendela waktu persiapan:
+        </p>
+        <pre><code>[ LOAD-IN / SETUP ] ───► [ MAIN EVENT TIME ] ───► [ TEAR-DOWN / UNLOAD ]
+|◄───────────────────── TOTAL BLOCKED WINDOW ────────────────────────►|</code></pre>
+        <h3>Mekanisme Validasi Server-Side:</h3>
+        <ul>
+          <li>Sebelum status booking disimpan ke database, sistem memeriksa seluruh record booking di venue yang sama yang berstatus <code>Confirmed</code> atau <code>Pending Approval</code>.</li>
+          <li>Kondisi overlap diperiksa dengan formula irisan waktu:
+            <br />
+            <code>(New_Start &lt; Existing_End) AND (New_End &gt; Existing_Start)</code>
+          </li>
+          <li>Bila terdeteksi tabrakan waktu pada venue dan rentang tanggal yang diminta, sistem menolak transaksi secara atomik dan menampilkan rincian nama acara serta PIC yang sedang memblokir venue tersebut.</li>
+        </ul>
+      </section>
+
+      <!-- 4. Seating Layout Engine -->
+      <section class="section-card">
+        <h2>4. Modul Pemetaan Kursi (Seating Management)</h2>
+        <p>
+          Khusus untuk panggung pertunjukan seperti <strong>Ramayana Ballet Prambanan (Indoor &amp; Outdoor Stage)</strong>, sistem menyediakan modul tata letak kursi terstruktur (<code>Seat</code> &amp; <code>BookingSeat</code>):
+        </p>
+        <ul>
+          <li><strong>Pembagian Kategori Kursi:</strong> VIP, Khusus (Special), Kelas 1, dan Kelas 2.</li>
+          <li><strong>Blok &amp; Penomoran:</strong> Setiap kursi memiliki identitas baris (Row A-Z) dan nomor kolom unik.</li>
+          <li><strong>Status Kursi:</strong> <code>Available</code>, <code>Held</code>, <code>Booked</code>, atau <code>Maintenance / Reserved</code>.</li>
+          <li><strong>Pencegahan Duplikasi:</strong> Database menggunakan <em>composite unique key</em> pada kombinasi <code>[booking_id, seat_id]</code> untuk mencegah alokasi ganda di panggung yang sama.</li>
+        </ul>
+      </section>
+
+      <!-- 5. Role-Based Access Control -->
+      <section class="section-card">
+        <h2>5. Hak Akses Berbasis Peran &amp; Destinasi</h2>
+        <p>Keamanan dan segmentasi data menerapkan prinsip <em>least-privilege</em>:</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Role</th>
+              <th>Cakupan Destinasi</th>
+              <th>Wewenang Utama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Sales Staff</strong></td>
+              <td>Terkunci pada 1 destinasi (misal: Prambanan saja)</td>
+              <td>Membuat permohonan booking baru, menginput data klien/PIC, memilih kursi, dan memantau status persetujuan.</td>
+            </tr>
+            <tr>
+              <td><strong>Unit Admin</strong></td>
+              <td>Seluruh Destinasi (Borobudur, Prambanan, Boko)</td>
+              <td>Menyetujui/menolak booking, menjadwalkan PIC operasional, mengelola master data venue dan tarif sewa.</td>
+            </tr>
+            <tr>
+              <td><strong>Superadmin</strong></td>
+              <td>Global Enterprise</td>
+              <td>Manajemen akun user, konfigurasi sistem, audit log, dan ekspor laporan rekapitulasi tingkat direksi.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 6. Spesifikasi Teknologi -->
+      <section class="section-card">
+        <h2>6. Arsitektur &amp; Tumpukan Teknologi</h2>
+        <ul>
+          <li><strong>Backend Framework:</strong> Laravel 13 (PHP 8.3+) dengan arsitektur MVC bersih.</li>
+          <li><strong>Frontend View Layer:</strong> Laravel Blade Components dipadukan dengan Tailwind CSS 4 via Vite bundler.</li>
+          <li><strong>Datepicker &amp; Scheduler:</strong> Flatpickr dengan lokalisasi tanggal Indonesia dan penandaan rentang hari otomatis.</li>
+          <li><strong>Database Engine:</strong> MySQL 8.0 dengan foreign keys terindeks dan transaksi ACID.</li>
+          <li><strong>Notifikasi:</strong> Model <code>NotificationRead</code> untuk melacak status baca per-pengguna saat ada revisi jadwal booking.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+[
+  {
+    "id": "twc-pos-system",
+    "title": "Prambanan & Ratu Boko Enterprise Point of Sale (POS)",
+    "subtitle": "Mission-Critical Cashier & Multi-Warehouse System across UNESCO Heritage Parks",
+    "category": "system",
+    "role": "Full-Stack & Mobile Engineer",
+    "period": "2026",
+    "description": "Enterprise point-of-sale ecosystem deployed across cashier ticketing counters in Candi Prambanan and Candi Ratu Boko, featuring offline-first resilience, multi-warehouse inventory mutations, and direct Bluetooth thermal ESC/POS printing.",
+    "overview": "Engineered a high-concurrency point-of-sale and retail management system operating live at ticketing and merchant locations across Prambanan and Ratu Boko tourist complexes under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). Built as a reactive Single Page Application (SPA) combining Laravel 13, Inertia.js 3, and React 19, alongside a native Android APK build via Capacitor that bridges directly to Bluetooth Classic (SPP) thermal printers (BP-LITE80D) for instantaneous receipt printing without browser print dialogs. Manages multi-warehouse inventory, cashier shift reconciliation, and automated WhatsApp transaction dispatch.",
+    "keyFeatures": [
+      "Native Android Bluetooth Classic (SPP) ESC/POS printing bridge eliminating print dialog delays (<0.5s auto-cut)",
+      "Multi-Warehouse Inventory Architecture tracking real-time stock mutations, transfers, and FEFO batch allocations",
+      "Cashier Shift Lifecycle engine with cash float verification, drawer reconciliation, and comprehensive audit logs",
+      "Multi-channel payment gateway integration with dynamic QRIS (Midtrans & Xendit), bank transfers, and open-bills",
+      "Automated WhatsApp digital receipt and daily reporting microservice powered by Node.js and whatsapp-web.js",
+      "Robust enterprise security with Spatie RBAC, password confirmation step-ups, and anti-bot protection"
+    ],
+    "tags": ["Laravel", "Inertia.js", "React", "Capacitor", "Android", "Bluetooth ESC/POS", "Tailwind CSS", "MySQL", "Midtrans"],
+    "image": "assets/images/pos-checkout.png",
+    "fallbackImage": "assets/images/pos-dashboard.png",
+    "links": {
+      "manual": "docs/pos-system-documentation.html"
+    },
+    "featured": true,
+    "order": 1
+  },
+  {
+    "id": "twc-venue-booking",
+    "title": "TWC Multi-Destination Venue Booking & Scheduling Platform",
+    "subtitle": "Internal Enterprise Scheduling & Seating Layout System across Borobudur, Prambanan & Ratu Boko",
+    "category": "web",
+    "role": "Full-Stack Developer",
+    "period": "2026",
+    "description": "Internal enterprise scheduling platform utilized by PT Taman Wisata Candi to coordinate multi-day venue bookings, load-in setup windows, and tiered seating layouts without double-booking conflicts.",
+    "overview": "Designed and developed an internal web enterprise platform for PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system coordinates high-capacity venue rentals across 3 premier heritage destinations (such as Lapangan Garuda, Trimurti Stage, and Ramayana Ballet stages). It features an atomic scheduling validation engine that accounts for multi-phase windows (load-in setup, main event, and tear-down unload) to eliminate scheduling collisions, coupled with an interactive seat allocation module and destination-scoped user permissions.",
+    "keyFeatures": [
+      "Multi-phase conflict detection engine validating load-in, event, and tear-down windows before confirming bookings",
+      "Dynamic Seating Chart Management (`kursi`) with row-and-column tier mapping for Ramayana Ballet Prambanan stages",
+      "Destination-scoped Role-Based Access Control (Sales scoped to single sites; Admins manage cross-destination bookings)",
+      "Comprehensive client history CRM, PIC assignment workflow, and per-user notification read-state tracking",
+      "Modern, fast enterprise UI built with Laravel 13, Blade Components, Tailwind CSS 4, and Vite"
+    ],
+    "tags": ["Laravel", "PHP", "Tailwind CSS", "MySQL", "Blade", "Vite", "Enterprise Scheduling", "TWC InJourney"],
+    "image": "assets/images/venue-booking-bg.jpg",
+    "fallbackImage": "assets/images/venue-booking-logo.png",
+    "links": {
+      "manual": "docs/venue-booking-system-documentation.html"
+    },
+    "featured": true,
+    "order": 2
+  },
+  {
+    "id": "museum-prambanan",
+    "title": "Museum Candi Prambanan — Official Web Portal & Digital Catalog",
+    "subtitle": "Public Heritage Museum Platform & Historical Artifact Catalog",
+    "category": "web",
+    "role": "Full-Stack Developer",
+    "period": "2026",
+    "description": "Official public web portal and digital museum catalog for Prambanan Temple Museum, featuring interactive archaeological artifact galleries, visitor counters, and a curator CMS dashboard.",
+    "overview": "Architected and built the official web portal for Museum Candi Prambanan (`museumprambanan.twc.id`) under PT Taman Wisata Candi. The platform provides global tourists, archaeologists, and researchers with an immersive digital window into historical stone inscriptions (such as Prasasti Siwagrha and Prasasti Klurak), temple relics, and cultural stories. Includes a real-time visitor counter, curated educational exhibitions, and an administrative content management system for museum curators.",
+    "keyFeatures": [
+      "Public digital artifact & historical site (`situs`) catalog with high-resolution media galleries and historical annotations",
+      "Live visitor tracking counter and engagement analytics module",
+      "Curator CMS dashboard for managing educational collections, multimedia assets, and exhibition updates",
+      "Mobile-first, accessible interface with optimized asset loading built on Laravel, Tailwind CSS, and Vite",
+      "Deployed and running live in production at the official domain `museumprambanan.twc.id`"
+    ],
+    "tags": ["Laravel", "Tailwind CSS", "PHP", "MySQL", "Vite", "Public Portal", "Cultural Heritage", "REST API"],
+    "image": "assets/images/museum-hero.jpg",
+    "fallbackImage": "assets/images/museum-icon.png",
+    "links": {
+      "demo": "https://museumprambanan.twc.id"
+    },
+    "featured": true,
+    "order": 3
+  },
+  {
+    "id": "aspire",
+    "title": "ASPIRE — Career & Course Recommendation Platform",
+    "subtitle": "AI-Powered Academic & Career Guidance System",
+    "category": "ai",
+    "role": "Project Manager & Lead Full-Stack Developer",
+    "period": "2025 - 2026",
+    "description": "An AI-powered platform that parses student academic transcripts (PDF) and leverages LLM analysis to recommend personalized career paths and targeted courses required to qualify for them.",
+    "overview": "ASPIRE was developed as a capstone team project addressing the disconnect between university curricula and real-world industry demands. As Project Manager and Full-Stack Lead alongside one developer, I architected the end-to-end pipeline: from PDF document ingestion and structured data extraction to prompting large language models for intelligent career gap analysis and course matching.",
+    "keyFeatures": [
+      "Automated PDF transcript parser converting messy academic records into structured student profiles",
+      "LLM integration providing contextual career trajectory matching and skill deficiency diagnostics",
+      "Dynamic course planner recommending specific university electives mapped to target job roles",
+      "Responsive, clean dashboard built with Next.js App Router and Tailwind CSS",
+      "Documented user manual and deployment pipeline on Vercel"
+    ],
+    "tags": ["Next.js", "TypeScript", "MongoDB", "LLM Integration", "Tailwind CSS", "PDF Parsing"],
+    "image": "assets/images/aspire.png",
+    "fallbackImage": "porto2.png",
+    "links": {
+      "demo": "https://aspire-mu.vercel.app/",
+      "manual": "porto 2.pdf"
+    },
+    "featured": false,
+    "order": 4
+  },
+  {
+    "id": "favehotel-app",
+    "title": "FaveHotel Laundry & Inventory Mobile App",
+    "subtitle": "QR-Code Driven Operational Logbook & Inventory Tracking",
+    "category": "mobile",
+    "role": "Solo Developer & Software Engineering Intern",
+    "period": "Jul 2025 - Sep 2025",
+    "description": "Custom mobile application built to replace legacy manual paper logbooks in hotel operations, featuring real-time QR inventory tracking, cloud spreadsheet sync, and automated kitchen closing tools.",
+    "overview": "During my industrial internship at FaveHotel Bogor, hotel operations relied on paper laundry logs and manual stock-taking, causing discrepancies and delays. I designed, engineered, and deployed a production-ready mobile application from scratch. The solution empowered operational staff to scan linen batches via QR codes, log weights and room numbers, and sync directly to Google Sheets in real time.",
+    "keyFeatures": [
+      "High-speed QR code camera scanner for bulk linen batch and amenity tracking",
+      "Live bi-directional synchronization with cloud spreadsheets for immediate management reporting",
+      "Kitchen closing-time validation utility and checklist to enforce hygiene and equipment shutdown protocols",
+      "End-to-end user testing and on-site staff training sessions conducted solo",
+      "Complete user documentation and operation manual authored for hotel staff"
+    ],
+    "tags": ["Flutter", "Dart", "QR Scanner", "Spreadsheet API", "Mobile UX", "Operations"],
+    "image": "assets/images/favehotel.jpg",
+    "fallbackImage": "porto.jpeg",
+    "links": {
+      "drive": "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing",
+      "manual": "porto 1.pdf"
+    },
+    "featured": false,
+    "order": 5
+  },
+  {
+    "id": "library-system",
+    "title": "Console-Based Library Management System",
+    "subtitle": "Object-Oriented System with Role-Based Access Control",
+    "category": "system",
+    "role": "Coursework Project / Core Developer",
+    "period": "2024",
+    "description": "Comprehensive console application implementing strict Object-Oriented Programming (OOP) paradigms and custom data structures for multi-role library cataloging, borrowing, and inventory management.",
+    "overview": "Built as an intensive academic project to demonstrate master-level comprehension of core OOP principles (polymorphism, encapsulation, inheritance, abstraction) and memory-efficient data structures. Features dual-role permissions (Administrator and Guest), transaction ledger records, author-indexed search trees, and comprehensive input validation.",
+    "keyFeatures": [
+      "Role-Based Access Control (RBAC) separating administrative stock control from guest search and borrowing",
+      "Dynamic catalog searching indexed by author, ISBN, category, and availability",
+      "Transaction tracking module with due-date calculation and return validation",
+      "Robust input sanitization and exception handling preventing state corruption",
+      "Comprehensive architectural user manual detailing system class diagrams"
+    ],
+    "tags": ["Java", "OOP", "Data Structures", "RBAC", "Console UI", "Algorithms"],
+    "image": "assets/images/library.png",
+    "fallbackImage": "porto 3.png",
+    "links": {
+      "manual": "porto 3.pdf"
+    },
+    "featured": false,
+    "order": 6
+  }
+]
