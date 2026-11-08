@@ -181,6 +181,32 @@
         order: 3
       },
       {
+        id: "injourney-ticketing-ai",
+        title: "InJourney Destinations — AI Ticketing Assistant & Knowledge Base",
+        subtitle: "Customer Support AI Agent & Curated Heritage Ticketing Knowledge Base",
+        category: "ai",
+        role: "AI & Knowledge Engineer · IT Development Intern",
+        period: "2026",
+        description: "AI customer support agent and domain knowledge base deployed on the official InJourney Destinations ticketing portal, resolving tourist inquiries on tariffs, bundling promos, visiting rules, and climb quotas.",
+        overview: "Engineered and structured the comprehensive domain Knowledge Base (KB) powering the customer support AI chatbot on ticket.injourneydestination.id (integrated via the Mekari Qontak omnichannel ecosystem). Formatted multi-destination ticketing rules, promotional bundles (such as Prambanan + Borobudur packages), temple monument climb quota guidelines (naik struktur Candi Borobudur), and visitor dress codes into high-precision grounding datasets. Designed system prompts, intent classification pathways, and conversational guardrails to answer multilingual tourist inquiries and escalate complex ticketing transactions (rescheduling, refunds, payment issues) to human ticketing officers with full customer context.",
+        keyFeatures: [
+          "Curated Domain Knowledge Base: Structured unstructured ticketing policies, pricing tiers, and promotional bundling rules into verified grounding datasets",
+          "AI Agent Prompt Engineering & Intent Resolution: Designed conversational paths, tone guidelines, and intent routing in Mekari Qontak for tourist queries in Indonesian and English",
+          "Strict Hallucination Control & Guardrails: Bounded agent responses to verified Knowledge Base facts to prevent false ticketing or policy claims",
+          "Human Handover Escalation Workflow: Automatically routes unresolved disputes, refunds, and payment inquiries to human ticketing staff with customer contact metadata",
+          "Production Heritage Scale: Deployed on the primary ticketing gateway for UNESCO world heritage sites under PT Taman Wisata Candi / InJourney"
+        ],
+        tags: ["AI Agent", "Knowledge Base", "Mekari Qontak", "Customer Support", "Prompt Engineering", "InJourney", "TWC"],
+        image: "assets/images/ticket-chat-agent.jpg",
+        fallbackImage: "assets/images/ticket-chat-agent.jpg",
+        links: {
+          demo: "https://ticket.injourneydestination.id",
+          docs: "docs/injourney-ai-agent-documentation.html"
+        },
+        featured: true,
+        order: 4
+      },
+      {
         id: "aspire",
         title: "ASPIRE — Career & Course Recommendation Platform",
         subtitle: "AI-Powered Academic & Career Guidance System",
@@ -203,7 +229,7 @@
           pdf: "porto 2.pdf"
         },
         featured: false,
-        order: 4
+        order: 5
       },
       {
         id: "favehotel-app",
@@ -228,7 +254,7 @@
           drive: "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing"
         },
         featured: false,
-        order: 5
+        order: 6
       },
       {
         id: "library-system",
@@ -252,7 +278,7 @@
           pdf: "porto 3.pdf"
         },
         featured: false,
-        order: 6
+        order: 7
       }
     ];
   }

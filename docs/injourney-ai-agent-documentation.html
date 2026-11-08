@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>InJourney AI Ticketing Assistant &mdash; Dokumentasi Teknis &amp; Knowledge Base</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #14213D;
+        --cream: #F4EDE0;
+        --coral: #FF6B5B;
+        --primary: #14213D;
+        --primary-light: rgba(20, 33, 61, 0.08);
+        --accent: #FF6B5B;
+        --accent-light: rgba(255, 107, 91, 0.12);
+        --bg-page: #F4EDE0;
+        --bg-surface: #FFFFFF;
+        --text-main: #14213D;
+        --text-muted: #53637F;
+        --border: rgba(20, 33, 61, 0.14);
+        --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --font-display: "Plus Jakarta Sans", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-sans);
+        color: var(--text-main);
+        background-color: var(--bg-page);
+        background-image: 
+          radial-gradient(ellipse 1150px 750px at 100% -5%, rgba(20, 33, 61, 0.36) 0%, transparent 70%),
+          radial-gradient(ellipse 800px 500px at -5% 20%, rgba(255, 107, 91, 0.18) 0%, transparent 65%),
+          radial-gradient(circle 950px at 105% 70%, rgba(20, 33, 61, 0.30) 0%, transparent 65%),
+          radial-gradient(circle 800px at -5% 85%, rgba(20, 33, 61, 0.22) 0%, transparent 60%),
+          linear-gradient(135deg, #E2DDD2 0%, #C8D7EC 24%, #F4EDE0 55%, #FDE9E6 82%, #CBD9EB 100%);
+        background-attachment: fixed;
+        background-size: cover;
+        line-height: 1.65;
+        padding-bottom: 60px;
+      }
+      .doc-header {
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--border);
+        padding: 28px 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+      }
+      .container {
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .badge-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .badge {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      .badge-neutral {
+        background: #EDE5D5;
+        color: var(--text-main);
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.25;
+        color: var(--primary);
+      }
+      .doc-meta {
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+      .doc-nav-btn {
+        margin-top: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        border: 1px solid var(--primary);
+        background: transparent;
+        padding: 7px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .doc-nav-btn:hover {
+        background: var(--primary);
+        color: #ffffff;
+      }
+      .content-body {
+        padding: 36px 0;
+      }
+      .section-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(20, 33, 61, 0.04);
+      }
+      h2 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+        color: var(--primary);
+      }
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 20px 0 8px;
+        color: var(--primary);
+      }
+      p { margin-bottom: 14px; font-size: 15px; }
+      ul, ol { padding-left: 24px; margin-bottom: 16px; font-size: 14.5px; }
+      li { margin-bottom: 6px; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 13.5px;
+      }
+      th, td {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      th { background: #F8F5EE; font-weight: 600; color: var(--primary); }
+      code {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        background: #EDE5D5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--primary);
+      }
+      pre {
+        background: #14213D;
+        color: #F4EDE0;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        margin: 14px 0;
+      }
+      .callout {
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 107, 91, 0.08);
+        padding: 14px 18px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14px;
+        margin: 16px 0;
+      }
+      .screenshot-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+      }
+      .screenshot-container img {
+        width: 100%;
+        display: block;
+      }
+      .screenshot-caption {
+        padding: 8px 14px;
+        background: #F8F5EE;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      @media print {
+        .doc-header { position: static; }
+        .doc-nav-btn { display: none; }
+        .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="doc-header">
+      <div class="container">
+        <div class="badge-row">
+          <span class="badge">Customer Support AI Agent</span>
+          <span class="badge badge-neutral">InJourney Destinations Ticketing</span>
+          <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
+        </div>
+        <h1>InJourney Destinations Ticketing &mdash; AI Support Agent &amp; Knowledge Base</h1>
+        <div class="doc-meta">
+          <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (AI &amp; Knowledge Engineer / IT Development Intern) &middot;
+          <strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
+          <strong>Platform:</strong> ticket.injourneydestination.id &middot;
+          <strong>Tahun:</strong> 2026
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
+          <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container content-body">
+      <!-- 1. Konteks Lapangan & Masalah Nyata -->
+      <section class="section-card">
+        <h2>1. Konteks Operasional &amp; Kebutuhan Layanan</h2>
+        <p>
+          Portal tiket resmi <strong>ticket.injourneydestination.id</strong> melayani pembelian tiket online untuk destinasi warisan budaya nasional di bawah naungan PT Taman Wisata Candi / InJourney (seperti Candi Prambanan dan Candi Borobudur). 
+        </p>
+        <div class="screenshot-container">
+          <img src="../assets/images/ticket-chat-agent.jpg" alt="Widget Chatbot AI pada ticket.injourneydestination.id" />
+          <div class="screenshot-caption">Gambar 1: Tampilan widget obrolan pelanggan di ticket.injourneydestination.id yang terhubung langsung ke Knowledge Base buatan saya melalui integrasi Mekari Qontak.</div>
+        </div>
+        <p>
+          Sebelum agen AI diintegrasikan, staf Customer Service (CS) menerima volume pesan masuk yang sangat tinggi setiap hari dengan pertanyaan yang mayoritas berulang, seperti:
+        </p>
+        <ul>
+          <li><strong>Promo Bundling:</strong> Syarat dan ketentuan paket promo lintas destinasi (misalnya: "Main ke Prambanan Bonus Tiket ke Borobudur").</li>
+          <li><strong>Akses Monumen Candi:</strong> Perbedaan tiket pelataran candi dengan tiket naik ke struktur monumen Candi Borobudur (kuota harian, jadwal sesi, penggunaan sandal khusus Upanat, dan pemandu bersertifikat).</li>
+          <li><strong>Aturan &amp; Jam Buka:</strong> Ketentuan pakaian sopan, larangan penerbangan drone sembarangan, batas jam loket buka, dan panduan rombongan sekolah.</li>
+        </ul>
+      </section>
+
+      <!-- 2. Arsitektur Knowledge Base (KB) -->
+      <section class="section-card">
+        <h2>2. Rekayasa Knowledge Base (Domain Structuring)</h2>
+        <p>
+          Peran utama saya dalam proyek ini adalah <strong>merancang, mengkurasi, dan menyusun Knowledge Base (KB)</strong> yang menjadi sumber kebenaran (<em>grounding truth</em>) bagi agen AI:
+        </p>
+        <ul>
+          <li><strong>Strukturisasi Data Wisata:</strong> Mengubah dokumen regulasi operasional, tabel tarif, dan SOP kunjungan yang sebelumnya terpencar menjadi dataset terstruktur dengan format tanya-jawab (Q&amp;A) modular.</li>
+          <li><strong>Segmentasi Topik:</strong> Mengelompokkan pengetahuan ke dalam kategori spesifik: Kebijakan Tiket &amp; Tarif, Prosedur Kunjungan &amp; Larangan, Panduan Akses Struktur Candi, serta FAQ Pembayaran &amp; Kendala Transaksi.</li>
+          <li><strong>Dukungan Multi-Bahasa:</strong> Menyusun basis pengetahuan dalam Bahasa Indonesia dan Bahasa Inggris untuk melayani wisatawan domestik maupun mancanegara secara tepat konteks.</li>
+        </ul>
+      </section>
+
+      <!-- 3. Integrasi Agen AI & Mekari Qontak -->
+      <section class="section-card">
+        <h2>3. Integrasi Agen AI &amp; Mekari Qontak</h2>
+        <p>
+          Widget obrolan pada halaman web dibangun di atas ekosistem <strong>Mekari Qontak Omnichannel</strong> yang terhubung ke mesin AI Agent:
+        </p>
+        <pre><code>Pengunjung membuka widget di ticket.injourneydestination.id
+    ↓
+Mengisi Identitas Dasar (Nama, Email, Nomor WhatsApp / Telepon)
+    ↓
+Pengunjung mengirim pesan pertanyaan (misal: "Apakah tiket Prambanan bisa dipakai besok?")
+    ↓
+AI Agent mencocokkan intent dengan Knowledge Base yang saya rancang
+    ├─ Jawaban Ditemukan di KB ──► AI Agent membalas secara instan (< 2 detik)
+    └─ Masalah Kompleks / Refund ──► Handover otomatis ke Staf Human CS dengan metadata kontak</code></pre>
+      </section>
+
+      <!-- 4. Pencegahan Halusinasi & Guardrails -->
+      <section class="section-card">
+        <h2>4. Pengendalian Halusinasi (Strict Guardrails)</h2>
+        <p>
+          Pada layanan tiket resmi BUMN pariwisata, ketepatan informasi adalah hal mutlak. Kesalahan harga tiket atau misinformasi jadwal kunjungan dapat merugikan pengunjung dan memicu keluhan resmi.
+        </p>
+        <div class="callout">
+          <strong>Prinsip Guardrails:</strong> Agen AI diinstruksikan untuk <em>hanya</em> menjawab berdasarkan informasi yang ada di dalam Knowledge Base yang telah diverifikasi. Jika pertanyaan berada di luar cakupan KB (misalnya: permintaan refund uang, klaim ganti rugi, atau perubahan jadwal mendesak), sistem secara eksplisit menolak berspekulasi dan langsung mengalihkan sesi percakapan ke petugas loket/CS manusia.
+        </div>
+      </section>
+
+      <!-- 5. Spesifikasi Teknis -->
+      <section class="section-card">
+        <h2>5. Ringkasan Teknis Proyek</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Komponen</th>
+              <th>Teknologi / Platform</th>
+              <th>Peran &amp; Kontribusi Saya</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Basis Pengetahuan</strong></td>
+              <td>Knowledge Base (KB) TWC</td>
+              <td>Penyusunan dataset grounding, kurasi aturan tiket, promo bundling, dan FAQ operasional.</td>
+            </tr>
+            <tr>
+              <td><strong>Mesin Agen AI</strong></td>
+              <td>Mekari Qontak AI Chatbot</td>
+              <td>Prompt engineering, pengaturan intent routing, tone of voice, dan batasan guardrails.</td>
+            </tr>
+            <tr>
+              <td><strong>Kanal Antarmuka</strong></td>
+              <td>Web Chat Widget Embed</td>
+              <td>Pengujian alur pengguna pada portal tiket resmi <code>ticket.injourneydestination.id</code>.</td>
+            </tr>
+            <tr>
+              <td><strong>Eskalasi</strong></td>
+              <td>Omnichannel Human Handover</td>
+              <td>Perutean tiket bantuan ke agen manusia saat pengunjung butuh penyelesaian transaksional khusus.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

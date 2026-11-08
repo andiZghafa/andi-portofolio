@@ -19,11 +19,11 @@
 
   --bg-page: #F4EDE0;              /* Base Linen Cream canvas */
   --bg-page-gradient: 
-    radial-gradient(ellipse 950px 600px at 100% 0%, rgba(20, 33, 61, 0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 800px 500px at 0% 25%, rgba(255, 107, 91, 0.16) 0%, transparent 65%),
-    radial-gradient(circle 850px at 100% 70%, rgba(255, 107, 91, 0.14) 0%, transparent 60%),
-    radial-gradient(circle 900px at 0% 90%, rgba(20, 33, 61, 0.14) 0%, transparent 65%),
-    linear-gradient(135deg, #EFE8DC 0%, #E3E9F3 25%, #F4EDE0 50%, #FDECE9 78%, #F4EDE0 100%);
+    radial-gradient(ellipse 1150px 750px at 100% -5%, rgba(20, 33, 61, 0.36) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 500px at -5% 20%, rgba(255, 107, 91, 0.18) 0%, transparent 65%),
+    radial-gradient(circle 950px at 105% 70%, rgba(20, 33, 61, 0.30) 0%, transparent 65%),
+    radial-gradient(circle 800px at -5% 85%, rgba(20, 33, 61, 0.22) 0%, transparent 60%),
+    linear-gradient(135deg, #E2DDD2 0%, #C8D7EC 24%, #F4EDE0 55%, #FDE9E6 82%, #CBD9EB 100%);
 
   --bg-surface: #FFFFFF;           /* Elevated crisp ivory card surface */
   --bg-surface-elevated: #EDE5D5;  /* Deeper cream for interactive chips & inputs */
