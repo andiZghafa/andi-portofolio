@@ -227,6 +227,14 @@
             </div>
           </div>
         </div>
+
+        <!-- Emil Kowalski Subtle Scroll Prompt -->
+        <div class="hero-scroll-hint">
+          <span>Scroll to explore engineering background &amp; work</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"/>
+          </svg>
+        </div>
       </div>
     </header>
 
@@ -240,49 +248,100 @@
           </div>
         </div>
 
-        <div
-          style="
-            max-width: 740px;
-            font-size: 16.5px;
-            color: var(--text-secondary);
-            line-height: 1.75;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-          "
-        >
-          <p>
-            I am a software engineer and Informatics graduate from
-            <strong style="color: var(--text-primary)"
-              >Telkom University</strong
-            >
-            (Cum Laude, GPA 3.66/4.00), where my academic research culminated in
-            an undergraduate defense paper on Computer Vision.
-          </p>
-          <p>
-            My core strength spans
-            <strong style="color: var(--text-primary)"
-              >full-stack web development, enterprise systems, mobile
-              applications, and system architecture</strong
-            >. I build production software for heritage tourism operations under
-            <strong>PT Taman Wisata Candi (TWC / InJourney)</strong>, including
-            the cashier POS system used across
-            <strong>Candi Prambanan and Keraton Ratu Boko</strong>, internal venue
-            reservations, customer support AI knowledge bases for
-            <strong>ticket.injourneydestination.id</strong>, and the
-            official public web portal <strong>museumprambanan.twc.id</strong>.
-          </p>
-          <p>
-            Beyond coding, I have mentored future engineers as a
-            <strong style="color: var(--text-primary)"
-              >Lecturer Assistant teaching data structures &amp; algorithm
-              design in C++</strong
-            >, and hold an industry-recognized
-            <strong style="color: var(--text-primary)"
-              >MTCNA (MikroTik Certified Network Associate)</strong
-            >
-            certification for network architecture.
-          </p>
+        <div class="about-grid">
+          <!-- Left: Narrative Column -->
+          <div class="about-narrative">
+            <p class="about-lead">
+              Full-stack software engineer and Informatics graduate from <strong style="color: var(--text-primary)">Telkom University</strong> (Cum Laude, GPA 3.66/4.00), pairing computer vision thesis research with hands-on enterprise software delivery.
+            </p>
+            <p>
+              My focus centers on the intersection of full-stack engineering, high-reliability business platforms, and real-world hardware integration. For <strong style="color: var(--text-primary)">PT Taman Wisata Candi (InJourney Destinations)</strong>, I engineered mission-critical operations software: the multi-venue cashier POS and automated inventory engine deployed at <strong style="color: var(--text-primary)">Candi Prambanan &amp; Keraton Ratu Boko</strong>, the internal venue reservation system, the conversational customer support AI knowledge base at <strong style="color: var(--text-primary)">ticket.injourneydestination.id</strong>, and the official public web portal <strong style="color: var(--text-primary)">museumprambanan.twc.id</strong>.
+            </p>
+            <p>
+              Beyond production software, I hold an industry-recognized <strong style="color: var(--text-primary)">MTCNA (MikroTik Certified Network Associate)</strong> certification for network routing and subnetting, and mentored over 30 undergraduate students as a <strong style="color: var(--text-primary)">Lecturer Assistant for Data Structures and Algorithm Design in C++</strong>.
+            </p>
+            
+            <!-- Badges Strip -->
+            <div class="about-badges-strip">
+              <span class="about-badge-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+                Telkom Univ &middot; Cum Laude 3.66
+              </span>
+              <span class="about-badge-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="8" x="2" y="14" rx="2"/>
+                  <path d="M6 18h.01M10 18h.01"/>
+                  <path d="M2 14V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/>
+                </svg>
+                MTCNA Network Associate
+              </span>
+              <span class="about-badge-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"/>
+                  <polyline points="8 6 2 12 8 18"/>
+                </svg>
+                Lecturer Assistant &middot; C++
+              </span>
+              <span class="about-badge-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/>
+                </svg>
+                TWC InJourney Production
+              </span>
+            </div>
+          </div>
+
+          <!-- Right: Capability Cards Column -->
+          <div class="about-cards-col">
+            <div class="about-feat-card">
+              <div class="about-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="18" height="18" x="3" y="3" rx="2"/>
+                  <path d="m9 8 3 3-3 3M15 16h-3"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-card-title">Production Systems &amp; Hardware Bridge</div>
+                <div class="about-card-text">
+                  Direct thermal ESC/POS printing, dual barcode/QR scanner integration, and automated inventory reconciliation built for real cashier workflows at Prambanan &amp; Keraton Ratu Boko.
+                </div>
+              </div>
+            </div>
+
+            <div class="about-feat-card">
+              <div class="about-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a8 8 0 0 0-8 8c0 3.5 2.5 6.5 6 7.5V20a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-2.5c3.5-1 6-4 6-7.5a8 8 0 0 0-8-8z"/>
+                  <path d="M9 10h.01M15 10h.01M9.5 14a3.5 3.5 0 0 0 5 0"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-card-title">Applied AI &amp; Computer Vision</div>
+                <div class="about-card-text">
+                  Vehicle movement tracking with YOLOv11 &amp; DeepSORT on Bandung intersection CCTV, alongside enterprise customer service AI agents powered by custom Knowledge Bases.
+                </div>
+              </div>
+            </div>
+
+            <div class="about-feat-card">
+              <div class="about-card-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="16" x="4" y="4" rx="2"/>
+                  <rect width="6" height="6" x="9" y="9" rx="1"/>
+                  <path d="M15 2v2M9 2v2M20 15h2M20 9h2M9 22v-2M15 22v-2M2 9h2M2 15h2"/>
+                </svg>
+              </div>
+              <div>
+                <div class="about-card-title">Systems Architecture &amp; Mentorship</div>
+                <div class="about-card-text">
+                  Certified MikroTik (MTCNA) network topology design and subnet routing, paired with teaching complex pointer manipulation, memory, and algorithms in C++.
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

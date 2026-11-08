@@ -211,6 +211,17 @@ a,
   cursor: pointer;
 }
 
+/* Emil Kowalski Tactile Micro-Interactions: Snappy, physical press feedback */
+button:active,
+.btn:active,
+.btn-card-action:active,
+.filter-btn:active,
+.btn-icon:active,
+.btn-cms-nav:active {
+  transform: scale(0.97) !important;
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1) !important;
+}
+
 /* Mobile inputs: 16px minimum prevents iOS Safari from auto-zooming the page */
 input,
 textarea,
@@ -373,26 +384,45 @@ textarea:focus-visible,
 }
 
 /* ==========================================================================
-   HERO SECTION
+   HERO SECTION (Full-Viewport Staging: 100svh - 56px Nav)
    ========================================================================== */
 .hero-section {
-  padding: 24px 0 20px;
+  min-height: calc(100svh - 56px);
+  min-height: calc(100vh - 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px 0 24px;
   border-bottom: 1px solid var(--border-subtle);
   position: relative;
+  box-sizing: border-box;
+}
+
+.hero-section > .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.35fr 0.65fr;
   align-items: center;
-  gap: 32px;
-  margin-bottom: 18px;
+  gap: 36px;
+  margin-bottom: 24px;
+  margin-top: auto;
 }
 
 @media (max-width: 900px) {
+  .hero-section {
+    min-height: auto;
+    padding: 36px 0 28px;
+  }
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 28px;
+    margin-top: 0;
   }
 }
 
@@ -722,6 +752,138 @@ textarea:focus-visible,
   color: var(--text-secondary);
   margin-top: 3px;
   line-height: 1.38;
+}
+
+/* Hero Scroll Indicator */
+.hero-scroll-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  opacity: 0.8;
+  margin-top: 14px;
+  user-select: none;
+}
+
+.hero-scroll-hint svg {
+  animation: heroBounce 2s infinite ease-in-out;
+}
+
+@keyframes heroBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* ==========================================================================
+   ABOUT / FOUNDATIONS SECTION
+   ========================================================================== */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.about-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.about-lead {
+  font-size: 16.5px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.about-badges-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.about-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 1px 2px rgba(20, 33, 61, 0.04);
+}
+
+.about-cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.about-feat-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  box-shadow: var(--card-shadow);
+  transition: transform 200ms cubic-bezier(0.23, 1, 0.32, 1), border-color 200ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 200ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about-feat-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    box-shadow: var(--card-shadow-active);
+  }
+}
+
+.about-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-tint);
+  color: var(--accent-text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.about-card-title {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.about-card-text {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
 }
 
 /* ==========================================================================
