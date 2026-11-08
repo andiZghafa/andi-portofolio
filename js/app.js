@@ -125,7 +125,7 @@
         image: "assets/images/pos-checkout.png",
         fallbackImage: "assets/images/pos-dashboard.png",
         links: {
-          manual: "docs/pos-system-documentation.html"
+          docs: "docs/pos-system-documentation.html"
         },
         featured: true,
         order: 1
@@ -150,7 +150,7 @@
         image: "assets/images/venue-booking-bg.jpg",
         fallbackImage: "assets/images/venue-booking-logo.png",
         links: {
-          manual: "docs/venue-booking-system-documentation.html"
+          docs: "docs/venue-booking-system-documentation.html"
         },
         featured: true,
         order: 2
@@ -200,7 +200,7 @@
         fallbackImage: "porto2.png",
         links: {
           demo: "https://aspire-mu.vercel.app/",
-          manual: "porto 2.pdf"
+          pdf: "porto 2.pdf"
         },
         featured: false,
         order: 4
@@ -224,8 +224,8 @@
         image: "assets/images/favehotel.jpg",
         fallbackImage: "porto.jpeg",
         links: {
-          drive: "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing",
-          manual: "porto 1.pdf"
+          pdf: "porto 1.pdf",
+          drive: "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing"
         },
         featured: false,
         order: 5
@@ -249,7 +249,7 @@
         image: "assets/images/library.png",
         fallbackImage: "porto 3.png",
         links: {
-          manual: "porto 3.pdf"
+          pdf: "porto 3.pdf"
         },
         featured: false,
         order: 6
@@ -322,7 +322,6 @@
   }
 
   function createProjectCardHTML(p) {
-    const isFeatured = Boolean(p.featured);
     const categoryLabels = {
       web: 'Full-Stack Web',
       mobile: 'Mobile App',
@@ -334,52 +333,61 @@
     const imgSrc = p.image || p.fallbackImage || 'assets/images/aspire.png';
     const fallbackSrc = p.fallbackImage || p.image || 'assets/images/aspire.png';
 
-    const tagsHTML = (p.tags || []).slice(0, 5).map(tag => `
+    const tagsHTML = (p.tags || []).slice(0, 4).map(tag => `
       <span class="tech-chip">${escapeHTML(tag)}</span>
     `).join('');
 
-    // Links
-    let linksHTML = '';
-    if (p.links) {
-      if (p.links.demo) {
-        linksHTML += `
-          <a href="${escapeHTML(p.links.demo)}" target="_blank" rel="noopener noreferrer" class="project-link" title="Open Live Demo">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Live Demo
-          </a>
-        `;
-      }
-      if (p.links.manual) {
-        linksHTML += `
-          <a href="${escapeHTML(p.links.manual)}" download class="project-link" title="Download User Manual">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            Manual (PDF)
-          </a>
-        `;
-      }
-      if (p.links.drive) {
-        linksHTML += `
-          <a href="${escapeHTML(p.links.drive)}" target="_blank" rel="noopener noreferrer" class="project-link" title="Open Google Drive">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
-            Drive
-          </a>
-        `;
-      }
+    // Standardized Primary Action (Cognition Control)
+    const links = p.links || {};
+    const demoUrl = links.demo;
+    const docsUrl = links.docs || (links.manual && links.manual.endsWith('.html') ? links.manual : null);
+    const pdfUrl = links.pdf || (links.manual && links.manual.endsWith('.pdf') ? links.manual : null);
+    const driveUrl = links.drive;
+
+    let primaryActionHTML = '';
+    if (demoUrl) {
+      primaryActionHTML = `
+        <a href="${escapeHTML(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-primary" title="Open Live Demo">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          <span>Live Demo</span>
+        </a>
+      `;
+    } else if (docsUrl) {
+      primaryActionHTML = `
+        <a href="${escapeHTML(docsUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-primary" title="Read System Documentation">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Documentation</span>
+        </a>
+      `;
+    } else if (pdfUrl) {
+      primaryActionHTML = `
+        <a href="${escapeHTML(pdfUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-primary" title="View PDF Manual">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          <span>PDF Manual</span>
+        </a>
+      `;
+    } else if (driveUrl) {
+      primaryActionHTML = `
+        <a href="${escapeHTML(driveUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-primary" title="Open Google Drive">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+          <span>Drive</span>
+        </a>
+      `;
     }
 
     return `
-      <article class="project-card ${isFeatured ? 'featured' : ''}" data-id="${p.id}" tabindex="0" role="button" aria-label="View details for ${escapeHTML(p.title)}">
+      <article class="project-card" data-id="${p.id}" tabindex="0" role="region" aria-label="${escapeHTML(p.title)}">
         <div class="project-thumb-wrap">
           <img 
             src="${escapeHTML(imgSrc)}" 
-            alt="${escapeHTML(p.title)} screenshot" 
+            alt="${escapeHTML(p.title)}" 
             class="project-thumb-img" 
             loading="lazy"
             onerror="this.onerror=null; this.src='${escapeHTML(fallbackSrc)}';"
           />
           <div class="thumb-overlay">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-            Quick View
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+            <span>Overview</span>
           </div>
         </div>
         <div class="project-content">
@@ -392,9 +400,10 @@
           <p class="project-desc">${escapeHTML(p.description)}</p>
           <div class="tags-row">${tagsHTML}</div>
           <div class="project-actions-row">
-            <div class="project-links-group">${linksHTML}</div>
-            <button class="btn-quick-view" data-open-modal="${p.id}">
-              Details &rarr;
+            ${primaryActionHTML}
+            <button class="btn-card-action btn-card-secondary btn-quick-view" data-open-modal="${p.id}">
+              <span>Details</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
           </div>
         </div>
@@ -424,39 +433,52 @@
     const tagsHTML = (p.tags || []).map(t => `<span class="tech-chip" style="font-size: 12px; padding: 4px 10px;">${escapeHTML(t)}</span>`).join('');
 
     let actionButtonsHTML = '';
-    if (p.links) {
-      if (p.links.demo) {
-        actionButtonsHTML += `
-          <a href="${escapeHTML(p.links.demo)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 18px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            Visit Live Demo
-          </a>
-        `;
-      }
-      if (p.links.manual) {
-        actionButtonsHTML += `
-          <a href="${escapeHTML(p.links.manual)}" download class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            Download User Manual (PDF)
-          </a>
-        `;
-      }
-      if (p.links.drive) {
-        actionButtonsHTML += `
-          <a href="${escapeHTML(p.links.drive)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
-            View on Google Drive
-          </a>
-        `;
-      }
-      if (p.links.github) {
-        actionButtonsHTML += `
-          <a href="${escapeHTML(p.links.github)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            Source Code
-          </a>
-        `;
-      }
+    const links = p.links || {};
+    const demoUrl = links.demo;
+    const docsUrl = links.docs || (links.manual && links.manual.endsWith('.html') ? links.manual : null);
+    const pdfUrl = links.pdf || (links.manual && links.manual.endsWith('.pdf') ? links.manual : null);
+    const driveUrl = links.drive;
+    const githubUrl = links.github;
+
+    if (demoUrl) {
+      actionButtonsHTML += `
+        <a href="${escapeHTML(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 18px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Visit Live Demo
+        </a>
+      `;
+    }
+    if (docsUrl) {
+      actionButtonsHTML += `
+        <a href="${escapeHTML(docsUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 18px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          System Documentation
+        </a>
+      `;
+    }
+    if (pdfUrl) {
+      actionButtonsHTML += `
+        <a href="${escapeHTML(pdfUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          View Manual (PDF)
+        </a>
+      `;
+    }
+    if (driveUrl) {
+      actionButtonsHTML += `
+        <a href="${escapeHTML(driveUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m8 17 4 4 4-4"/></svg>
+          View on Google Drive
+        </a>
+      `;
+    }
+    if (githubUrl) {
+      actionButtonsHTML += `
+        <a href="${escapeHTML(githubUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          Source Code
+        </a>
+      `;
     }
 
     modalContent.innerHTML = `

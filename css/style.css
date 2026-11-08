@@ -11,16 +11,19 @@
   /* ------------------------------------------------------------------------
      Light Theme: Oxford Navy (#14213D), Linen Cream (#F4EDE0), Sunset Coral (#FF6B5B)
      WCAG 2.1 AA/AAA Verified (Checked against contrast formulas)
+     Architectural Navy-Cream Grid Blend
      ------------------------------------------------------------------------ */
   --navy: #14213D;                 /* Primary Oxford Navy */
   --cream: #F4EDE0;                /* Warm Linen Cream */
   --coral: #FF6B5B;                /* Electric Sunset Coral */
 
-  --bg-page: #F4EDE0;              /* Base Cream canvas */
+  --bg-page: #F4EDE0;              /* Base Linen Cream canvas */
   --bg-page-gradient: 
-    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(255, 107, 91, 0.16), transparent 70%),
-    radial-gradient(circle 750px at 100% 20%, rgba(20, 33, 61, 0.07), transparent 60%),
-    radial-gradient(circle 600px at 0% 65%, rgba(255, 107, 91, 0.09), transparent 50%),
+    linear-gradient(to right, rgba(20, 33, 61, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 33, 61, 0.04) 1px, transparent 1px),
+    radial-gradient(ellipse 90% 45% at 50% -8%, rgba(20, 33, 61, 0.16), transparent 70%),
+    radial-gradient(circle 800px at 100% 18%, rgba(255, 107, 91, 0.11), transparent 60%),
+    radial-gradient(circle 650px at 0% 65%, rgba(20, 33, 61, 0.08), transparent 55%),
     #F4EDE0;
 
   --bg-surface: #FFFFFF;           /* Elevated crisp ivory card surface */
@@ -34,7 +37,7 @@
   --border-subtle: rgba(20, 33, 61, 0.12); /* Crisp navy-tinted boundary */
   --border-strong: rgba(20, 33, 61, 0.24); /* Interactive boundary */
   
-  --accent: #14213D;               /* Oxford Navy (swapped from Coral) */
+  --accent: #14213D;               /* Oxford Navy primary accent */
   --accent-hover: #0A1222;         /* Deepened Navy press state */
   --accent-tint: rgba(20, 33, 61, 0.08); /* Soft Navy badge background */
   --accent-text: #14213D;          /* High-contrast navy text */
@@ -53,8 +56,8 @@
     0 14px 30px -4px rgba(255, 107, 91, 0.18),
     0 0 0 1px #14213D;
 
-  --glass-bg: rgba(244, 237, 224, 0.92);
-  --glass-border: rgba(20, 33, 61, 0.12);
+  --glass-bg: rgba(244, 237, 224, 0.94);
+  --glass-border: rgba(20, 33, 61, 0.14);
 
   /* Typography */
   --font-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -82,6 +85,8 @@
 [data-theme="dark"] {
   --bg-page: #14213D;              /* Oxford Navy canvas */
   --bg-page-gradient: 
+    linear-gradient(to right, rgba(244, 237, 224, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(244, 237, 224, 0.035) 1px, transparent 1px),
     radial-gradient(ellipse 90% 55% at 50% -12%, rgba(255, 107, 91, 0.22), transparent 70%),
     radial-gradient(circle 750px at 100% 25%, rgba(244, 237, 224, 0.04), transparent 60%),
     radial-gradient(circle 600px at 0% 65%, rgba(255, 107, 91, 0.12), transparent 50%),
@@ -130,12 +135,14 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;       /* Prevent font inflation on orientation change */
   -webkit-tap-highlight-color: transparent; /* Eliminate the mobile gray tap flash */
+  overflow-x: clip;
 }
 
 body {
-  background: var(--bg-page-gradient);
+  background-image: var(--bg-page-gradient);
   background-color: var(--bg-page);
-  background-attachment: fixed;
+  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: scroll;
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 16px;
@@ -143,7 +150,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color var(--transition-normal), color var(--transition-normal);
-  overflow-x: hidden;
+  overflow-x: clip;
   min-height: 100svh;                   /* Mobile: Stable viewport height without jump */
 }
 
@@ -371,8 +378,24 @@ textarea:focus-visible,
    HERO SECTION
    ========================================================================== */
 .hero-section {
-  padding: 56px 0 44px;
+  padding: 56px 0 48px;
   border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  align-items: center;
+  gap: 48px;
+  margin-bottom: 44px;
+}
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
 }
 
 /* Grounded, dignified status pill without generic infinite pulse */
@@ -381,13 +404,13 @@ textarea:focus-visible,
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   color: var(--accent-text);
   background: var(--accent-tint);
   padding: 5px 12px;
   border-radius: var(--radius-sm);
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   border: 1px solid var(--border-subtle);
 }
 
@@ -400,7 +423,7 @@ textarea:focus-visible,
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.3rem, 5.2vw, 3.6rem);
+  font-size: clamp(2.3rem, 4.8vw, 3.4rem);
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.03em;
@@ -409,11 +432,11 @@ textarea:focus-visible,
 }
 
 .hero-bio {
-  font-size: clamp(16px, 1.9vw, 18.5px);
+  font-size: clamp(15.5px, 1.8vw, 17.5px);
   color: var(--text-secondary);
-  max-width: 720px;
+  max-width: 620px;
   line-height: 1.65;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
 }
 
 .hero-bio strong {
@@ -426,7 +449,111 @@ textarea:focus-visible,
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
+}
+
+/* Editorial Portrait Card */
+.hero-portrait-card {
+  position: relative;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+  box-shadow: 
+    0 16px 36px -8px rgba(20, 33, 61, 0.16),
+    0 0 0 1px rgba(20, 33, 61, 0.06);
+  max-width: 320px;
+  margin: 0 auto;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .hero-portrait-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+      0 24px 44px -10px rgba(20, 33, 61, 0.24),
+      0 0 0 1px var(--navy);
+  }
+  [data-theme="dark"] .hero-portrait-card:hover {
+    box-shadow: 
+      0 24px 44px -10px rgba(0, 0, 0, 0.6),
+      0 0 0 1px var(--coral);
+  }
+}
+
+.hero-portrait-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border-radius: calc(var(--radius-lg) - 6px);
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.hero-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.hero-portrait-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+  background: rgba(20, 33, 61, 0.90);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(244, 237, 224, 0.2);
+  border-radius: var(--radius-sm);
+  padding: 9px 12px;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hero-portrait-badge-name {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.hero-portrait-badge-role {
+  font-size: 11px;
+  color: rgba(244, 237, 224, 0.82);
+  margin-top: 2px;
+}
+
+.hero-portrait-badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--status-online);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+  flex-shrink: 0;
+}
+
+.hero-portrait-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.hero-portrait-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 8px;
+  border-radius: var(--radius-xs);
 }
 
 .btn {
@@ -702,11 +829,18 @@ textarea:focus-visible,
   pointer-events: none;
 }
 
-/* Projects Grid */
+/* Projects Grid: Standardized 2-Column Bento */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 }
 
 .project-card {
@@ -727,45 +861,42 @@ textarea:focus-visible,
 
 @media (hover: hover) and (pointer: fine) {
   .project-card:hover {
-    border-color: var(--accent);
+    border-color: var(--navy);
     box-shadow: var(--card-shadow-active);
     transform: translateY(-2px);
   }
+  [data-theme="dark"] .project-card:hover {
+    border-color: var(--coral);
+  }
 }
 
-.project-card.featured {
-  grid-column: span 2;
-  display: grid;
-  grid-template-columns: 1.15fr 1fr;
-}
-
-.project-card.featured::before {
+.project-card::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--navy), var(--coral));
+  background: transparent;
+  transition: background var(--transition-fast);
   z-index: 2;
 }
 
-[data-theme="dark"] .project-card.featured::before {
-  background: linear-gradient(90deg, var(--coral), var(--cream));
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover::before {
+    background: linear-gradient(90deg, var(--navy), var(--coral));
+  }
+  [data-theme="dark"] .project-card:hover::before {
+    background: linear-gradient(90deg, var(--coral), var(--cream));
+  }
 }
 
 .project-thumb-wrap {
   position: relative;
   overflow: hidden;
   background: var(--bg-surface-elevated);
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16 / 9;
   cursor: pointer;
-}
-
-.project-card.featured .project-thumb-wrap {
-  aspect-ratio: auto;
-  height: 100%;
-  min-height: 270px;
 }
 
 .project-thumb-img {
@@ -870,56 +1001,73 @@ textarea:focus-visible,
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   padding-top: 14px;
   border-top: 1px solid var(--border-subtle);
   margin-top: auto;
+  flex-wrap: wrap;
 }
 
-.project-links-group {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-.project-link {
+/* Standardized Project Card Actions (Cognition Control) */
+.btn-card-action {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 6px;
   font-size: 13px;
   font-weight: 600;
-  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  line-height: 1;
+  transition: transform var(--transition-press), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+  cursor: pointer;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .project-link:hover {
-    color: var(--accent);
-  }
-}
-
-.btn-quick-view {
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--accent);
-  padding: 5px 10px;
-  border-radius: var(--radius-xs);
-  background: var(--accent-tint);
-  border: 1px solid var(--border-subtle);
-  transition: all var(--transition-fast);
-}
-
-.btn-quick-view:active {
+.btn-card-action:active {
   transform: scale(0.96);
 }
 
+.btn-card-primary {
+  background: var(--navy);
+  color: var(--cream);
+  border: 1px solid var(--navy);
+}
+
+[data-theme="dark"] .btn-card-primary {
+  background: var(--coral);
+  color: #14213D;
+  border-color: var(--coral);
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .btn-quick-view:hover {
-    background: var(--accent);
-    color: #ffffff;
+  .btn-card-primary:hover {
+    background: #0A1222;
+    border-color: var(--coral);
+    color: var(--cream);
   }
-  [data-theme="dark"] .btn-quick-view:hover {
-    color: #0e1211;
+  [data-theme="dark"] .btn-card-primary:hover {
+    background: #FF8577;
+    border-color: #FF8577;
+    color: #14213D;
+  }
+}
+
+.btn-card-secondary {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-card-secondary:hover {
+    background: var(--bg-surface);
+    border-color: var(--navy);
+    color: var(--navy);
+  }
+  [data-theme="dark"] .btn-card-secondary:hover {
+    border-color: var(--coral);
+    color: var(--coral);
   }
 }
 

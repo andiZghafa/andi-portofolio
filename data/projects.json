@@ -20,7 +20,7 @@
     "image": "assets/images/pos-checkout.png",
     "fallbackImage": "assets/images/pos-dashboard.png",
     "links": {
-      "manual": "docs/pos-system-documentation.html"
+      "docs": "docs/pos-system-documentation.html"
     },
     "featured": true,
     "order": 1
@@ -45,7 +45,7 @@
     "image": "assets/images/venue-booking-bg.jpg",
     "fallbackImage": "assets/images/venue-booking-logo.png",
     "links": {
-      "manual": "docs/venue-booking-system-documentation.html"
+      "docs": "docs/venue-booking-system-documentation.html"
     },
     "featured": true,
     "order": 2
@@ -96,7 +96,7 @@
     "fallbackImage": "porto2.png",
     "links": {
       "demo": "https://aspire-mu.vercel.app/",
-      "manual": "porto 2.pdf"
+      "pdf": "porto 2.pdf"
     },
     "featured": false,
     "order": 4
@@ -121,8 +121,8 @@
     "image": "assets/images/favehotel.jpg",
     "fallbackImage": "porto.jpeg",
     "links": {
-      "drive": "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing",
-      "manual": "porto 1.pdf"
+      "pdf": "porto 1.pdf",
+      "drive": "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing"
     },
     "featured": false,
     "order": 5
@@ -147,7 +147,7 @@
     "image": "assets/images/library.png",
     "fallbackImage": "porto 3.png",
     "links": {
-      "manual": "porto 3.pdf"
+      "pdf": "porto 3.pdf"
     },
     "featured": false,
     "order": 6

@@ -641,7 +641,7 @@
           document.getElementById('editTags').value = (p.tags || []).join(', ');
           document.getElementById('editImage').value = p.image || '';
           document.getElementById('linkDemo').value = p.links && p.links.demo ? p.links.demo : '';
-          document.getElementById('linkManual').value = p.links && p.links.manual ? p.links.manual : '';
+          document.getElementById('linkManual').value = p.links ? (p.links.docs || p.links.pdf || p.links.manual || '') : '';
           document.getElementById('linkGithub').value = p.links && p.links.github ? p.links.github : '';
           document.getElementById('linkDrive').value = p.links && p.links.drive ? p.links.drive : '';
           document.getElementById('editFeatured').checked = Boolean(p.featured);
@@ -758,7 +758,15 @@
           const github = document.getElementById('linkGithub').value.trim();
           const drive = document.getElementById('linkDrive').value.trim();
           if (demo) links.demo = demo;
-          if (manual) links.manual = manual;
+          if (manual) {
+            if (manual.endsWith('.pdf')) {
+              links.pdf = manual;
+            } else if (manual.endsWith('.html') || manual.includes('docs/')) {
+              links.docs = manual;
+            } else {
+              links.manual = manual;
+            }
+          }
           if (github) links.github = github;
           if (drive) links.drive = drive;
 
