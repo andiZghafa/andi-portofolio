@@ -34,22 +34,113 @@
         color: var(--text-main);
         background-color: var(--bg-page);
         background-image: 
-          radial-gradient(ellipse 950px 600px at 100% 0%, rgba(20, 33, 61, 0.14) 0%, transparent 70%),
-          radial-gradient(ellipse 800px 500px at 0% 25%, rgba(255, 107, 91, 0.12) 0%, transparent 65%),
-          linear-gradient(135deg, #EFE8DC 0%, #E3E9F3 25%, #F4EDE0 50%, #FDECE9 78%, #F4EDE0 100%);
+          radial-gradient(ellipse 1150px 750px at 100% -5%, rgba(20, 33, 61, 0.36) 0%, transparent 70%),
+          radial-gradient(ellipse 800px 500px at -5% 20%, rgba(255, 107, 91, 0.18) 0%, transparent 65%),
+          radial-gradient(circle 950px at 105% 70%, rgba(20, 33, 61, 0.30) 0%, transparent 65%),
+          radial-gradient(circle 800px at -5% 85%, rgba(20, 33, 61, 0.22) 0%, transparent 60%),
+          linear-gradient(135deg, #E2DDD2 0%, #C8D7EC 24%, #F4EDE0 55%, #FDE9E6 82%, #CBD9EB 100%);
         background-attachment: fixed;
         background-size: cover;
         line-height: 1.65;
         padding-bottom: 60px;
       }
-      .doc-header {
-        background: rgba(255, 255, 255, 0.94);
-        border-bottom: 1px solid var(--border);
-        padding: 28px 0;
+      /* --- SLIM STICKY TOPBAR (Height: 52px, ~6% screen) --- */
+      .doc-topbar {
         position: sticky;
         top: 0;
-        z-index: 20;
-        backdrop-filter: blur(10px);
+        z-index: 100;
+        background: rgba(244, 237, 224, 0.88);
+        border-bottom: 1px solid var(--border);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        height: 52px;
+      }
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 100%;
+        gap: 16px;
+      }
+      .topbar-left {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+      }
+      .topbar-back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        padding: 5px 10px;
+        border-radius: 6px;
+        background: rgba(20, 33, 61, 0.05);
+        border: 1px solid rgba(20, 33, 61, 0.1);
+        transition: background 0.15s ease, color 0.15s ease;
+        white-space: nowrap;
+      }
+      .topbar-back-link:hover {
+        background: var(--primary);
+        color: #ffffff;
+      }
+      .topbar-sep {
+        color: var(--text-muted);
+        font-size: 13px;
+        opacity: 0.6;
+      }
+      .topbar-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-main);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+      .topbar-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 12.5px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.15s ease;
+      }
+      .topbar-btn-primary {
+        background: var(--primary);
+        color: #ffffff;
+        border: 1px solid var(--primary);
+      }
+      .topbar-btn-primary:hover {
+        background: #0a1222;
+        border-color: #0a1222;
+      }
+      .topbar-btn-secondary {
+        background: rgba(20, 33, 61, 0.05);
+        color: var(--primary);
+        border: 1px solid rgba(20, 33, 61, 0.14);
+      }
+      .topbar-btn-secondary:hover {
+        background: rgba(20, 33, 61, 0.1);
+      }
+
+      /* --- DOCUMENT HERO (Scrolls naturally) --- */
+      .doc-hero {
+        padding: 32px 0 20px 0;
+        border-bottom: 1px solid rgba(20, 33, 61, 0.08);
+        background: transparent;
       }
       .container {
         width: 100%;
@@ -76,40 +167,65 @@
         background: #EDE5D5;
         color: var(--text-main);
       }
-      h1 {
+      .doc-hero-title {
         font-family: var(--font-display);
-        font-size: 26px;
+        font-size: clamp(22px, 2.6vw, 30px);
         font-weight: 700;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         line-height: 1.25;
         color: var(--primary);
+        text-wrap: balance;
       }
-      .doc-meta {
+      .doc-meta-strip {
         font-size: 13.5px;
         color: var(--text-muted);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px 12px;
+        align-items: center;
+        margin-bottom: 18px;
       }
-      .doc-nav-btn {
-        margin-top: 14px;
+      .doc-meta-sep {
+        opacity: 0.5;
+      }
+      .doc-hero-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .hero-action-btn {
         display: inline-flex;
         align-items: center;
         gap: 6px;
         font-size: 13px;
         font-weight: 600;
-        color: var(--primary);
-        text-decoration: none;
-        border: 1px solid var(--primary);
-        background: transparent;
-        padding: 7px 16px;
+        padding: 8px 16px;
         border-radius: 6px;
+        text-decoration: none;
         cursor: pointer;
-        transition: background 0.15s ease, color 0.15s ease;
+        transition: all 0.15s ease;
       }
-      .doc-nav-btn:hover {
+      .hero-action-primary {
         background: var(--primary);
         color: #ffffff;
+        border: 1px solid var(--primary);
+      }
+      .hero-action-primary:hover {
+        background: #0a1222;
+        border-color: #0a1222;
+      }
+      .hero-action-secondary {
+        background: #ffffff;
+        color: var(--primary);
+        border: 1px solid rgba(20, 33, 61, 0.2);
+        box-shadow: 0 1px 2px rgba(20, 33, 61, 0.04);
+      }
+      .hero-action-secondary:hover {
+        border-color: var(--primary);
+        background: #fdfbf7;
       }
       .content-body {
-        padding: 36px 0;
+        padding: 28px 0 40px 0;
       }
       .section-card {
         background: var(--bg-surface);
@@ -193,29 +309,58 @@
         font-family: var(--font-mono);
       }
       @media print {
-        .doc-header { position: static; }
-        .doc-nav-btn { display: none; }
+        .doc-topbar { display: none; }
+        .doc-hero-actions { display: none; }
         .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
       }
     </style>
   </head>
   <body>
-    <header class="doc-header">
+    <!-- Slim Sticky Topbar (Height: 52px, ~6% screen) -->
+    <nav class="doc-topbar">
+      <div class="container topbar-inner">
+        <div class="topbar-left">
+          <a href="../index.html#projects" class="topbar-back-link">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Portofolio</span>
+          </a>
+          <span class="topbar-sep">/</span>
+          <span class="topbar-title">Prambanan &amp; Ratu Boko POS</span>
+        </div>
+        <div class="topbar-actions">
+          <button onclick="window.print()" class="topbar-btn topbar-btn-secondary" title="Cetak atau Simpan PDF">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Cetak PDF</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Document Hero (Scrolls naturally with content) -->
+    <header class="doc-hero">
       <div class="container">
         <div class="badge-row">
           <span class="badge">Sistem Kasir Internal POS</span>
           <span class="badge badge-neutral">Candi Prambanan &amp; Ratu Boko</span>
           <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
         </div>
-        <h1>Point of Sale (POS) &amp; Multi-Gudang: Catatan Teknis &amp; Implementasi</h1>
-        <div class="doc-meta">
-          <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (IT Development &amp; Data Management Intern) &middot;
-          <strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
-          <strong>Tahun:</strong> 2026
+        <h1 class="doc-hero-title">Point of Sale (POS) &amp; Multi-Gudang: Catatan Teknis &amp; Implementasi</h1>
+        <div class="doc-meta-strip">
+          <span class="doc-meta-item"><strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (IT Development &amp; Data Management Intern)</span>
+          <span class="doc-meta-sep">&middot;</span>
+          <span class="doc-meta-item"><strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko</span>
+          <span class="doc-meta-sep">&middot;</span>
+          <span class="doc-meta-item"><strong>Tahun:</strong> 2026</span>
         </div>
-        <div style="display: flex; gap: 10px;">
-          <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
-          <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
+        <div class="doc-hero-actions">
+          <a href="../index.html#projects" class="hero-action-btn hero-action-secondary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+            <span>Kembali ke Portofolio</span>
+          </a>
+          <button onclick="window.print()" class="hero-action-btn hero-action-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            <span>Cetak / Simpan PDF</span>
+          </button>
         </div>
       </div>
     </header>
