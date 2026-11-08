@@ -21,31 +21,31 @@
   --bg-page-gradient:
     radial-gradient(
       ellipse 1150px 750px at 100% -5%,
-      rgba(20, 33, 61, 0.36) 0%,
+      rgba(20, 33, 61, 0.22) 0%,
       transparent 70%
     ),
     radial-gradient(
-      ellipse 800px 500px at -5% 20%,
-      rgba(255, 107, 91, 0.18) 0%,
+      ellipse 800px 500px at -5% 15%,
+      rgba(255, 107, 91, 0.14) 0%,
       transparent 65%
     ),
     radial-gradient(
       circle 950px at 105% 70%,
-      rgba(20, 33, 61, 0.3) 0%,
+      rgba(20, 33, 61, 0.16) 0%,
       transparent 65%
     ),
     radial-gradient(
       circle 800px at -5% 85%,
-      rgba(20, 33, 61, 0.22) 0%,
+      rgba(20, 33, 61, 0.12) 0%,
       transparent 60%
     ),
     linear-gradient(
-      135deg,
-      #e2ddd2 0%,
-      #c8d7ec 24%,
-      #f4ede0 55%,
-      #fde9e6 82%,
-      #cbd9eb 100%
+      140deg,
+      #faf6ee 0%,
+      #eaf0f9 22%,
+      #f4ede0 52%,
+      #fdefea 82%,
+      #eef3fa 100%
     );
 
   --bg-surface: #ffffff; /* Elevated crisp ivory card surface */
@@ -1455,6 +1455,37 @@ section[id] {
 }
 
 @media (max-width: 768px) {
+  /* Calibrated mobile canvas: eliminates dark muddy haze on narrow viewports */
+  :root:not([data-theme="dark"]) {
+    --bg-page-gradient:
+      radial-gradient(
+        ellipse 340px 240px at 100% 0%,
+        rgba(20, 33, 61, 0.10) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 280px 220px at 0% 12%,
+        rgba(255, 107, 91, 0.12) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        circle 320px at 100% 60%,
+        rgba(20, 33, 61, 0.08) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        circle 260px at 0% 85%,
+        rgba(255, 107, 91, 0.07) 0%,
+        transparent 70%
+      ),
+      linear-gradient(
+        150deg,
+        #faf6ef 0%,
+        #f4ede0 48%,
+        #efe7d8 100%
+      );
+  }
+
   .nav-menu {
     display: none;
   }
