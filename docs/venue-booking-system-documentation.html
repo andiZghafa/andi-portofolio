@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Venue Booking System — Technical &amp; Operational Documentation</title>
+    <title>Venue Booking System — Dokumentasi Teknis &amp; Operasional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,16 +12,19 @@
     />
     <style>
       :root {
+        --navy: #14213D;
+        --cream: #F4EDE0;
+        --coral: #FF6B5B;
         --primary: #14213D;
-        --primary-light: rgba(255, 107, 91, 0.15);
-        --primary-dark: #0A1120;
+        --primary-light: rgba(20, 33, 61, 0.08);
         --accent: #FF6B5B;
+        --accent-light: rgba(255, 107, 91, 0.12);
         --bg-page: #F4EDE0;
-        --bg-surface: #ffffff;
+        --bg-surface: #FFFFFF;
         --text-main: #14213D;
         --text-muted: #53637F;
         --border: rgba(20, 33, 61, 0.14);
-        --font-sans: "Inter", sans-serif;
+        --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         --font-display: "Plus Jakarta Sans", sans-serif;
         --font-mono: "JetBrains Mono", monospace;
       }
@@ -29,18 +32,24 @@
       body {
         font-family: var(--font-sans);
         color: var(--text-main);
-        background: var(--bg-page);
+        background-color: var(--bg-page);
+        background-image: 
+          radial-gradient(ellipse 950px 600px at 100% 0%, rgba(20, 33, 61, 0.14) 0%, transparent 70%),
+          radial-gradient(ellipse 800px 500px at 0% 25%, rgba(255, 107, 91, 0.12) 0%, transparent 65%),
+          linear-gradient(135deg, #EFE8DC 0%, #E3E9F3 25%, #F4EDE0 50%, #FDECE9 78%, #F4EDE0 100%);
+        background-attachment: fixed;
+        background-size: cover;
         line-height: 1.65;
         padding-bottom: 60px;
       }
       .doc-header {
-        background: var(--bg-surface);
+        background: rgba(255, 255, 255, 0.94);
         border-bottom: 1px solid var(--border);
-        padding: 32px 0;
+        padding: 28px 0;
         position: sticky;
         top: 0;
         z-index: 20;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(10px);
       }
       .container {
         width: 100%;
@@ -56,27 +65,27 @@
       }
       .badge {
         font-family: var(--font-mono);
-        font-size: 11px;
+        font-size: 11.5px;
         font-weight: 600;
-        padding: 3px 9px;
+        padding: 4px 10px;
         border-radius: 4px;
-        text-transform: uppercase;
         background: var(--primary-light);
         color: var(--primary);
       }
       .badge-neutral {
-        background: #f1f5f9;
-        color: var(--text-muted);
+        background: #EDE5D5;
+        color: var(--text-main);
       }
       h1 {
         font-family: var(--font-display);
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 700;
         margin-bottom: 8px;
         line-height: 1.25;
+        color: var(--primary);
       }
       .doc-meta {
-        font-size: 14px;
+        font-size: 13.5px;
         color: var(--text-muted);
       }
       .doc-nav-btn {
@@ -89,24 +98,26 @@
         color: var(--primary);
         text-decoration: none;
         border: 1px solid var(--primary);
-        padding: 6px 14px;
+        background: transparent;
+        padding: 7px 16px;
         border-radius: 6px;
-        transition: all 0.15s ease;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
       }
       .doc-nav-btn:hover {
         background: var(--primary);
         color: #ffffff;
       }
       .content-body {
-        padding: 40px 0;
+        padding: 36px 0;
       }
       .section-card {
         background: var(--bg-surface);
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 32px;
-        margin-bottom: 28px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(20, 33, 61, 0.04);
       }
       h2 {
         font-family: var(--font-display);
@@ -115,12 +126,13 @@
         margin-bottom: 16px;
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border);
-        color: var(--primary-dark);
+        color: var(--primary);
       }
       h3 {
         font-size: 16px;
         font-weight: 600;
         margin: 20px 0 8px;
+        color: var(--primary);
       }
       p { margin-bottom: 14px; font-size: 15px; }
       ul, ol { padding-left: 24px; margin-bottom: 16px; font-size: 14.5px; }
@@ -136,18 +148,18 @@
         border: 1px solid var(--border);
         text-align: left;
       }
-      th { background: #f8fafc; font-weight: 600; }
+      th { background: #F8F5EE; font-weight: 600; color: var(--primary); }
       code {
         font-family: var(--font-mono);
         font-size: 12.5px;
-        background: #f1f5f9;
+        background: #EDE5D5;
         padding: 2px 6px;
         border-radius: 4px;
-        color: #0f766e;
+        color: var(--primary);
       }
       pre {
-        background: #0f172a;
-        color: #f8fafc;
+        background: #14213D;
+        color: #F4EDE0;
         padding: 16px;
         border-radius: 8px;
         overflow-x: auto;
@@ -156,8 +168,8 @@
         margin: 14px 0;
       }
       .callout {
-        border-left: 4px solid var(--primary);
-        background: var(--primary-light);
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 107, 91, 0.08);
         padding: 14px 18px;
         border-radius: 0 8px 8px 0;
         font-size: 14px;
@@ -174,42 +186,43 @@
     <header class="doc-header">
       <div class="container">
         <div class="badge-row">
-          <span class="badge">Enterprise Internal System</span>
+          <span class="badge">Sistem Penjadwalan Internal</span>
           <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
-          <span class="badge badge-neutral">Confidential Technical Manual</span>
+          <span class="badge badge-neutral">Dokumentasi Teknis Lapangan</span>
         </div>
-        <h1>Venue Booking System &mdash; Architectural &amp; Operational Documentation</h1>
+        <h1>Multi-Destination Venue Booking &mdash; Arsitektur &amp; Logika Sistem</h1>
         <div class="doc-meta">
-          <strong>Author:</strong> Andi Ziyadh Ghafa Ramadhan (Full-Stack Engineer) &middot;
-          <strong>Organization:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
-          <strong>Year:</strong> 2026
+          <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (IT Development &amp; Data Management Intern) &middot;
+          <strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
+          <strong>Tahun:</strong> 2026
         </div>
         <div style="display: flex; gap: 10px;">
-          <a href="../index.html#projects" class="doc-nav-btn">&larr; Back to Portfolio</a>
-          <button onclick="window.print()" class="doc-nav-btn">Print / Save as PDF</button>
+          <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
+          <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
         </div>
       </div>
     </header>
 
     <main class="container content-body">
-      <!-- 1. Executive Summary -->
+      <!-- 1. Konteks Masalah Lapangan -->
       <section class="section-card">
-        <h2>1. Ringkasan Eksekutif &amp; Konteks Produk</h2>
+        <h2>1. Latar Belakang &amp; Masalah Nyata</h2>
         <p>
-          <strong>Venue Booking System</strong> adalah platform web internal enterprise yang dirancang dan dikembangkan untuk mengelola penjadwalan peminjaman venue, kapasitas acara, dan pemetaan kursi (<em>seating management</em>) di seluruh destinasi pariwisata heritage kelas dunia di bawah naungan <strong>PT Taman Wisata Candi Borobudur, Prambanan, dan Ratu Boko (TWC / InJourney)</strong>.
+          Sistem penjadwalan peminjaman venue ini saya kembangkan untuk PT Taman Wisata Candi dalam mengelola penggunaan lokasi acara di kawasan <strong>Candi Prambanan, Candi Ratu Boko, dan Candi Borobudur</strong>.
         </p>
         <p>
-          Sebelum sistem ini diimplementasikan, koordinasi pemesanan lokasi acara besar (konser musik internasional, konferensi BUMN, gala dinner, dan pertunjukan seni Ramayana Ballet) dilakukan secara manual atau semi-terpisah. Hal tersebut berisiko menimbulkan <strong>tumpang-tindih jadwal (double-booking)</strong>, ketidaksesuaian waktu <em>loading/setup</em>, dan miskomunikasi tim operasional di lapangan.
+          Sebelum sistem ini dibangun, koordinasi peminjaman venue (seperti Lapangan Garuda untuk konser musik atau Panggung Terbuka Ramayana) dilakukan melalui spreadsheet terpisah atau komunikasi pesan singkat. Hal ini kerap memicu masalah di lapangan:
         </p>
-        <div class="callout">
-          <strong>Tujuan Utama Sistem:</strong> Mencegah <em>double-booking</em> secara mutlak, memperhitungkan waktu persiapan (load-in/setup) dan pembongkaran (tear-down), menyelaraskan hak akses berbasis destinasi (destination-scoping), serta mengotomatisasi notifikasi perubahan jadwal secara real-time kepada seluruh pemangku kepentingan.
-        </div>
+        <ul>
+          <li><strong>Jadwal Bentrok (Double-Booking):</strong> Dua pihak menyewa lokasi yang sama di rentang tanggal yang berdekatan tanpa diketahui admin lain.</li>
+          <li><strong>Waktu Loading Tidak Terhitung:</strong> Tim pemesan hanya mendaftarkan jam pertunjukan, padahal vendor tata suara (sound system), panggung, dan tata cahaya memerlukan waktu persiapan (<em>load-in</em>) 1 hingga 2 hari sebelum acara, serta waktu pembongkaran (<em>tear-down</em>) setelahnya.</li>
+          <li><strong>Miskomunikasi Status Persetujuan:</strong> Kurangnya kepastian apakah permohonan sewa baru sekadar penawaran atau sudah disetujui resmi oleh manajer unit terkait.</li>
+        </ul>
       </section>
 
-      <!-- 2. Arsitektur Destinasi & Venue -->
+      <!-- 2. Venue yang Dikelola -->
       <section class="section-card">
-        <h2>2. Struktur Destinasi &amp; Venue</h2>
-        <p>Sistem mengelola beragam venue multifungsi yang tersebar di 3 destinasi utama:</p>
+        <h2>2. Daftar Venue yang Dikelola Sistem</h2>
         <table>
           <thead>
             <tr>
@@ -217,7 +230,7 @@
               <th>Nama Venue</th>
               <th>Tipe</th>
               <th>Kapasitas</th>
-              <th>Karakteristik &amp; Peruntukan</th>
+              <th>Karakteristik Lapangan</th>
             </tr>
           </thead>
           <tbody>
@@ -225,119 +238,117 @@
               <td rowspan="4"><strong>Candi Prambanan</strong></td>
               <td>Lapangan Garuda</td>
               <td>Outdoor</td>
-              <td>5.000 pax</td>
-              <td>Area terbuka kompleks Prambanan untuk festival akbar &amp; konser.</td>
+              <td>5.000 orang</td>
+              <td>Area pelataran rumput terbuka untuk festival musik dan pameran besar.</td>
             </tr>
             <tr>
-              <td>Trimurti Open Stage</td>
+              <td>Panggung Trimurti</td>
               <td>Outdoor</td>
-              <td>1.200 pax</td>
-              <td>Panggung terbuka berlatar belakang relief Candi Siwa.</td>
+              <td>1.200 orang</td>
+              <td>Panggung berlatar relief candi untuk pertunjukan budaya dan seremonial.</td>
             </tr>
             <tr>
-              <td>Ramayana Outdoor Stage</td>
-              <td>Outdoor Seated</td>
+              <td>Panggung Terbuka Ramayana</td>
+              <td>Outdoor Bertingkat</td>
               <td>1.500 kursi</td>
-              <td>Panggung pertunjukan Ramayana Ballet musim kemarau dengan denah kursi berjenjang.</td>
+              <td>Panggung utama Ramayana Ballet musim kemarau dengan denah kursi berjenjang.</td>
             </tr>
             <tr>
-              <td>Ramayana Indoor Stage</td>
-              <td>Indoor Seated</td>
+              <td>Gedung Trimurti (Indoor)</td>
+              <td>Indoor Teater</td>
               <td>800 kursi</td>
-              <td>Gedung pertunjukan teater berpendingin ruangan dengan tata suara akustik.</td>
+              <td>Gedung pertunjukan tertutup ber-AC untuk musim hujan dengan akustik khusus.</td>
             </tr>
             <tr>
               <td><strong>Candi Ratu Boko</strong></td>
-              <td>Plaza Andrawina &amp; Sunset Hill</td>
+              <td>Plaza Andrawina &amp; Bukit Sunset</td>
               <td>Outdoor</td>
-              <td>800 pax</td>
-              <td>Area pemandangan matahari terbenam (sunset) untuk gala dinner &amp; VIP gathering.</td>
+              <td>800 orang</td>
+              <td>Area ketinggian untuk jamuan makan malam (gala dinner) berlatar matahari terbenam.</td>
             </tr>
             <tr>
               <td><strong>Candi Borobudur</strong></td>
               <td>Taman Lumbini &amp; Aksobya</td>
               <td>Outdoor</td>
-              <td>3.500 pax</td>
-              <td>Area pelataran hijau untuk upacara keagamaan, perayaan Waisak, dan forum global.</td>
+              <td>3.500 orang</td>
+              <td>Pelataran hijau untuk peringatan hari keagamaan dan konferensi resmi.</td>
             </tr>
           </tbody>
         </table>
       </section>
 
-      <!-- 3. Engine Pencegah Konflik Jadwal -->
+      <!-- 3. Logika Pendeteksi Konflik Multi-Fase -->
       <section class="section-card">
-        <h2>3. Conflict-Aware Scheduling Engine</h2>
+        <h2>3. Algoritma Pendeteksi Konflik Multi-Fase</h2>
         <p>
-          Fitur paling kritis dari sistem ini adalah <strong>algoritma pendeteksi konflik multi-fase</strong>. Peminjaman venue tidak hanya menghitung durasi acara utama (<em>event duration</em>), melainkan mencakup jendela waktu persiapan:
+          Kunci utama dari sistem ini adalah validasi rentang waktu secara menyeluruh (<em>multi-phase window</em>). Sistem tidak hanya memeriksa waktu acara inti, melainkan mencakup jendela persiapan dan pembersihan lapangan:
         </p>
-        <pre><code>[ LOAD-IN / SETUP ] ───► [ MAIN EVENT TIME ] ───► [ TEAR-DOWN / UNLOAD ]
-|◄───────────────────── TOTAL BLOCKED WINDOW ────────────────────────►|</code></pre>
-        <h3>Mekanisme Validasi Server-Side:</h3>
-        <ul>
-          <li>Sebelum status booking disimpan ke database, sistem memeriksa seluruh record booking di venue yang sama yang berstatus <code>Confirmed</code> atau <code>Pending Approval</code>.</li>
-          <li>Kondisi overlap diperiksa dengan formula irisan waktu:
-            <br />
-            <code>(New_Start &lt; Existing_End) AND (New_End &gt; Existing_Start)</code>
-          </li>
-          <li>Bila terdeteksi tabrakan waktu pada venue dan rentang tanggal yang diminta, sistem menolak transaksi secara atomik dan menampilkan rincian nama acara serta PIC yang sedang memblokir venue tersebut.</li>
-        </ul>
+        <pre><code>[ Waktu Persiapan / Load-In ] ──► [ Acara Inti ] ──► [ Waktu Pembongkaran / Tear-Down ]
+|◄────────────────────────── RENTANG BLOKIR JADWAL TOTAL ─────────────────────────►|</code></pre>
+        <h3>Formula Pengecekan Irisan Waktu di Database:</h3>
+        <p>
+          Sebelum sebuah permohonan disimpan atau disetujui, query database mengecek apakah ada jadwal berstatus <code>Confirmed</code> atau <code>Pending Approval</code> pada venue yang sama dengan kondisi:
+        </p>
+        <pre><code>(new_load_in_start &lt; existing_tear_down_end) AND (new_tear_down_end &gt; existing_load_in_start)</code></pre>
+        <p>
+          Bila kondisi bernilai benar (terjadi tabrakan waktu), transaksi dibatalkan secara atomik dan form langsung menampilkan informasi spesifik tentang nama acara serta PIC yang sedang memblokir jadwal tersebut.
+        </p>
       </section>
 
-      <!-- 4. Seating Layout Engine -->
+      <!-- 4. Modul Pemetaan Kursi Ramayana Ballet -->
       <section class="section-card">
         <h2>4. Modul Pemetaan Kursi (Seating Management)</h2>
         <p>
-          Khusus untuk panggung pertunjukan seperti <strong>Ramayana Ballet Prambanan (Indoor &amp; Outdoor Stage)</strong>, sistem menyediakan modul tata letak kursi terstruktur (<code>Seat</code> &amp; <code>BookingSeat</code>):
+          Khusus untuk panggung pertunjukan Ramayana Ballet, pemesan atau panitia dapat memetakan kursi penonton secara spesifik:
         </p>
         <ul>
-          <li><strong>Pembagian Kategori Kursi:</strong> VIP, Khusus (Special), Kelas 1, dan Kelas 2.</li>
-          <li><strong>Blok &amp; Penomoran:</strong> Setiap kursi memiliki identitas baris (Row A-Z) dan nomor kolom unik.</li>
-          <li><strong>Status Kursi:</strong> <code>Available</code>, <code>Held</code>, <code>Booked</code>, atau <code>Maintenance / Reserved</code>.</li>
-          <li><strong>Pencegahan Duplikasi:</strong> Database menggunakan <em>composite unique key</em> pada kombinasi <code>[booking_id, seat_id]</code> untuk mencegah alokasi ganda di panggung yang sama.</li>
+          <li><strong>Hierarki Kursi:</strong> VIP, Khusus (Special), Kelas 1, dan Kelas 2.</li>
+          <li><strong>Sistem Grid Baris &amp; Kolom:</strong> Setiap kursi terdaftar dengan identitas baris (A, B, C...) dan nomor kursi berurutan.</li>
+          <li><strong>Pencegahan Duplikasi:</strong> Tabel relasi <code>booking_seats</code> menerapkan <em>composite unique key</em> pada pasangan <code>(booking_id, seat_id)</code> untuk menjamin sebuah kursi tidak dapat dialokasikan lebih dari satu kali pada jadwal yang sama.</li>
         </ul>
       </section>
 
-      <!-- 5. Role-Based Access Control -->
+      <!-- 5. Hak Akses Berbasis Peran & Destinasi -->
       <section class="section-card">
-        <h2>5. Hak Akses Berbasis Peran &amp; Destinasi</h2>
-        <p>Keamanan dan segmentasi data menerapkan prinsip <em>least-privilege</em>:</p>
+        <h2>5. Pembagian Hak Akses (Destination-Scoped RBAC)</h2>
+        <p>Untuk menjaga kerapian data lintas destinasi, wewenang pengguna dibatasi berdasarkan wilayah tugas:</p>
         <table>
           <thead>
             <tr>
-              <th>Role</th>
-              <th>Cakupan Destinasi</th>
-              <th>Wewenang Utama</th>
+              <th>Peran Pengguna</th>
+              <th>Cakupan Wilayah</th>
+              <th>Tanggung Jawab Teknis</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>Sales Staff</strong></td>
-              <td>Terkunci pada 1 destinasi (misal: Prambanan saja)</td>
-              <td>Membuat permohonan booking baru, menginput data klien/PIC, memilih kursi, dan memantau status persetujuan.</td>
+              <td><strong>Staf Sales / Marketing</strong></td>
+              <td>Terkunci pada 1 destinasi tempat bertugas</td>
+              <td>Mengajukan jadwal peminjaman baru, menginput data klien/PIC acara, memilih denah kursi, dan melampirkan berkas permohonan.</td>
             </tr>
             <tr>
-              <td><strong>Unit Admin</strong></td>
-              <td>Seluruh Destinasi (Borobudur, Prambanan, Boko)</td>
-              <td>Menyetujui/menolak booking, menjadwalkan PIC operasional, mengelola master data venue dan tarif sewa.</td>
+              <td><strong>Admin Operasional Unit</strong></td>
+              <td>Seluruh Destinasi (Prambanan, Ratu Boko, Borobudur)</td>
+              <td>Meninjau jadwal, menyetujui atau menolak permohonan, menugaskan PIC lapangan, dan mengubah tarif sewa venue.</td>
             </tr>
             <tr>
               <td><strong>Superadmin</strong></td>
-              <td>Global Enterprise</td>
-              <td>Manajemen akun user, konfigurasi sistem, audit log, dan ekspor laporan rekapitulasi tingkat direksi.</td>
+              <td>Tingkat Manajemen Pusat</td>
+              <td>Mengelola akun staf, konfigurasi server, melihat jejak audit (audit log), dan mengekspor rekapitulasi data peminjaman.</td>
             </tr>
           </tbody>
         </table>
       </section>
 
-      <!-- 6. Spesifikasi Teknologi -->
+      <!-- 6. Spesifikasi Teknis -->
       <section class="section-card">
-        <h2>6. Arsitektur &amp; Tumpukan Teknologi</h2>
+        <h2>6. Rincian Teknologi yang Digunakan</h2>
         <ul>
-          <li><strong>Backend Framework:</strong> Laravel 13 (PHP 8.3+) dengan arsitektur MVC bersih.</li>
-          <li><strong>Frontend View Layer:</strong> Laravel Blade Components dipadukan dengan Tailwind CSS 4 via Vite bundler.</li>
-          <li><strong>Datepicker &amp; Scheduler:</strong> Flatpickr dengan lokalisasi tanggal Indonesia dan penandaan rentang hari otomatis.</li>
-          <li><strong>Database Engine:</strong> MySQL 8.0 dengan foreign keys terindeks dan transaksi ACID.</li>
-          <li><strong>Notifikasi:</strong> Model <code>NotificationRead</code> untuk melacak status baca per-pengguna saat ada revisi jadwal booking.</li>
+          <li><strong>Framework Backend:</strong> Laravel 13 (PHP 8.3) dengan pemanfaatan Eloquent ORM, Database Transactions, dan Service Layer yang terstruktur.</li>
+          <li><strong>Frontend:</strong> Laravel Blade Components dipadukan dengan Tailwind CSS 4 melalui Vite bundler untuk performa render cepat tanpa beban bundle JavaScript yang berlebihan.</li>
+          <li><strong>Penjadwalan Kalender:</strong> Integrasi Flatpickr dengan format tanggal Indonesia dan pembatasan rentang hari secara otomatis.</li>
+          <li><strong>Database Engine:</strong> MySQL 8.0 dengan foreign key constraints dan index pada kolom tanggal untuk efisiensi query pencarian konflik jadwal.</li>
+          <li><strong>Pelacakan Notifikasi:</strong> Model <code>NotificationRead</code> untuk mencatat status baca setiap pengguna saat terjadi perubahan atau persetujuan jadwal.</li>
         </ul>
       </section>
     </main>

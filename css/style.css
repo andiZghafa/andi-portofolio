@@ -19,12 +19,11 @@
 
   --bg-page: #F4EDE0;              /* Base Linen Cream canvas */
   --bg-page-gradient: 
-    linear-gradient(to right, rgba(20, 33, 61, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20, 33, 61, 0.04) 1px, transparent 1px),
-    radial-gradient(ellipse 90% 45% at 50% -8%, rgba(20, 33, 61, 0.16), transparent 70%),
-    radial-gradient(circle 800px at 100% 18%, rgba(255, 107, 91, 0.11), transparent 60%),
-    radial-gradient(circle 650px at 0% 65%, rgba(20, 33, 61, 0.08), transparent 55%),
-    #F4EDE0;
+    radial-gradient(ellipse 950px 600px at 100% 0%, rgba(20, 33, 61, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 800px 500px at 0% 25%, rgba(255, 107, 91, 0.16) 0%, transparent 65%),
+    radial-gradient(circle 850px at 100% 70%, rgba(255, 107, 91, 0.14) 0%, transparent 60%),
+    radial-gradient(circle 900px at 0% 90%, rgba(20, 33, 61, 0.14) 0%, transparent 65%),
+    linear-gradient(135deg, #EFE8DC 0%, #E3E9F3 25%, #F4EDE0 50%, #FDECE9 78%, #F4EDE0 100%);
 
   --bg-surface: #FFFFFF;           /* Elevated crisp ivory card surface */
   --bg-surface-elevated: #EDE5D5;  /* Deeper cream for interactive chips & inputs */
@@ -85,12 +84,10 @@
 [data-theme="dark"] {
   --bg-page: #14213D;              /* Oxford Navy canvas */
   --bg-page-gradient: 
-    linear-gradient(to right, rgba(244, 237, 224, 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(244, 237, 224, 0.035) 1px, transparent 1px),
-    radial-gradient(ellipse 90% 55% at 50% -12%, rgba(255, 107, 91, 0.22), transparent 70%),
-    radial-gradient(circle 750px at 100% 25%, rgba(244, 237, 224, 0.04), transparent 60%),
-    radial-gradient(circle 600px at 0% 65%, rgba(255, 107, 91, 0.12), transparent 50%),
-    #14213D;
+    radial-gradient(ellipse 950px 600px at 50% -10%, rgba(255, 107, 91, 0.22) 0%, transparent 70%),
+    radial-gradient(circle 800px at 100% 25%, rgba(244, 237, 224, 0.05) 0%, transparent 60%),
+    radial-gradient(circle 650px at 0% 70%, rgba(255, 107, 91, 0.14) 0%, transparent 55%),
+    linear-gradient(145deg, #101B33 0%, #14213D 45%, #182847 80%, #1A1C30 100%);
 
   --bg-surface: #1B2B4D;           /* Elevated Oxford Navy surface */
   --bg-surface-elevated: #24365C;  /* Higher elevation layer */
@@ -139,10 +136,11 @@ html {
 }
 
 body {
-  background-image: var(--bg-page-gradient);
   background-color: var(--bg-page);
-  background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
-  background-attachment: scroll;
+  background-image: var(--bg-page-gradient);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: var(--text-primary);
   font-family: var(--font-sans);
   font-size: 16px;

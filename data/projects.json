@@ -7,16 +7,16 @@
     "role": "IT Development and Data Management Intern",
     "period": "Aug 2026 - Present",
     "description": "Enterprise point-of-sale ecosystem built for Prambanan and Ratu Boko units to streamline live data integration with company ERP, featuring multi-warehouse inventory mutations and direct Bluetooth thermal ESC/POS printing.",
-    "overview": "Assisted in engineering the Point-of-Sale (POS) and retail management system for Prambanan F&B and ticketing units under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system streamlines operational data integration with the enterprise ERP and improves financial transparency. Built with Laravel 13, Inertia.js, and React 19, paired with a Capacitor Android native bridge for direct Bluetooth Classic (SPP) ESC/POS thermal printing to BP-LITE80D printers with zero browser dialog delay. Handles multi-warehouse inventory, cashier shift reconciliation, and dynamic QRIS payment gateway integration.",
+    "overview": "Assisted in engineering the Point-of-Sale (POS) and retail management system for Prambanan F&B and ticketing units under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system streamlines operational data integration with the enterprise ERP and improves financial transparency. Built with Laravel 13, Inertia.js, and React 19, paired with a Capacitor Android native bridge for direct Bluetooth Classic (SPP) ESC/POS thermal printing to BP-LITE80D printers with zero browser dialog delay. Handles multi-warehouse inventory, cashier shift reconciliation, and cashier payment method classification toggles for seamless accounting audit.",
     "keyFeatures": [
       "Native Android Bluetooth Classic (SPP) ESC/POS printing bridge eliminating print dialog delays (<0.5s auto-cut)",
       "Streamlined data integration with company ERP for enhanced operational transparency and audit accuracy",
       "Multi-Warehouse Inventory Architecture tracking real-time stock mutations, transfers, and FEFO batch allocations",
       "Cashier Shift Lifecycle engine with cash float verification, drawer reconciliation, and comprehensive audit logs",
-      "Multi-channel payment gateway integration with dynamic QRIS (Midtrans & Xendit), bank transfers, and open-bills",
+      "Cashier Payment Method Classification: Quick toggles (Cash, QRIS, Bank Transfer, Open-Bill) to categorize transactions for accurate end-of-shift reconciliation and finance administration",
       "Robust enterprise security with Spatie RBAC, password confirmation step-ups, and anti-bot protection"
     ],
-    "tags": ["Laravel", "Inertia.js", "React", "Capacitor", "Android", "Bluetooth ESC/POS", "Tailwind CSS", "MySQL", "Midtrans"],
+    "tags": ["Laravel", "Inertia.js", "React", "Capacitor", "Android", "Bluetooth ESC/POS", "Tailwind CSS", "MySQL", "Payment Classification"],
     "image": "assets/images/pos-checkout.png",
     "fallbackImage": "assets/images/pos-dashboard.png",
     "links": {

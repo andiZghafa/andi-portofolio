@@ -117,11 +117,11 @@
           "Native Android Bluetooth Classic (SPP) ESC/POS printing bridge eliminating print dialog delays (<0.5s auto-cut)",
           "Multi-Warehouse Inventory Architecture tracking real-time stock mutations, transfers, and FEFO batch allocations",
           "Cashier Shift Lifecycle engine with cash float verification, drawer reconciliation, and comprehensive audit logs",
-          "Multi-channel payment gateway integration with dynamic QRIS (Midtrans & Xendit), bank transfers, and open-bills",
+          "Cashier Payment Method Classification: Quick toggles (Cash, QRIS, Bank Transfer, Open-Bill) to categorize transactions for accurate end-of-shift reconciliation and finance administration",
           "Automated WhatsApp digital receipt and daily reporting microservice powered by Node.js and whatsapp-web.js",
           "Robust enterprise security with Spatie RBAC, password confirmation step-ups, and anti-bot protection"
         ],
-        tags: ["Laravel", "Inertia.js", "React", "Capacitor", "Android", "Bluetooth ESC/POS", "Tailwind CSS", "MySQL", "Midtrans"],
+        tags: ["Laravel", "Inertia.js", "React", "Capacitor", "Android", "Bluetooth ESC/POS", "Tailwind CSS", "MySQL", "Payment Classification"],
         image: "assets/images/pos-checkout.png",
         fallbackImage: "assets/images/pos-dashboard.png",
         links: {

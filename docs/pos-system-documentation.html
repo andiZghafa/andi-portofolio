@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Prambanan &amp; Ratu Boko POS — Technical &amp; Operational Documentation</title>
+    <title>Prambanan &amp; Ratu Boko POS — Dokumentasi Teknis &amp; Operasional</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,16 +12,19 @@
     />
     <style>
       :root {
+        --navy: #14213D;
+        --cream: #F4EDE0;
+        --coral: #FF6B5B;
         --primary: #14213D;
-        --primary-light: rgba(255, 107, 91, 0.15);
-        --primary-dark: #0A1120;
+        --primary-light: rgba(20, 33, 61, 0.08);
         --accent: #FF6B5B;
+        --accent-light: rgba(255, 107, 91, 0.12);
         --bg-page: #F4EDE0;
-        --bg-surface: #ffffff;
+        --bg-surface: #FFFFFF;
         --text-main: #14213D;
         --text-muted: #53637F;
         --border: rgba(20, 33, 61, 0.14);
-        --font-sans: "Inter", sans-serif;
+        --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         --font-display: "Plus Jakarta Sans", sans-serif;
         --font-mono: "JetBrains Mono", monospace;
       }
@@ -29,18 +32,24 @@
       body {
         font-family: var(--font-sans);
         color: var(--text-main);
-        background: var(--bg-page);
+        background-color: var(--bg-page);
+        background-image: 
+          radial-gradient(ellipse 950px 600px at 100% 0%, rgba(20, 33, 61, 0.14) 0%, transparent 70%),
+          radial-gradient(ellipse 800px 500px at 0% 25%, rgba(255, 107, 91, 0.12) 0%, transparent 65%),
+          linear-gradient(135deg, #EFE8DC 0%, #E3E9F3 25%, #F4EDE0 50%, #FDECE9 78%, #F4EDE0 100%);
+        background-attachment: fixed;
+        background-size: cover;
         line-height: 1.65;
         padding-bottom: 60px;
       }
       .doc-header {
-        background: var(--bg-surface);
+        background: rgba(255, 255, 255, 0.94);
         border-bottom: 1px solid var(--border);
-        padding: 32px 0;
+        padding: 28px 0;
         position: sticky;
         top: 0;
         z-index: 20;
-        backdrop-filter: blur(8px);
+        backdrop-filter: blur(10px);
       }
       .container {
         width: 100%;
@@ -56,27 +65,27 @@
       }
       .badge {
         font-family: var(--font-mono);
-        font-size: 11px;
+        font-size: 11.5px;
         font-weight: 600;
-        padding: 3px 9px;
+        padding: 4px 10px;
         border-radius: 4px;
-        text-transform: uppercase;
         background: var(--primary-light);
         color: var(--primary);
       }
       .badge-neutral {
-        background: #f1f5f9;
-        color: var(--text-muted);
+        background: #EDE5D5;
+        color: var(--text-main);
       }
       h1 {
         font-family: var(--font-display);
-        font-size: 28px;
+        font-size: 26px;
         font-weight: 700;
         margin-bottom: 8px;
         line-height: 1.25;
+        color: var(--primary);
       }
       .doc-meta {
-        font-size: 14px;
+        font-size: 13.5px;
         color: var(--text-muted);
       }
       .doc-nav-btn {
@@ -89,24 +98,26 @@
         color: var(--primary);
         text-decoration: none;
         border: 1px solid var(--primary);
-        padding: 6px 14px;
+        background: transparent;
+        padding: 7px 16px;
         border-radius: 6px;
-        transition: all 0.15s ease;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
       }
       .doc-nav-btn:hover {
         background: var(--primary);
         color: #ffffff;
       }
       .content-body {
-        padding: 40px 0;
+        padding: 36px 0;
       }
       .section-card {
         background: var(--bg-surface);
         border: 1px solid var(--border);
         border-radius: 12px;
         padding: 32px;
-        margin-bottom: 28px;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(20, 33, 61, 0.04);
       }
       h2 {
         font-family: var(--font-display);
@@ -115,12 +126,13 @@
         margin-bottom: 16px;
         padding-bottom: 8px;
         border-bottom: 1px solid var(--border);
-        color: var(--primary-dark);
+        color: var(--primary);
       }
       h3 {
         font-size: 16px;
         font-weight: 600;
         margin: 20px 0 8px;
+        color: var(--primary);
       }
       p { margin-bottom: 14px; font-size: 15px; }
       ul, ol { padding-left: 24px; margin-bottom: 16px; font-size: 14.5px; }
@@ -136,18 +148,18 @@
         border: 1px solid var(--border);
         text-align: left;
       }
-      th { background: #f8fafc; font-weight: 600; }
+      th { background: #F8F5EE; font-weight: 600; color: var(--primary); }
       code {
         font-family: var(--font-mono);
         font-size: 12.5px;
-        background: #f1f5f9;
+        background: #EDE5D5;
         padding: 2px 6px;
         border-radius: 4px;
-        color: #2563eb;
+        color: var(--primary);
       }
       pre {
-        background: #0f172a;
-        color: #f8fafc;
+        background: #14213D;
+        color: #F4EDE0;
         padding: 16px;
         border-radius: 8px;
         overflow-x: auto;
@@ -156,8 +168,8 @@
         margin: 14px 0;
       }
       .callout {
-        border-left: 4px solid var(--primary);
-        background: var(--primary-light);
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 107, 91, 0.08);
         padding: 14px 18px;
         border-radius: 0 8px 8px 0;
         font-size: 14px;
@@ -175,7 +187,7 @@
       }
       .screenshot-caption {
         padding: 8px 14px;
-        background: #f1f5f9;
+        background: #F8F5EE;
         font-size: 12.5px;
         color: var(--text-muted);
         font-family: var(--font-mono);
@@ -191,124 +203,140 @@
     <header class="doc-header">
       <div class="container">
         <div class="badge-row">
-          <span class="badge">Enterprise POS System</span>
-          <span class="badge badge-neutral">Candi Prambanan &amp; Candi Ratu Boko</span>
+          <span class="badge">Sistem Kasir Internal POS</span>
+          <span class="badge badge-neutral">Candi Prambanan &amp; Ratu Boko</span>
           <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
         </div>
-        <h1>Prambanan &amp; Ratu Boko POS &mdash; Architecture &amp; Operational Overview</h1>
+        <h1>Point of Sale (POS) &amp; Multi-Gudang &mdash; Catatan Teknis &amp; Implementasi</h1>
         <div class="doc-meta">
-          <strong>Author:</strong> Andi Ziyadh Ghafa Ramadhan (Full-Stack &amp; Mobile Engineer) &middot;
-          <strong>Organization:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
-          <strong>Year:</strong> 2026
+          <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (IT Development &amp; Data Management Intern) &middot;
+          <strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
+          <strong>Tahun:</strong> 2026
         </div>
         <div style="display: flex; gap: 10px;">
-          <a href="../index.html#projects" class="doc-nav-btn">&larr; Back to Portfolio</a>
-          <button onclick="window.print()" class="doc-nav-btn">Print / Save as PDF</button>
+          <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
+          <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
         </div>
       </div>
     </header>
 
     <main class="container content-body">
-      <!-- 1. Executive Summary -->
+      <!-- 1. Konteks Lapangan & Masalah Nyata -->
       <section class="section-card">
-        <h2>1. Gambaran Sistem &amp; Implementasi Lapangan</h2>
+        <h2>1. Konteks &amp; Masalah di Lapangan</h2>
         <p>
-          <strong>Prambanan &amp; Ratu Boko Point of Sale (POS)</strong> adalah ekosistem aplikasi kasir dan manajemen multi-gudang (<em>multi-warehouse</em>) yang digunakan secara aktif oleh para kasir di seluruh titik tiket, suvenir, dan ritel di kawasan wisata <strong>Candi Prambanan dan Candi Ratu Boko</strong>.
+          Sistem Point of Sale (POS) ini saya kembangkan untuk menangani transaksi ritel, tiket, dan suvenir di loket kasir kawasan <strong>Candi Prambanan</strong> dan <strong>Candi Ratu Boko</strong>. Sebelum sistem ini berjalan, kasir menghadapi kendala pencatatan stok multi-gudang yang lambat dan proses cetak struk via web browser yang memicu dialog pratinjau (<em>print preview</em>) dengan jeda 3 sampai 5 detik di tiap antrean pengunjung.
         </p>
         <div class="screenshot-container">
-          <img src="../assets/images/pos-checkout.png" alt="POS Checkout Screen" />
-          <div class="screenshot-caption">Gambar 1: Antarmuka POS Checkout responsif dengan keyboard shortcuts dan navigasi cepat kasir.</div>
+          <img src="../assets/images/pos-checkout.png" alt="Antarmuka Kasir POS Prambanan" />
+          <div class="screenshot-caption">Gambar 1: Antarmuka POS Checkout kasir dengan integrasi keyboard shortcuts, pemilihan gudang aktif, dan klasifikasi metode bayar.</div>
         </div>
         <p>
-          Sistem dibangun untuk menghadapi tantangan transaksi berkecepatan tinggi dengan ribuan wisatawan per hari. Arsitekturnya menggabungkan web portal berbasis <strong>Laravel 13 + Inertia.js 3 + React 19</strong> dengan aplikasi Android native (via <strong>Capacitor</strong>) yang terhubung langsung ke printer thermal Bluetooth (SPP) tanpa melalui perantara browser dialog.
+          Aplikasi dibangun dengan stack <strong>Laravel 13 + Inertia.js 3 + React 19</strong>, dipaketkan ke tablet kasir Android menggunakan <strong>Capacitor</strong> agar dapat berbicara langsung dengan printer thermal via Bluetooth Serial (SPP).
         </p>
       </section>
 
-      <!-- 2. Arsitektur Bluetooth Printer ESC/POS -->
+      <!-- 2. Arsitektur Cetak Bluetooth SPP -->
       <section class="section-card">
-        <h2>2. Native Android Bluetooth Classic Printing (SPP)</h2>
+        <h2>2. Direct Printing Bluetooth Classic (SPP) ESC/POS</h2>
         <p>
-          Di loket kasir wisata, kecepatan mencetak struk adalah prioritas mutlak. Menggunakan dialog cetak bawaan browser Chrome menimbulkan jeda waktu (latency) 3-5 detik per transaksi.
+          Di loket wisata saat musim liburan, antrean pengunjung sangat padat. Menggunakan fungsi cetak bawaan web (<code>window.print()</code>) tidak memungkinkan karena memicu pop-up Android/Chrome yang memperlambat kasir.
         </p>
         <p>
-          Solusi yang diimplementasikan:
+          Pendekatan teknis yang saya terapkan:
         </p>
         <ul>
-          <li><strong>Capacitor Native Bridge:</strong> Menghubungkan antarmuka React dengan layer native Android Bluetooth Serial Port Profile (SPP).</li>
-          <li><strong>Thermal ESC/POS Direct Stream:</strong> Data struk, logo toko, barcode/QR transaksi, dan perintah potong kertas (cutter) dikirim dalam bentuk <em>raw byte stream</em> langsung ke printer thermal (seperti BP-LITE80D).</li>
-          <li><strong>Pencetakan Instan:</strong> Struk kasir, open bill, dan struk dapur tercetak secara otomatis (&lt; 0.5 detik) begitu kasir menekan tombol bayar / shortcut enter, tanpa menampilkan pop-up browser.</li>
+          <li><strong>Native Bluetooth Bridge:</strong> Memanfaatkan plugin Capacitor native untuk membuka socket Bluetooth Serial Port Profile (SPP) langsung ke printer thermal (seperti BP-LITE80D).</li>
+          <li><strong>ESC/POS Raw Bytes:</strong> Format struk disusun langsung dalam byte array ESC/POS (karakter tebal, tata letak tabel, garis putus-putus, perataan teks, dan perintah potong kertas otomatis).</li>
+          <li><strong>Cetak Instan (&lt; 0.5 detik):</strong> Begitu kasir menekan tombol selesai bayar atau menekan tombol <code>Enter</code> pada keyboard fisik, byte data langsung dikirim ke printer tanpa dialog browser apa pun.</li>
         </ul>
       </section>
 
-      <!-- 3. Multi-Warehouse & Inventory -->
+      <!-- 3. Klasifikasi Metode Pembayaran Kasir -->
       <section class="section-card">
-        <h2>3. Alur Data Multi-Gudang (Multi-Warehouse)</h2>
-        <pre><code>Cashier buka shift → pilih warehouse (Prambanan / Ratu Boko)
-    ↓
-POS memeriksa stok di product_warehouse (product_id + warehouse_id)
-    ↓
-Checkout → pengurangan stok atomik di product_warehouse
-         → transaction.warehouse_id = shift.warehouse_id
-    ↓
-Purchase Order (PO) → Goods Receiving (GR) → Mutasi Stok Otomatis
-Stock Transfer antar Destinasi: Source Gudang ──► Transit ──► Gudang Tujuan</code></pre>
+        <h2>3. Klasifikasi Metode Pembayaran &amp; Rekonsiliasi Kasir</h2>
         <p>
-          Setiap pergerakan stok dicatat dalam <code>StockMutationService</code> untuk menjamin akurasi audit inventaris harian dan mencegah selisih barang antar titik penjualan.
+          Pada sistem POS ini, kasir tidak terhubung langsung ke API payment gateway eksternal (seperti Midtrans atau Xendit) secara otomatis, melainkan menggunakan <strong>toggle klasifikasi metode pembayaran</strong> di antarmuka kasir. Hal ini dirancang untuk menyederhanakan alur kerja kasir dan memudahkan pembukuan tim keuangan (finance).
         </p>
-      </section>
-
-      <!-- 4. Cashier Shift Management -->
-      <section class="section-card">
-        <h2>4. Siklus Shift Kasir (Shift Lifecycle)</h2>
-        <p>
-          Setiap kasir wajib memiliki shift aktif untuk melakukan transaksi:
-        </p>
+        <div class="callout">
+          <strong>Fungsi Toggle Pembayaran:</strong> Kasir memilih kanal pembayaran yang digunakan pengunjung saat transaksi berlangsung (Tunai, QRIS statis loket / EDC, Transfer Bank, atau Piutang / Open-Bill). Data ini langsung terklasifikasi pada database transaksi sehingga saat tutup shift, laporan kasir membedakan saldo fisik uang tunai di laci kas dari pemasukan non-tunai.
+        </div>
         <ul>
-          <li><strong>Buka Shift:</strong> Kasir memilih gudang lokasi, menginput modal awal (<em>cash float</em>), dan memulai sesi kasir.</li>
-          <li><strong>Transaksi &amp; Pembayaran:</strong> Mendukung pembayaran Tunai, QRIS Midtrans, Xendit, Transfer Bank, dan sistem piutang (open-bill).</li>
-          <li><strong>Tutup Shift &amp; Rekonsiliasi:</strong> Di akhir giliran kerja, sistem mencocokkan total uang tunai di laci fisik dengan kalkulasi sistem, mencatat selisih (<em>over/short</em>), dan mencetak ringkasan shift kasir.</li>
+          <li><strong>Tunai (Cash):</strong> Menghitung uang yang diterima, menghitung uang kembalian, dan menambahkan saldo pada laci kasir (<em>cash drawer</em>).</li>
+          <li><strong>QRIS &amp; Transfer Bank:</strong> Mencatat pembayaran non-tunai agar tidak tercampur dengan hitungan fisik uang laci saat serah terima shift.</li>
+          <li><strong>Piutang (Open-Bill):</strong> Menyimpan nota gantung untuk pesanan rombongan atau rekanan sebelum penyelesaian pembayaran akhir.</li>
         </ul>
       </section>
 
-      <!-- 5. Tumpukan Teknologi -->
+      <!-- 4. Multi-Gudang & Mutasi Stok -->
       <section class="section-card">
-        <h2>5. Spesifikasi Teknologi</h2>
+        <h2>4. Alur Multi-Gudang (Multi-Warehouse Inventory)</h2>
+        <p>
+          Kawasan wisata memiliki beberapa titik stok (Gudang Utama Prambanan, Loket Ratu Boko, dan titik souvenir). Sistem mengunci stok berdasarkan gudang yang dipilih saat kasir membuka shift:
+        </p>
+        <pre><code>Kasir buka shift → pilih gudang (Prambanan / Ratu Boko)
+    ↓
+Sistem mengecek ketersediaan di product_warehouse (product_id + warehouse_id)
+    ↓
+Kasir transaksi → stok terpotong secara atomik di gudang tersebut
+    ↓
+Purchase Order (PO) → Goods Receiving (GR) → Mutasi stok otomatis bertambah
+    ↓
+Transfer Stok Antar Gudang: Gudang Asal ──► Status Transit ──► Gudang Tujuan</code></pre>
+        <p>
+          Pencatatan mutasi stok menggunakan service transaksi database untuk mencegah <em>race condition</em> saat kasir melayani transaksi bersamaan di lokasi berbeda.
+        </p>
+      </section>
+
+      <!-- 5. Siklus Shift Kasir -->
+      <section class="section-card">
+        <h2>5. Siklus Shift Kasir (Shift Lifecycle)</h2>
+        <ul>
+          <li><strong>Buka Shift:</strong> Kasir memilih lokasi gudang, menginput modal uang tunai awal di laci (<em>cash float</em>), dan memulai jam operasional.</li>
+          <li><strong>Pencatatan Transaksi:</strong> Setiap nota menyimpan <code>shift_id</code> kasir, waktu, rincian barang, dan klasifikasi metode bayar.</li>
+          <li><strong>Tutup Shift &amp; Rekonsiliasi:</strong> Kasir menghitung total uang fisik di laci dan memasukkannya ke sistem. Sistem membandingkannya dengan kalkulasi total penjualan tunai dan mencatat jika ada selisih (<em>over/short</em>), lalu mencetak struk rekapitulasi shift via Bluetooth thermal.</li>
+        </ul>
+      </section>
+
+      <!-- 6. Spesifikasi Teknologi -->
+      <section class="section-card">
+        <h2>6. Rincian Teknologi yang Digunakan</h2>
         <table>
           <thead>
             <tr>
-              <th>Layer</th>
+              <th>Komponen</th>
               <th>Teknologi</th>
-              <th>Fungsi</th>
+              <th>Peran dalam Sistem</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Backend</strong></td>
-              <td>Laravel 13 (PHP 8.3+)</td>
-              <td>REST API, transactional logic, audit logs, and business services.</td>
+              <td>Laravel 13 &amp; PHP 8.3</td>
+              <td>RESTful routing, mutasi stok atomik, audit logs, dan autentikasi peran.</td>
             </tr>
             <tr>
-              <td><strong>Frontend</strong></td>
-              <td>Inertia.js 3 + React 19 + Vite 5</td>
-              <td>Single-Page Application (SPA) responsif tanpa kompleksitas re-fetching.</td>
+              <td><strong>Frontend Kasir</strong></td>
+              <td>Inertia.js 3 + React 19</td>
+              <td>SPA responsif untuk interaksi kasir tanpa reload layar.</td>
             </tr>
             <tr>
               <td><strong>Styling</strong></td>
               <td>Tailwind CSS</td>
-              <td>Design system terpadu untuk desktop tablet kasir.</td>
+              <td>Antarmuka keyboard-friendly dan tata letak ringkas untuk tablet loket.</td>
             </tr>
             <tr>
-              <td><strong>Mobile Bridge</strong></td>
-              <td>Capacitor Native Android</td>
-              <td>Packaging APK &amp; Bluetooth Classic Serial hardware communication.</td>
+              <td><strong>Hardware Printing</strong></td>
+              <td>Capacitor Android + Bluetooth SPP</td>
+              <td>Komunikasi socket byte stream langsung ke printer thermal 80mm (BP-LITE80D).</td>
             </tr>
             <tr>
-              <td><strong>Payment Gateway</strong></td>
-              <td>Midtrans &amp; Xendit</td>
-              <td>Pembayaran dinamis via QRIS dan Virtual Account.</td>
+              <td><strong>Klasifikasi Bayar</strong></td>
+              <td>Toggle Metode Pembayaran</td>
+              <td>Kategorisasi Tunai, QRIS, Transfer, dan Open-Bill untuk rekonsiliasi keuangan.</td>
             </tr>
             <tr>
-              <td><strong>Messaging</strong></td>
+              <td><strong>Notifikasi</strong></td>
               <td>Node.js whatsapp-web.js</td>
               <td>Layanan pengiriman otomatis nota transaksi &amp; laporan harian via WhatsApp.</td>
             </tr>
