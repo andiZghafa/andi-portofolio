@@ -205,11 +205,11 @@
     <header class="doc-header">
       <div class="container">
         <div class="badge-row">
-          <span class="badge">Mobile Enterprise App</span>
-          <span class="badge badge-neutral">Flutter &middot; Dart &middot; QR Scanner</span>
-          <span class="badge badge-neutral">FaveHotel Bogor</span>
+          <span class="badge">Web &amp; Mobile Enterprise App</span>
+          <span class="badge badge-neutral">Flutter Web &middot; Dart &middot; QR Scanner</span>
+          <span class="badge badge-neutral">favehotellaundrylogbook.vercel.app</span>
         </div>
-        <h1>FaveHotel Laundry &amp; Inventory Mobile App: Dokumentasi Teknis</h1>
+        <h1>FaveHotel Laundry &amp; Inventory App: Dokumentasi Teknis</h1>
         <div class="doc-meta">
           <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (Solo Developer / Intern) &middot;
           <strong>Lokasi:</strong> FaveHotel Bogor &middot;
@@ -217,6 +217,7 @@
         </div>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
           <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
+          <a href="https://favehotellaundrylogbook.vercel.app/" target="_blank" class="doc-nav-btn">Kunjungi Web App (Vercel) ↗</a>
           <a href="https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing" target="_blank" class="doc-nav-btn">Google Drive Dokumentasi ↗</a>
           <a href="../porto 1.pdf" target="_blank" class="doc-nav-btn">Unduh Dokumen Portofolio (PDF)</a>
           <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
@@ -246,11 +247,12 @@
       <section class="section-card">
         <h2>2. Pendekatan Rekayasa</h2>
         <p>
-          Saya merancang dan membangun aplikasi mobile berbasis <strong>Flutter (Dart)</strong> yang dapat dijalankan langsung pada ponsel Android staf operasional:
+          Saya merancang dan membangun aplikasi berbasis <strong>Flutter (Dart)</strong> yang dapat dijalankan langsung pada ponsel Android staf operasional maupun diakses melalui browser:
         </p>
         <ul>
           <li><strong>Pemindai QR Kamera Berkecepatan Tinggi:</strong> Setiap keranjang dan kelompok linen diberi label stiker kode QR unik. Staf cukup mengarahkan kamera untuk mengidentifikasi batch barang dalam hitungan milidetik.</li>
           <li><strong>Sinkronisasi Spreadsheet Dua Arah (Google Sheets API):</strong> Untuk menghindari biaya sewa server basis data yang mahal, data mutasi stok langsung disinkronkan secara real-time ke spreadsheet cloud manajemen hotel. Manajemen dapat memantau grafik stok secara langsung tanpa konfigurasi server yang rumit.</li>
+          <li><strong>Deployment Web (Vercel) &amp; Android:</strong> Selain format APK mobile, aplikasi dikompilasi menjadi Flutter Web dan dideploy di Vercel pada domain <a href="https://favehotellaundrylogbook.vercel.app/" target="_blank" style="color: var(--accent); font-weight: 600;">favehotellaundrylogbook.vercel.app</a> agar manajemen dapat mengecek stok dari laptop atau PC kantor.</li>
           <li><strong>Modul Checklist Penutupan Dapur:</strong> Validasi alur SOP kebersihan dapur dengan catatan waktu digital (timestamp) untuk mencegah kelalaian operasional.</li>
         </ul>
       </section>
@@ -268,9 +270,14 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Framework Mobile</strong></td>
-              <td>Flutter (Dart)</td>
-              <td>Aplikasi Android native yang ringan, responsif, dan stabil di berbagai tipe HP staf.</td>
+              <td><strong>Frontend Framework</strong></td>
+              <td>Flutter (Dart) Web &amp; Mobile</td>
+              <td>Aplikasi multiplatform yang responsif di HP Android staf dan browser desktop manajemen.</td>
+            </tr>
+            <tr>
+              <td><strong>Web Hosting</strong></td>
+              <td>Vercel Edge Network</td>
+              <td>Distribusi web app cepat dengan HTTPS otomatis di favehotellaundrylogbook.vercel.app.</td>
             </tr>
             <tr>
               <td><strong>Hardware Scanner</strong></td>

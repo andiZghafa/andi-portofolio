@@ -120,8 +120,10 @@
         id: "twc-pos-system",
         title: "Prambanan & Ratu Boko Enterprise Point of Sale (POS)",
         subtitle:
-          "Mission-Critical Cashier & Multi-Warehouse System across UNESCO Heritage Parks",
-        category: "system",
+          "Cashier & Multi-Warehouse ERP System across UNESCO Heritage Complex",
+        category: "web",
+        categories: ["web", "system"],
+        categoryLabel: "Full-Stack Web & POS System",
         role: "IT Development and Data Management Intern",
         period: "Aug 2026 - Present",
         description:
@@ -316,7 +318,9 @@
         id: "aspire",
         title: "ASPIRE: Career & Course Recommendation Platform",
         subtitle: "AI-Powered Academic & Career Guidance System",
-        category: "ai",
+        category: "web",
+        categories: ["web", "ai"],
+        categoryLabel: "Full-Stack Web & AI",
         role: "Project Manager & Lead Full-Stack Developer",
         period: "2025 - 2026",
         description:
@@ -349,25 +353,38 @@
       },
       {
         id: "favehotel-app",
-        title: "FaveHotel Laundry & Inventory Mobile App",
-        subtitle: "QR-Code Driven Operational Logbook & Inventory Tracking",
-        category: "mobile",
+        title: "FaveHotel Laundry & Inventory App",
+        subtitle:
+          "QR-Code Driven Operational Logbook & Inventory Tracking (Web & Mobile)",
+        category: "web",
+        categories: ["web", "mobile"],
+        categoryLabel: "Web & Mobile App",
         role: "Solo Developer & Software Engineering Intern",
         period: "Jul 2025 - Sep 2025",
         description:
-          "Custom mobile application built to replace legacy manual paper logbooks in hotel operations, featuring real-time QR inventory tracking, cloud spreadsheet sync, and automated kitchen closing tools.",
+          "Web and mobile application built to replace legacy manual paper logbooks in hotel operations, featuring real-time QR inventory tracking, cloud spreadsheet sync, and automated kitchen closing tools.",
         overview:
-          "During my industrial internship at FaveHotel Bogor, hotel operations relied on paper laundry logs and manual stock-taking, causing discrepancies and delays. I designed, engineered, and deployed a production-ready mobile application from scratch. The solution empowered operational staff to scan linen batches via QR codes, log weights and room numbers, and sync directly to Google Sheets in real time.",
+          "During my industrial internship at FaveHotel Bogor, hotel operations relied on paper laundry logs and manual stock-taking, causing discrepancies and delays. I designed, engineered, and deployed a production-ready application from scratch. Operational staff used the app to scan linen batches via QR codes, log weights and room numbers, and sync directly to Google Sheets in real time, with desktop web access deployed on Vercel.",
         keyFeatures: [
           "High-speed QR code camera scanner for bulk linen batch and amenity tracking",
           "Live bi-directional synchronization with cloud spreadsheets for immediate management reporting",
+          "Cross-platform Flutter build deployed to Vercel for web access and Android devices",
           "Kitchen closing-time validation utility and checklist to enforce hygiene and equipment shutdown protocols",
           "End-to-end user testing and on-site staff training sessions conducted solo",
+          "Complete user documentation and operation manual authored for hotel staff",
         ],
-        tags: ["Flutter", "Dart", "QR Scanner", "Spreadsheet API", "Mobile UX"],
+        tags: [
+          "Flutter Web",
+          "Dart",
+          "QR Scanner",
+          "Spreadsheet API",
+          "Vercel",
+          "Operations",
+        ],
         image: "assets/images/favehotel.jpg",
         fallbackImage: "porto.jpeg",
         links: {
+          demo: "https://favehotellaundrylogbook.vercel.app/",
           docs: "docs/favehotel-app-documentation.html",
           pdf: "porto 1.pdf",
           drive:
@@ -414,9 +431,13 @@
 
     // Filter projects
     const filtered = projects.filter((p) => {
+      const projectCats = [
+        (p.category || "").toLowerCase(),
+        ...((p.categories || []).map((c) => c.toLowerCase())),
+      ];
       const matchCategory =
         activeFilter === "all" ||
-        p.category.toLowerCase() === activeFilter.toLowerCase();
+        projectCats.includes(activeFilter.toLowerCase());
       const query = searchQuery.toLowerCase().trim();
       const matchSearch =
         !query ||
@@ -484,7 +505,10 @@
       ai: "AI & Machine Learning",
       system: "Systems & OOP",
     };
-    const catLabel = categoryLabels[p.category] || p.category.toUpperCase();
+    const catLabel =
+      p.categoryLabel ||
+      categoryLabels[p.category] ||
+      p.category.toUpperCase();
 
     const imgSrc = p.image || p.fallbackImage || "assets/images/aspire.png";
     const fallbackSrc =
@@ -667,7 +691,7 @@
         />
       </div>
       <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 8px;">
-        <span class="category-tag">${escapeHTML(p.category.toUpperCase())}</span>
+        <span class="category-tag">${escapeHTML(p.categoryLabel ? p.categoryLabel.toUpperCase() : p.category.toUpperCase())}</span>
         <span style="font-family: var(--font-mono); font-size: 12.5px; color: var(--text-muted);">${escapeHTML(p.period || "")}</span>
       </div>
       <h2 style="font-family: var(--font-display); font-size: 24px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
