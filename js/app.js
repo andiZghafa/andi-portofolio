@@ -127,7 +127,7 @@
         role: "IT Development and Data Management Intern",
         period: "Aug 2026 - Present",
         description:
-          "Enterprise point-of-sale ecosystem deployed across cashier ticketing counters in Candi Prambanan and Candi Ratu Boko, featuring offline-first resilience, multi-warehouse inventory mutations, and direct Bluetooth thermal ESC/POS printing.",
+          "Enterprise point-of-sale ecosystem deployed across cashier ticketing counters in Candi Prambanan and Keraton Ratu Boko, featuring offline-first resilience, multi-warehouse inventory mutations, and direct Bluetooth thermal ESC/POS printing.",
         overview:
           "Engineered a high-concurrency point-of-sale and retail management system operating live at ticketing and merchant locations across Prambanan and Ratu Boko tourist complexes under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). Built as a reactive Single Page Application (SPA) combining Laravel 13, Inertia.js 3, and React 19, alongside a native Android APK build via Capacitor that bridges directly to Bluetooth Classic (SPP) thermal printers (BP-LITE80D) for instantaneous receipt printing without browser print dialogs. Manages multi-warehouse inventory, cashier shift reconciliation, and automated WhatsApp transaction dispatch.",
         keyFeatures: [
@@ -353,33 +353,32 @@
       },
       {
         id: "favehotel-app",
-        title: "FaveHotel Laundry & Inventory App",
+        title: "FaveHotel Laundry Logbook & Linen Inventory App",
         subtitle:
-          "QR-Code Driven Operational Logbook & Inventory Tracking (Web & Mobile)",
+          "Production Web Application for Hotel Linen Operations & Batch Tracking",
         category: "web",
         categories: ["web", "mobile"],
-        categoryLabel: "Web & Mobile App",
+        categoryLabel: "Production Web App",
         role: "Solo Developer & Software Engineering Intern",
         period: "Jul 2025 - Sep 2025",
         description:
-          "Web and mobile application built to replace legacy manual paper logbooks in hotel operations, featuring real-time QR inventory tracking, cloud spreadsheet sync, and automated kitchen closing tools.",
+          "Production web application built to digitize manual paper logbooks in hotel laundry operations, featuring real-time linen batch tracking, cloud spreadsheet synchronization, and Vercel cloud deployment.",
         overview:
-          "During my industrial internship at FaveHotel Bogor, hotel operations relied on paper laundry logs and manual stock-taking, causing discrepancies and delays. I designed, engineered, and deployed a production-ready application from scratch. Operational staff used the app to scan linen batches via QR codes, log weights and room numbers, and sync directly to Google Sheets in real time, with desktop web access deployed on Vercel.",
+          "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live on Vercel, the app enables staff to record incoming/outgoing linen batches, track weights and counts, and synchronize records instantly to cloud spreadsheets with zero operational downtime.",
         keyFeatures: [
-          "High-speed QR code camera scanner for bulk linen batch and amenity tracking",
-          "Live bi-directional synchronization with cloud spreadsheets for immediate management reporting",
-          "Cross-platform Flutter build deployed to Vercel for web access and Android devices",
-          "Kitchen closing-time validation utility and checklist to enforce hygiene and equipment shutdown protocols",
-          "End-to-end user testing and on-site staff training sessions conducted solo",
-          "Complete user documentation and operation manual authored for hotel staff",
+          "Direct linen batch recording: logs incoming/outgoing linens, unit weights, item classifications, and timestamped shift logs",
+          "Instant bidirectional cloud synchronization with spreadsheets, cutting weekly management reporting time from 5 hours to instant",
+          "Deployed on Vercel (favehotellaundrylogbook.vercel.app) with responsive web access for both desktop front-desk and tablet use",
+          "Built with Flutter Web & Dart, optimized for rapid data entry with minimal network bandwidth overhead",
+          "On-site staff onboarding and complete operational documentation delivered for hotel housekeeping operations",
         ],
         tags: [
           "Flutter Web",
           "Dart",
-          "QR Scanner",
           "Spreadsheet API",
           "Vercel",
           "Operations",
+          "Inventory Management",
         ],
         image: "assets/images/favehotel.jpg",
         fallbackImage: "porto.jpeg",

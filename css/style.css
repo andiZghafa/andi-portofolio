@@ -269,7 +269,7 @@ textarea:focus-visible,
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 56px;
 }
 
 .nav-brand {
@@ -376,23 +376,23 @@ textarea:focus-visible,
    HERO SECTION
    ========================================================================== */
 .hero-section {
-  padding: 56px 0 48px;
+  padding: 24px 0 20px;
   border-bottom: 1px solid var(--border-subtle);
   position: relative;
 }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
+  grid-template-columns: 1.35fr 0.65fr;
   align-items: center;
-  gap: 48px;
-  margin-bottom: 44px;
+  gap: 32px;
+  margin-bottom: 18px;
 }
 
 @media (max-width: 900px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
   }
 }
 
@@ -400,15 +400,15 @@ textarea:focus-visible,
 .hero-status-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 600;
   color: var(--accent-text);
   background: var(--accent-tint);
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: var(--radius-sm);
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   border: 1px solid var(--border-subtle);
 }
 
@@ -421,20 +421,48 @@ textarea:focus-visible,
 
 .hero-headline {
   font-family: var(--font-display);
-  font-size: clamp(2.3rem, 4.8vw, 3.4rem);
+  font-size: clamp(2.05rem, 3.8vw, 2.9rem);
   font-weight: 800;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  margin-bottom: 18px;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+  margin-bottom: 8px;
   color: var(--text-primary);
 }
 
-.hero-bio {
-  font-size: clamp(15.5px, 1.8vw, 17.5px);
+.hero-role-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
   color: var(--text-secondary);
-  max-width: 620px;
-  line-height: 1.65;
-  margin-bottom: 28px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-role-cred {
+  color: var(--navy);
+  background: rgba(20, 33, 61, 0.08);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .hero-role-cred {
+  color: var(--coral);
+  background: rgba(255, 107, 91, 0.12);
+}
+
+.hero-role-sep {
+  opacity: 0.5;
+}
+
+.hero-bio {
+  font-size: clamp(14px, 1.35vw, 15.5px);
+  color: var(--text-secondary);
+  max-width: 640px;
+  line-height: 1.58;
+  margin-bottom: 18px;
 }
 
 .hero-bio strong {
@@ -445,7 +473,7 @@ textarea:focus-visible,
 .hero-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -455,11 +483,11 @@ textarea:focus-visible,
   background: var(--bg-surface);
   border: 1px solid var(--border-strong);
   border-radius: var(--radius-lg);
-  padding: 12px;
+  padding: 10px;
   box-shadow: 
-    0 16px 36px -8px rgba(20, 33, 61, 0.16),
+    0 14px 30px -6px rgba(20, 33, 61, 0.16),
     0 0 0 1px rgba(20, 33, 61, 0.06);
-  max-width: 320px;
+  max-width: 250px;
   margin: 0 auto;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
 }
@@ -468,12 +496,12 @@ textarea:focus-visible,
   .hero-portrait-card:hover {
     transform: translateY(-3px);
     box-shadow: 
-      0 24px 44px -10px rgba(20, 33, 61, 0.24),
+      0 20px 38px -8px rgba(20, 33, 61, 0.22),
       0 0 0 1px var(--navy);
   }
   [data-theme="dark"] .hero-portrait-card:hover {
     box-shadow: 
-      0 24px 44px -10px rgba(0, 0, 0, 0.6),
+      0 20px 38px -8px rgba(0, 0, 0, 0.6),
       0 0 0 1px var(--coral);
   }
 }
@@ -481,7 +509,7 @@ textarea:focus-visible,
 .hero-portrait-wrap {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1.15;
   border-radius: calc(var(--radius-lg) - 6px);
   overflow: hidden;
   background: var(--navy);
@@ -497,33 +525,33 @@ textarea:focus-visible,
 
 .hero-portrait-badge {
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  right: 10px;
-  background: rgba(20, 33, 61, 0.90);
+  bottom: 8px;
+  left: 8px;
+  right: 8px;
+  background: rgba(20, 33, 61, 0.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(244, 237, 224, 0.2);
   border-radius: var(--radius-sm);
-  padding: 9px 12px;
+  padding: 6px 10px;
   color: var(--cream);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 6px;
 }
 
 .hero-portrait-badge-name {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .hero-portrait-badge-role {
-  font-size: 11px;
-  color: rgba(244, 237, 224, 0.82);
-  margin-top: 2px;
+  font-size: 10.5px;
+  color: rgba(244, 237, 224, 0.85);
+  margin-top: 1px;
 }
 
 .hero-portrait-badge-dot {
@@ -538,19 +566,19 @@ textarea:focus-visible,
 .hero-portrait-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 5px;
+  margin-top: 8px;
   justify-content: center;
 }
 
 .hero-portrait-chip {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 600;
   color: var(--text-secondary);
   background: var(--bg-surface-elevated);
   border: 1px solid var(--border-subtle);
-  padding: 3px 8px;
+  padding: 2px 7px;
   border-radius: var(--radius-xs);
 }
 
@@ -632,14 +660,14 @@ textarea:focus-visible,
 .bento-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
+  gap: 12px;
 }
 
 .stat-card {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 18px;
+  padding: 12px 14px;
   box-shadow: var(--card-shadow);
   position: relative;
   overflow: hidden;
@@ -670,16 +698,16 @@ textarea:focus-visible,
 
 .stat-card-label {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   color: var(--text-muted);
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .stat-card-value {
   font-family: var(--font-display);
-  font-size: 21px;
+  font-size: 17.5px;
   font-weight: 700;
   color: var(--navy);
   line-height: 1.2;
@@ -690,9 +718,10 @@ textarea:focus-visible,
 }
 
 .stat-card-desc {
-  font-size: 13px;
+  font-size: 11.5px;
   color: var(--text-secondary);
-  margin-top: 4px;
+  margin-top: 3px;
+  line-height: 1.38;
 }
 
 /* ==========================================================================

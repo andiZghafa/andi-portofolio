@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>FaveHotel Laundry &amp; Inventory App: Dokumentasi Aplikasi Operasional</title>
+    <title>FaveHotel Laundry Logbook &amp; Linen Inventory App: Dokumentasi Teknis</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -325,7 +325,7 @@
             <span>Portofolio</span>
           </a>
           <span class="topbar-sep">/</span>
-          <span class="topbar-title">FaveHotel Laundry &amp; Inventory App</span>
+          <span class="topbar-title">FaveHotel Laundry Logbook &amp; Linen Inventory</span>
         </div>
         <div class="topbar-actions">
           <a href="https://favehotellaundrylogbook.vercel.app/" target="_blank" class="topbar-btn topbar-btn-primary">
@@ -345,10 +345,10 @@
       <div class="container">
         <div class="badge-row">
           <span class="badge">Web &amp; Mobile Enterprise App</span>
-          <span class="badge badge-neutral">Flutter Web &middot; Dart &middot; QR Scanner</span>
+          <span class="badge badge-neutral">Flutter Web &middot; Dart &middot; Google Sheets API</span>
           <span class="badge badge-neutral">favehotellaundrylogbook.vercel.app</span>
         </div>
-        <h1 class="doc-hero-title">FaveHotel Laundry &amp; Inventory App: Dokumentasi Teknis</h1>
+        <h1 class="doc-hero-title">FaveHotel Laundry Logbook &amp; Linen Inventory App: Dokumentasi Teknis</h1>
         <div class="doc-meta-strip">
           <span class="doc-meta-item"><strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (Solo Developer / Intern)</span>
           <span class="doc-meta-sep">&middot;</span>
@@ -391,7 +391,7 @@
         <ul>
           <li><strong>Selisih Stok &amp; Kehilangan Kain:</strong> Sulit melacak apakah linen sedang dicuci di vendor eksternal, disimpan di gudang transit, atau sudah didistribusikan ke kamar.</li>
           <li><strong>Keterlambatan Laporan Manajemen:</strong> Rekapitulasi mingguan harus disalin ulang secara manual ke komputer, memakan waktu 4 - 6 jam kerja staf per minggu.</li>
-          <li><strong>Prosedur Penutupan Dapur (Kitchen Closing):</strong> Kurangnya checklist terstandarisasi untuk memastikan kebersihan, pemadaman kompor, dan penyimpanan bahan makanan beku sebelum staf pulang.</li>
+          <li><strong>Pencatatan Rentan Rusak:</strong> Buku log fisik di area laundry lembab sering basah, sobek, atau tulisannya memudar sehingga menyulitkan audit akhir bulan.</li>
         </ul>
         <div class="screenshot-container">
           <img src="../assets/images/favehotel.jpg" alt="Antarmuka Aplikasi FaveHotel" />
@@ -406,10 +406,9 @@
           Saya merancang dan membangun aplikasi berbasis <strong>Flutter (Dart)</strong> yang dapat dijalankan langsung pada ponsel Android staf operasional maupun diakses melalui browser:
         </p>
         <ul>
-          <li><strong>Pemindai QR Kamera Berkecepatan Tinggi:</strong> Setiap keranjang dan kelompok linen diberi label stiker kode QR unik. Staf cukup mengarahkan kamera untuk mengidentifikasi batch barang dalam hitungan milidetik.</li>
+          <li><strong>Pemindai QR &amp; Formulir Batch Cepat:</strong> Setiap kelompok linen diberi label identifikasi untuk mempercepat pencatatan puluhan potong kain dalam hitungan detik.</li>
           <li><strong>Sinkronisasi Spreadsheet Dua Arah (Google Sheets API):</strong> Untuk menghindari biaya sewa server basis data yang mahal, data mutasi stok langsung disinkronkan secara real-time ke spreadsheet cloud manajemen hotel. Manajemen dapat memantau grafik stok secara langsung tanpa konfigurasi server yang rumit.</li>
           <li><strong>Deployment Web (Vercel) &amp; Android:</strong> Selain format APK mobile, aplikasi dikompilasi menjadi Flutter Web dan dideploy di Vercel pada domain <a href="https://favehotellaundrylogbook.vercel.app/" target="_blank" style="color: var(--accent); font-weight: 600;">favehotellaundrylogbook.vercel.app</a> agar manajemen dapat mengecek stok dari laptop atau PC kantor.</li>
-          <li><strong>Modul Checklist Penutupan Dapur:</strong> Validasi alur SOP kebersihan dapur dengan catatan waktu digital (timestamp) untuk mencegah kelalaian operasional.</li>
         </ul>
       </section>
 
