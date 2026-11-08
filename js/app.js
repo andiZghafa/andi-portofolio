@@ -175,7 +175,8 @@
         image: "assets/images/museum-hero.jpg",
         fallbackImage: "assets/images/museum-icon.png",
         links: {
-          demo: "https://museumprambanan.twc.id"
+          demo: "https://museumprambanan.twc.id",
+          docs: "docs/museum-prambanan-documentation.html"
         },
         featured: true,
         order: 3
@@ -207,6 +208,34 @@
         order: 4
       },
       {
+        id: "thesis-yolov11-traffic",
+        title: "Bandung Urban Traffic Density Estimation via YOLOv11 & DeepSORT",
+        subtitle: "Computer Vision Research Defense at Telkom University (School of Computing)",
+        category: "ai",
+        role: "Lead Researcher & Computer Vision Engineer",
+        period: "2025 - 2026",
+        description: "Fine-tuned YOLOv11 and DeepSORT pipeline trained on 21,277 vehicle instances across 17 municipal CCTV locations (Pelindung Bandung) for real-time motorcycle and car density tracking with 98.1% counting accuracy.",
+        overview: "Undergraduate research and engineering defense at Telkom University supervised by Dr. Edward Ferdian and Dr. Ema Rachmawati. Solved the critical limitation of conventional traffic detection models that fail in motorcycle-dominant Southeast Asian urban centers. Built an automated dataset extraction engine using Python + Selenium to sample 17 municipal CCTV feeds from Pelindung Bandung, annotated 1,515 frames across peak hours, applied directional flipping and grain injection augmentations, and fine-tuned YOLOv11 + DeepSORT. Achieved 65.5% mAP@50 (vs 12.1% baseline YOLOv11) with an 87.5x increase in motorcycle recall (70.0% vs 0.8%), reaching 98.1% real-world counting accuracy in light traffic and 85.0% in heavy congestion.",
+        keyFeatures: [
+          "Automated Municipal CCTV Pipeline: Custom Python + Selenium crawler extracting temporal frames every 10s from 17 Bandung Government CCTV locations",
+          "Domain-Specific Dataset Curation: 1,515 annotated frames (21,277 vehicle instances; 62.5% motorcycles, 37.5% cars) with noise injection and horizontal flip augmentations",
+          "YOLOv11 + DeepSORT Tracking Architecture: Bounded 640x640 real-time inference with Kalman filtering and appearance association across virtual counting lines",
+          "87.5x Motorcycle Recall Surge: Reached 70.0% recall and 79.5% precision on test set, cutting baseline false negative rate from 99.2% to 30.0%",
+          "Robust Real-World & Cross-City Generalization: Validated across 8 additional Bandung intersections (Gasibu, Pasteur, Jalaprang) and cross-city footage with 92.2% accuracy"
+        ],
+        tags: ["Computer Vision", "YOLOv11", "DeepSORT", "Python", "Selenium", "Roboflow", "PyTorch", "Telkom University"],
+        image: "assets/images/yolov11-traffic-hero.png",
+        fallbackImage: "assets/images/yolov11-traffic-hero.png",
+        links: {
+          demo: "https://youtu.be/9cTdaF5clIw",
+          drive: "https://drive.google.com/drive/folders/1uMvcc6kVqGnQQrBfZKppbOnqAGGQic4M?usp=sharing",
+          docs: "docs/thesis-traffic-yolo-documentation.html",
+          pdf: "docs/Andi_Ghafa_Thesis_Paper_ICOICT.pdf"
+        },
+        featured: true,
+        order: 5
+      },
+      {
         id: "aspire",
         title: "ASPIRE — Career & Course Recommendation Platform",
         subtitle: "AI-Powered Academic & Career Guidance System",
@@ -226,10 +255,12 @@
         fallbackImage: "porto2.png",
         links: {
           demo: "https://aspire-mu.vercel.app/",
+          github: "https://github.com/BryanDhaniel/ASPIRE",
+          docs: "docs/aspire-documentation.html",
           pdf: "porto 2.pdf"
         },
         featured: false,
-        order: 5
+        order: 6
       },
       {
         id: "favehotel-app",
@@ -250,11 +281,12 @@
         image: "assets/images/favehotel.jpg",
         fallbackImage: "porto.jpeg",
         links: {
+          docs: "docs/favehotel-app-documentation.html",
           pdf: "porto 1.pdf",
           drive: "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing"
         },
         featured: false,
-        order: 6
+        order: 7
       },
       {
         id: "library-system",
@@ -275,10 +307,12 @@
         image: "assets/images/library.png",
         fallbackImage: "porto 3.png",
         links: {
+          github: "https://github.com/andiZghafa/Console-Based-Library-Management-System",
+          docs: "docs/library-system-documentation.html",
           pdf: "porto 3.pdf"
         },
         featured: false,
-        order: 7
+        order: 8
       }
     ];
   }
@@ -369,13 +403,14 @@
     const docsUrl = links.docs || (links.manual && links.manual.endsWith('.html') ? links.manual : null);
     const pdfUrl = links.pdf || (links.manual && links.manual.endsWith('.pdf') ? links.manual : null);
     const driveUrl = links.drive;
+    const isVideo = demoUrl && (demoUrl.includes('youtube.com') || demoUrl.includes('youtu.be'));
 
     let primaryActionHTML = '';
     if (demoUrl) {
       primaryActionHTML = `
-        <a href="${escapeHTML(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-primary" title="Open Live Demo">
+        <a href="${escapeHTML(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn-card-action btn-card-primary" title="${isVideo ? 'Watch CCTV Demo' : 'Open Live Demo'}">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          <span>Live Demo</span>
+          <span>${isVideo ? 'Video Demo' : 'Live Demo'}</span>
         </a>
       `;
     } else if (docsUrl) {
@@ -463,30 +498,41 @@
     const demoUrl = links.demo;
     const docsUrl = links.docs || (links.manual && links.manual.endsWith('.html') ? links.manual : null);
     const pdfUrl = links.pdf || (links.manual && links.manual.endsWith('.pdf') ? links.manual : null);
+    const paperUrl = links.paper;
     const driveUrl = links.drive;
     const githubUrl = links.github;
+    const isVideo = demoUrl && (demoUrl.includes('youtube.com') || demoUrl.includes('youtu.be'));
 
     if (demoUrl) {
       actionButtonsHTML += `
         <a href="${escapeHTML(demoUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 18px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-          Visit Live Demo
+          ${isVideo ? 'Watch CCTV Demo' : 'Visit Live Demo'}
         </a>
       `;
     }
     if (docsUrl) {
       actionButtonsHTML += `
-        <a href="${escapeHTML(docsUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="font-size: 13.5px; padding: 9px 18px;">
+        <a href="${escapeHTML(docsUrl)}" target="_blank" rel="noopener noreferrer" class="btn ${demoUrl ? 'btn-secondary' : 'btn-primary'}" style="font-size: 13.5px; padding: 9px 18px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
           System Documentation
         </a>
       `;
     }
+    if (paperUrl) {
+      actionButtonsHTML += `
+        <a href="${escapeHTML(paperUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          Research Paper (PDF)
+        </a>
+      `;
+    }
     if (pdfUrl) {
+      const pdfLabel = pdfUrl.toLowerCase().includes('paper') ? 'Research Paper (PDF)' : 'View Manual (PDF)';
       actionButtonsHTML += `
         <a href="${escapeHTML(pdfUrl)}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="font-size: 13.5px; padding: 9px 18px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-          View Manual (PDF)
+          ${pdfLabel}
         </a>
       `;
     }

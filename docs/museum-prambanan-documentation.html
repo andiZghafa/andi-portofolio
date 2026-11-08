@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Museum Candi Prambanan &mdash; Dokumentasi Web Portal &amp; Digital Catalog</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #14213D;
+        --cream: #F4EDE0;
+        --coral: #FF6B5B;
+        --primary: #14213D;
+        --primary-light: rgba(20, 33, 61, 0.08);
+        --accent: #FF6B5B;
+        --accent-light: rgba(255, 107, 91, 0.12);
+        --bg-page: #F4EDE0;
+        --bg-surface: #FFFFFF;
+        --text-main: #14213D;
+        --text-muted: #53637F;
+        --border: rgba(20, 33, 61, 0.14);
+        --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --font-display: "Plus Jakarta Sans", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-sans);
+        color: var(--text-main);
+        background-color: var(--bg-page);
+        background-image: 
+          radial-gradient(ellipse 1150px 750px at 100% -5%, rgba(20, 33, 61, 0.36) 0%, transparent 70%),
+          radial-gradient(ellipse 800px 500px at -5% 20%, rgba(255, 107, 91, 0.18) 0%, transparent 65%),
+          radial-gradient(circle 950px at 105% 70%, rgba(20, 33, 61, 0.30) 0%, transparent 65%),
+          radial-gradient(circle 800px at -5% 85%, rgba(20, 33, 61, 0.22) 0%, transparent 60%),
+          linear-gradient(135deg, #E2DDD2 0%, #C8D7EC 24%, #F4EDE0 55%, #FDE9E6 82%, #CBD9EB 100%);
+        background-attachment: fixed;
+        background-size: cover;
+        line-height: 1.65;
+        padding-bottom: 60px;
+      }
+      .doc-header {
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--border);
+        padding: 28px 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+      }
+      .container {
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .badge-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .badge {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      .badge-neutral {
+        background: #EDE5D5;
+        color: var(--text-main);
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.25;
+        color: var(--primary);
+      }
+      .doc-meta {
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+      .doc-nav-btn {
+        margin-top: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        border: 1px solid var(--primary);
+        background: transparent;
+        padding: 7px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .doc-nav-btn:hover {
+        background: var(--primary);
+        color: #ffffff;
+      }
+      .content-body {
+        padding: 36px 0;
+      }
+      .section-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(20, 33, 61, 0.04);
+      }
+      h2 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+        color: var(--primary);
+      }
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 20px 0 8px;
+        color: var(--primary);
+      }
+      p { margin-bottom: 14px; font-size: 15px; }
+      ul, ol { padding-left: 24px; margin-bottom: 16px; font-size: 14.5px; }
+      li { margin-bottom: 6px; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 13.5px;
+      }
+      th, td {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      th { background: #F8F5EE; font-weight: 600; color: var(--primary); }
+      code {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        background: #EDE5D5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--primary);
+      }
+      pre {
+        background: #14213D;
+        color: #F4EDE0;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        margin: 14px 0;
+      }
+      .callout {
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 107, 91, 0.08);
+        padding: 14px 18px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14px;
+        margin: 16px 0;
+      }
+      .screenshot-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+      }
+      .screenshot-container img {
+        width: 100%;
+        display: block;
+      }
+      .screenshot-caption {
+        padding: 8px 14px;
+        background: #F8F5EE;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      @media print {
+        .doc-header { position: static; }
+        .doc-nav-btn { display: none; }
+        .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="doc-header">
+      <div class="container">
+        <div class="badge-row">
+          <span class="badge">Official Public Portal &amp; CMS</span>
+          <span class="badge badge-neutral">museumprambanan.twc.id</span>
+          <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
+        </div>
+        <h1>Museum Candi Prambanan &mdash; Arsitektur Web Portal &amp; Manajemen Koleksi</h1>
+        <div class="doc-meta">
+          <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (IT Development &amp; Data Management Intern) &middot;
+          <strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
+          <strong>Domain Produksi:</strong> museumprambanan.twc.id &middot;
+          <strong>Tahun:</strong> 2026
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
+          <a href="https://museumprambanan.twc.id" target="_blank" class="doc-nav-btn">Kunjungi Situs Resmi ↗</a>
+          <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container content-body">
+      <!-- 1. Ringkasan & Konteks Lapangan -->
+      <section class="section-card">
+        <h2>1. Latar Belakang &amp; Tujuan Proyek</h2>
+        <p>
+          Museum Candi Prambanan menyimpan berbagai koleksi arkeologi bernilai sejarah tinggi, termasuk prasasti batu kuno (seperti Prasasti Siwagrha dan Prasasti Klurak), arca-arca candi, dan dokumentasi pemugaran kompleks Prambanan dari masa kolonial hingga modern.
+        </p>
+        <div class="screenshot-container">
+          <img src="../assets/images/museum-hero.jpg" alt="Tampilan Beranda Museum Candi Prambanan" />
+          <div class="screenshot-caption">Gambar 1: Antarmuka beranda resmi museumprambanan.twc.id dengan kurasi visual candi dan navigasi katalog digital.</div>
+        </div>
+        <p>
+          Selama masa magang saya di unit IT Development PT Taman Wisata Candi, saya merombak antarmuka (UI) dan alur pengalaman pengguna (UX) portal <strong>museumprambanan.twc.id</strong>. Tujuannya adalah memperkuat kehadiran digital museum, menyediakan katalog artefak yang mudah diakses peneliti dan wisatawan, serta memberikan modul CMS bagi kurator museum untuk memperbarui informasi koleksi secara mandiri.
+        </p>
+      </section>
+
+      <!-- 2. Fitur Utama & Modul Sistem -->
+      <section class="section-card">
+        <h2>2. Modul Utama Sistem</h2>
+        <ul>
+          <li><strong>Katalog Digital Koleksi Arkeologi:</strong> Menampilkan foto resolusi tinggi, transliterasi prasasti, konteks sejarah penemuan, serta lokasi situs candi asal (Candi Sewu, Candi Bubrah, Candi Lumbung, Candi Prambanan).</li>
+          <li><strong>Pelacak Kunjungan Real-Time (Visitor Counter):</strong> Modul pencatat metrik kunjungan harian yang terintegrasi untuk memantau trafik pengunjung situs web.</li>
+          <li><strong>Curator Content Management System (CMS):</strong> Panel admin terproteksi bagi tim edukasi dan kurator museum untuk menambahkan artefak baru, mengedit narasi sejarah, dan memperbarui jadwal pameran khusus.</li>
+          <li><strong>Performa &amp; Responsivitas Mobile:</strong> Mengingat sebagian besar wisatawan mengakses portal melalui perangkat seluler saat berada di kawasan candi, tata letak dioptimalkan dengan aset gambar terkompresi dan interaksi bebas lag.</li>
+        </ul>
+      </section>
+
+      <!-- 3. Arsitektur Teknis -->
+      <section class="section-card">
+        <h2>3. Arsitektur &amp; Tumpukan Teknologi</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Layer</th>
+              <th>Teknologi</th>
+              <th>Peran Teknis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Backend Framework</strong></td>
+              <td>Laravel &amp; PHP 8.3</td>
+              <td>Routing publik, manajemen sesi kurator, autentikasi aman, dan pengolahan data katalog.</td>
+            </tr>
+            <tr>
+              <td><strong>Frontend Templating</strong></td>
+              <td>Blade Components</td>
+              <td>Server-side rendering (SSR) modular untuk kecepatan load awal (First Contentful Paint) optimal.</td>
+            </tr>
+            <tr>
+              <td><strong>Styling &amp; Desain</strong></td>
+              <td>Tailwind CSS</td>
+              <td>Tipografi hierarkis, desain responsif multi-perangkat, dan palet visual selaras warisan budaya.</td>
+            </tr>
+            <tr>
+              <td><strong>Asset Bundler</strong></td>
+              <td>Vite</td>
+              <td>Kompilasi CSS/JS ringkas untuk meminimalkan beban bandwidth wisatawan di lapangan.</td>
+            </tr>
+            <tr>
+              <td><strong>Database</strong></td>
+              <td>MySQL</td>
+              <td>Penyimpanan relasional artefak, kategori era sejarah, metadata media, dan log kunjungan.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- 4. Dampak Operasional -->
+      <section class="section-card">
+        <h2>4. Hasil &amp; Dampak Lapangan</h2>
+        <p>
+          Platform telah terpasang dan berjalan langsung (<em>live production</em>) di bawah domain <code>museumprambanan.twc.id</code>. Pembaruan ini memudahkan kurator museum mempublikasikan temuan arkeologi baru tanpa harus menunggu modifikasi kode dari pihak vendor luar, sekaligus menjadi pintu gerbang edukasi bagi wisatawan sebelum dan sesudah mengunjungi situs fisik Candi Prambanan.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

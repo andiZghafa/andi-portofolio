@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Bandung Urban Traffic Analysis via YOLOv11 &mdash; Thesis Research Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #14213D;
+        --cream: #F4EDE0;
+        --coral: #FF6B5B;
+        --primary: #14213D;
+        --primary-light: rgba(20, 33, 61, 0.08);
+        --accent: #FF6B5B;
+        --accent-light: rgba(255, 107, 91, 0.12);
+        --bg-page: #F4EDE0;
+        --bg-surface: #FFFFFF;
+        --text-main: #14213D;
+        --text-muted: #53637F;
+        --border: rgba(20, 33, 61, 0.14);
+        --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        --font-display: "Plus Jakarta Sans", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      body {
+        font-family: var(--font-sans);
+        color: var(--text-main);
+        background-color: var(--bg-page);
+        background-image: 
+          radial-gradient(ellipse 1150px 750px at 100% -5%, rgba(20, 33, 61, 0.36) 0%, transparent 70%),
+          radial-gradient(ellipse 800px 500px at -5% 20%, rgba(255, 107, 91, 0.18) 0%, transparent 65%),
+          radial-gradient(circle 950px at 105% 70%, rgba(20, 33, 61, 0.30) 0%, transparent 65%),
+          radial-gradient(circle 800px at -5% 85%, rgba(20, 33, 61, 0.22) 0%, transparent 60%),
+          linear-gradient(135deg, #E2DDD2 0%, #C8D7EC 24%, #F4EDE0 55%, #FDE9E6 82%, #CBD9EB 100%);
+        background-attachment: fixed;
+        background-size: cover;
+        line-height: 1.65;
+        padding-bottom: 60px;
+      }
+      .doc-header {
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--border);
+        padding: 28px 0;
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(10px);
+      }
+      .container {
+        width: 100%;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+      .badge-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 12px;
+      }
+      .badge {
+        font-family: var(--font-mono);
+        font-size: 11.5px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 4px;
+        background: var(--primary-light);
+        color: var(--primary);
+      }
+      .badge-neutral {
+        background: #EDE5D5;
+        color: var(--text-main);
+      }
+      h1 {
+        font-family: var(--font-display);
+        font-size: 26px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        line-height: 1.25;
+        color: var(--primary);
+      }
+      .doc-meta {
+        font-size: 13.5px;
+        color: var(--text-muted);
+      }
+      .doc-nav-btn {
+        margin-top: 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--primary);
+        text-decoration: none;
+        border: 1px solid var(--primary);
+        background: transparent;
+        padding: 7px 16px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .doc-nav-btn:hover {
+        background: var(--primary);
+        color: #ffffff;
+      }
+      .content-body {
+        padding: 36px 0;
+      }
+      .section-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 32px;
+        margin-bottom: 24px;
+        box-shadow: 0 1px 3px rgba(20, 33, 61, 0.04);
+      }
+      h2 {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 16px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border);
+        color: var(--primary);
+      }
+      h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 20px 0 8px;
+        color: var(--primary);
+      }
+      p { margin-bottom: 14px; font-size: 15px; }
+      ul, ol { padding-left: 24px; margin-bottom: 16px; font-size: 14.5px; }
+      li { margin-bottom: 6px; }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0;
+        font-size: 13.5px;
+      }
+      th, td {
+        padding: 10px 14px;
+        border: 1px solid var(--border);
+        text-align: left;
+      }
+      th { background: #F8F5EE; font-weight: 600; color: var(--primary); }
+      code {
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        background: #EDE5D5;
+        padding: 2px 6px;
+        border-radius: 4px;
+        color: var(--primary);
+      }
+      pre {
+        background: #14213D;
+        color: #F4EDE0;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: var(--font-mono);
+        font-size: 12.5px;
+        margin: 14px 0;
+      }
+      .callout {
+        border-left: 4px solid var(--accent);
+        background: rgba(255, 107, 91, 0.08);
+        padding: 14px 18px;
+        border-radius: 0 8px 8px 0;
+        font-size: 14px;
+        margin: 16px 0;
+      }
+      .screenshot-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+      }
+      .screenshot-container img {
+        width: 100%;
+        display: block;
+      }
+      .screenshot-caption {
+        padding: 8px 14px;
+        background: #F8F5EE;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+      }
+      .metric-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      .metric-box {
+        background: #F8F5EE;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 16px;
+        text-align: center;
+      }
+      .metric-val {
+        font-family: var(--font-display);
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--primary);
+      }
+      .metric-label {
+        font-size: 12px;
+        color: var(--text-muted);
+        font-family: var(--font-mono);
+        margin-top: 4px;
+      }
+      @media print {
+        .doc-header { position: static; }
+        .doc-nav-btn { display: none; }
+        .section-card { box-shadow: none; border: 1px solid #ccc; page-break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="doc-header">
+      <div class="container">
+        <div class="badge-row">
+          <span class="badge">Undergraduate Thesis Defense</span>
+          <span class="badge badge-neutral">Computer Vision &middot; YOLOv11 &middot; DeepSORT</span>
+          <span class="badge badge-neutral">Telkom University (School of Computing)</span>
+        </div>
+        <h1>Analysis of Transportation Movement In and Outflow within Bandung City Using YOLOv11</h1>
+        <div class="doc-meta">
+          <strong>Penulis:</strong> Andi Ziyadh Ghafa Ramadhan (NIM: 1301224086) &middot;
+          <strong>Pembimbing:</strong> Dr. Edward Ferdian, S.T., B.Sc., M.Sc. &amp; Dr. Ema Rachmawati, S.T., M.T. &middot;
+          <strong>Tahun:</strong> 2025 &ndash; 2026
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
+          <a href="Andi_Ghafa_Thesis_Paper_ICOICT.pdf" target="_blank" class="doc-nav-btn">Unduh Paper Ilmiah (PDF) 📄</a>
+          <a href="https://drive.google.com/drive/folders/1uMvcc6kVqGnQQrBfZKppbOnqAGGQic4M?usp=sharing" target="_blank" class="doc-nav-btn">Dataset &amp; Google Drive ↗</a>
+          <a href="https://youtu.be/9cTdaF5clIw" target="_blank" class="doc-nav-btn">Demo Video CCTV (YouTube) ↗</a>
+          <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container content-body">
+      <!-- 1. Ringkasan & Latar Belakang Masalah -->
+      <section class="section-card">
+        <h2>1. Latar Belakang Masalah Nyata di Kota Bandung</h2>
+        <p>
+          Kota Bandung menempati peringkat ke-12 kota termacet di dunia berdasarkan <em>TomTom Traffic Index</em>, dengan pertumbuhan jumlah kendaraan mencapai <strong>9,34% per tahun</strong>, jauh melampaui pertumbuhan infrastruktur jalan yang hanya <strong>1,46%</strong>. Kecepatan rata-rata kendaraan saat jam sibuk merosot hingga <strong>14,1 km/jam</strong>.
+        </p>
+        <p>
+          Mayoritas model *computer vision* dan *object detection* standar industri (seperti model dasar YOLO yang dilatih dengan dataset COCO dari negara-negara Barat) didominasi oleh deteksi mobil berukuran besar. Ketika diterapkan pada lalu lintas kota di Asia Tenggara seperti Bandung&mdash;di mana <strong>sepeda motor mendominasi lebih dari 60% populasi kendaraan</strong>&mdash;model standar mengalami kegagalan fatal:
+        </p>
+        <ul>
+          <li><strong>Ukuran Piksel Sangat Kecil:</strong> Sepeda motor pada rekaman CCTV persimpangan jalan memiliki area piksel 3 hingga 5 kali lebih kecil dibandingkan mobil.</li>
+          <li><strong>Oklusi Parah &amp; Manuver Selap-Selip:</strong> Formasi sepeda motor yang sangat padat dan saling bertumpuk (clustering) menyebabkan model standar sering melewatkan objek (missed detections) atau menganggap beberapa motor sebagai satu kesatuan.</li>
+          <li><strong>Bias Mobil:</strong> Model baseline melewatkan hingga 99,2% sepeda motor pada pengujian awal.</li>
+        </ul>
+
+        <div class="metric-grid">
+          <div class="metric-box">
+            <div class="metric-val">65.5%</div>
+            <div class="metric-label">mAP@50 (vs 12.1% Baseline)</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">87.5&times;</div>
+            <div class="metric-label">Peningkatan Recall Motor</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">98.1%</div>
+            <div class="metric-label">Akurasi Hitung Lapangan</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val">21,277</div>
+            <div class="metric-label">Objek Anotasi Kendaraan</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Pipeline Ekstraksi Data Otomatis -->
+      <section class="section-card">
+        <h2>2. Pipeline Pengumpulan &amp; Anotasi Data Otomatis</h2>
+        <p>
+          Alih-alih merekam video secara manual yang boros ruang penyimpanan dan memakan waktu, saya merancang <strong>skrip otomatisasi Python menggunakan Selenium WebDriver</strong> yang melakukan web scraping dan ekstraksi frame langsung dari portal CCTV publik Pemerintah Kota Bandung (<strong>Pelindung Bandung</strong>):
+        </p>
+        <ul>
+          <li><strong>17 Titik CCTV Strategis:</strong> Mengakses persimpangan padat seperti SP Buahbatu, Suniaraja, Moh Toha - Sartika Asih, Pasirkoja, SP Telkom Gasibu, SP Tol Pasteur, Jalaprang, dan Antapani.</li>
+          <li><strong>Temporal Sampling:</strong> Menangkap screenshot frame resolusi tinggi setiap 10 detik selama jendela waktu jam sibuk (11:00 &ndash; 14:00 WIB) untuk merepresentasikan variasi pencahayaan dan kepadatan lalu lintas.</li>
+          <li><strong>Anotasi Ground-Truth:</strong> Sebanyak 1.515 frame dianotasi secara manual menggunakan platform Roboflow selama 1 bulan dengan bounding box presisi.</li>
+          <li><strong>Data Augmentation:</strong> Menerapkan <em>Horizontal Flip</em> (mengajarkan invarian arah gerak kendaraan) dan <em>Noise Injection / Grain</em> (mensimulasikan noise ISO sensor kamera CCTV kota pada kondisi pencahayaan rendah). Total dataset diperkaya menjadi <strong>3.737 citra dengan 21.277 instans kendaraan</strong> (62,5% sepeda motor, 37,5% mobil).</li>
+        </ul>
+
+        <div class="screenshot-container">
+          <img src="../assets/images/yolov11-flowchart.png" alt="Diagram Alur Metodologi YOLOv11 & DeepSORT" />
+          <div class="screenshot-caption">Gambar 1: Diagram alur metodologi penelitian, mulai dari scraping CCTV, preprocessing & augmentasi, fine-tuning YOLOv11, integrasi DeepSORT, hingga evaluasi akurasi video lapangan.</div>
+        </div>
+      </section>
+
+      <!-- 3. Arsitektur Pelacakan & Penghitungan: YOLOv11 + DeepSORT -->
+      <section class="section-card">
+        <h2>3. Arsitektur Pelacakan &amp; Penghitungan: YOLOv11 + DeepSORT</h2>
+        <p>
+          Deteksi objek dikombinasikan dengan algoritma pelacakan multi-objek (Multi-Object Tracking / MOT) untuk menghitung arus masuk (<em>inflow</em>) dan keluar (<em>outflow</em>) kendaraan:
+        </p>
+        <pre><code>CCTV Stream Frame (640x640)
+    ↓
+YOLOv11 Inference (Confidence: Motor 50%, Mobil 70%)
+    ↓
+Deteksi Bounding Box &amp; Titik Sentroid Objek
+    ↓
+DeepSORT Tracking (Kalman Filter State Prediction + Appearance Embedding)
+    ├─ Melacak lintasan pergerakan objek dengan ID unik
+    └─ Max Age: 30 frame | Min Hits: 3 frame
+    ↓
+Virtual Counting Line Trigger (Garis Kuning Persimpangan)
+    ├─ Sentroid melintasi garis ke arah masuk ──► Inflow Counter +1
+    └─ Sentroid melintasi garis ke arah keluar ──► Outflow Counter +1</code></pre>
+
+        <div class="screenshot-container">
+          <img src="../assets/images/yolov11-traffic-hero.png" alt="Hasil Deteksi dan Pelacakan YOLOv11 di Bandung" />
+          <div class="screenshot-caption">Gambar 2: Hasil visualisasi deteksi waktu nyata di persimpangan Buahbatu. Kotak magenta mendeteksi sepeda motor, kotak hijau mendeteksi mobil, dan garis kuning mencatat arus inflow/outflow kendaraan saat melintas.</div>
+        </div>
+      </section>
+
+      <!-- 4. Hasil Evaluasi & Analisis Perbandingan -->
+      <section class="section-card">
+        <h2>4. Hasil Evaluasi &amp; Keunggulan Dibanding Baseline</h2>
+        <p>
+          Evaluasi model dihitung menggunakan standar industri COCO Evaluation (Roboflow Verified Model Metrics) pada independent test set (202 citra, 2.336 objek):
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Metrik Evaluasi</th>
+              <th>Baseline YOLOv11 (Pre-trained COCO)</th>
+              <th>Model Fine-Tuned Saya (Model A)</th>
+              <th>Faktor Peningkatan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>mAP@50</strong></td>
+              <td>12.1%</td>
+              <td><strong>65.5%</strong></td>
+              <td><strong>5.4&times; lebih tinggi</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Precision</strong></td>
+              <td>23.8%</td>
+              <td><strong>79.5%</strong></td>
+              <td>3.3&times; pengurangan false alarm</td>
+            </tr>
+            <tr>
+              <td><strong>Recall Motor</strong></td>
+              <td>0.8% (99.2% motor terlewatkan)</td>
+              <td><strong>70.0%</strong></td>
+              <td><strong>87.5&times; peningkatan deteksi motor</strong></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Validasi Lapangan pada Video Waktu Nyata (SP Buahbatu):</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Skenario Lalu Lintas</th>
+              <th>Total Kendaraan Nyata</th>
+              <th>Akurasi Model Fine-Tuned</th>
+              <th>Akurasi Baseline COCO</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lalu Lintas Ringan (1 Menit)</strong></td>
+              <td>108 kendaraan</td>
+              <td><strong>98.1%</strong> (Motor: 98.9%, Mobil: 93.7%)</td>
+              <td>38.9% (Miss rate motor: 73.9%)</td>
+            </tr>
+            <tr>
+              <td><strong>Lalu Lintas Sangat Padat (1 Menit)</strong></td>
+              <td>271 kendaraan</td>
+              <td><strong>85.0%</strong> (Motor: 94.9%, Mobil: 84.0%)</td>
+              <td>24.0% (Motor anjlok ke 4.0%)</td>
+            </tr>
+            <tr>
+              <td><strong>Generalisasi Luar Kota (Non-Bandung)</strong></td>
+              <td>102 kendaraan</td>
+              <td><strong>92.2%</strong> (Motor: 90.1%, Mobil: 100%)</td>
+              <td>91.2%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="screenshot-container">
+          <img src="../assets/images/yolov11-confmatrix.png" alt="Confusion Matrix YOLOv11 Traffic Model" />
+          <div class="screenshot-caption">Gambar 3: Confusion Matrix pada 202-image test set menunjukkan diskriminasi antar kelas yang sangat tinggi: hanya 3 kesalahan lintas kelas dari total 2.336 kendaraan.</div>
+        </div>
+      </section>
+
+      <!-- 5. Tautan & Lampiran Akademik -->
+      <section class="section-card">
+        <h2>5. Lampiran Sumber Daya &amp; Berkas Penelitian</h2>
+        <ul>
+          <li><strong>Paper Konferensi ICOICT:</strong> <a href="Andi_Ghafa_Thesis_Paper_ICOICT.pdf" target="_blank">Unduh Naskah Paper Ilmiah (PDF)</a></li>
+          <li><strong>Google Drive Repository:</strong> <a href="https://drive.google.com/drive/folders/1uMvcc6kVqGnQQrBfZKppbOnqAGGQic4M?usp=sharing" target="_blank">Folder Berkas Skripsi, Kode Sumber, dan Raw Video Footage</a></li>
+          <li><strong>Video Demonstrasi Deteksi (YouTube):</strong>
+            <ul>
+              <li><a href="https://youtu.be/9cTdaF5clIw" target="_blank">Uji Coba Deteksi Video 1 (Persimpangan Buahbatu) ↗</a></li>
+              <li><a href="https://youtu.be/JUEjWkk90UE" target="_blank">Uji Coba Deteksi Video 2 (Kondisi Lalu Lintas Padat) ↗</a></li>
+              <li><a href="https://youtu.be/RY-hkFOiXT4" target="_blank">Uji Coba Multi-Kamera CCTV Bandung ↗</a></li>
+              <li><a href="https://youtu.be/LOc-AeCs-hs" target="_blank">Uji Coba Generalisasi CCTV Luar Kota ↗</a></li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

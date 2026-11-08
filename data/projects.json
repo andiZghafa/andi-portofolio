@@ -16,7 +16,17 @@
       "Cashier Payment Method Classification: Quick toggles (Cash, QRIS, Bank Transfer, Open-Bill) to categorize transactions for accurate end-of-shift reconciliation and finance administration",
       "Robust enterprise security with Spatie RBAC, password confirmation step-ups, and anti-bot protection"
     ],
-    "tags": ["Laravel", "Inertia.js", "React", "Capacitor", "Android", "Bluetooth ESC/POS", "Tailwind CSS", "MySQL", "Payment Classification"],
+    "tags": [
+      "Laravel",
+      "Inertia.js",
+      "React",
+      "Capacitor",
+      "Android",
+      "Bluetooth ESC/POS",
+      "Tailwind CSS",
+      "MySQL",
+      "Payment Classification"
+    ],
     "image": "assets/images/pos-checkout.png",
     "fallbackImage": "assets/images/pos-dashboard.png",
     "links": {
@@ -41,7 +51,16 @@
       "Comprehensive client history CRM, PIC assignment workflow, and per-user notification read-state tracking",
       "Modern, fast enterprise UI built with Laravel 13, Blade Components, Tailwind CSS 4, and Vite"
     ],
-    "tags": ["Laravel", "PHP", "Tailwind CSS", "MySQL", "Blade", "Vite", "Enterprise Scheduling", "TWC InJourney"],
+    "tags": [
+      "Laravel",
+      "PHP",
+      "Tailwind CSS",
+      "MySQL",
+      "Blade",
+      "Vite",
+      "Enterprise Scheduling",
+      "TWC InJourney"
+    ],
     "image": "assets/images/venue-booking-bg.jpg",
     "fallbackImage": "assets/images/venue-booking-logo.png",
     "links": {
@@ -66,11 +85,21 @@
       "Curator CMS dashboard for managing educational collections, multimedia assets, and exhibition updates",
       "Deployed and running live in production at the official domain `museumprambanan.twc.id`"
     ],
-    "tags": ["Laravel", "Tailwind CSS", "PHP", "MySQL", "Vite", "Public Portal", "Cultural Heritage", "REST API"],
+    "tags": [
+      "Laravel",
+      "Tailwind CSS",
+      "PHP",
+      "MySQL",
+      "Vite",
+      "Public Portal",
+      "Cultural Heritage",
+      "REST API"
+    ],
     "image": "assets/images/museum-hero.jpg",
     "fallbackImage": "assets/images/museum-icon.png",
     "links": {
-      "demo": "https://museumprambanan.twc.id"
+      "demo": "https://museumprambanan.twc.id",
+      "docs": "docs/museum-prambanan-documentation.html"
     },
     "featured": true,
     "order": 3
@@ -102,6 +131,34 @@
     "order": 4
   },
   {
+    "id": "thesis-yolov11-traffic",
+    "title": "Bandung Urban Traffic Density Estimation via YOLOv11 & DeepSORT",
+    "subtitle": "Computer Vision Research Defense at Telkom University (School of Computing)",
+    "category": "ai",
+    "role": "Lead Researcher & Computer Vision Engineer",
+    "period": "2025 - 2026",
+    "description": "Fine-tuned YOLOv11 and DeepSORT pipeline trained on 21,277 vehicle instances across 17 municipal CCTV locations (Pelindung Bandung) for real-time motorcycle and car density tracking with 98.1% counting accuracy.",
+    "overview": "Undergraduate research and engineering defense at Telkom University supervised by Dr. Edward Ferdian and Dr. Ema Rachmawati. Solved the critical limitation of conventional traffic detection models that fail in motorcycle-dominant Southeast Asian urban centers. Built an automated dataset extraction engine using Python + Selenium to sample 17 municipal CCTV feeds from Pelindung Bandung, annotated 1,515 frames across peak hours, applied directional flipping and grain injection augmentations, and fine-tuned YOLOv11 + DeepSORT. Achieved 65.5% mAP@50 (vs 12.1% baseline YOLOv11) with an 87.5x increase in motorcycle recall (70.0% vs 0.8%), reaching 98.1% real-world counting accuracy in light traffic and 85.0% in heavy congestion.",
+    "keyFeatures": [
+      "Automated Municipal CCTV Pipeline: Custom Python + Selenium crawler extracting temporal frames every 10s from 17 Bandung Government CCTV locations",
+      "Domain-Specific Dataset Curation: 1,515 annotated frames (21,277 vehicle instances; 62.5% motorcycles, 37.5% cars) with noise injection and horizontal flip augmentations",
+      "YOLOv11 + DeepSORT Tracking Architecture: Bounded 640x640 real-time inference with Kalman filtering and appearance association across virtual counting lines",
+      "87.5x Motorcycle Recall Surge: Reached 70.0% recall and 79.5% precision on test set, cutting baseline false negative rate from 99.2% to 30.0%",
+      "Robust Real-World & Cross-City Generalization: Validated across 8 additional Bandung intersections (Gasibu, Pasteur, Jalaprang) and cross-city footage with 92.2% accuracy"
+    ],
+    "tags": ["Computer Vision", "YOLOv11", "DeepSORT", "Python", "Selenium", "Roboflow", "PyTorch", "Telkom University"],
+    "image": "assets/images/yolov11-traffic-hero.png",
+    "fallbackImage": "assets/images/yolov11-traffic-hero.png",
+    "links": {
+      "demo": "https://youtu.be/9cTdaF5clIw",
+      "drive": "https://drive.google.com/drive/folders/1uMvcc6kVqGnQQrBfZKppbOnqAGGQic4M?usp=sharing",
+      "docs": "docs/thesis-traffic-yolo-documentation.html",
+      "pdf": "docs/Andi_Ghafa_Thesis_Paper_ICOICT.pdf"
+    },
+    "featured": true,
+    "order": 5
+  },
+  {
     "id": "aspire",
     "title": "ASPIRE — Career & Course Recommendation Platform",
     "subtitle": "AI-Powered Academic & Career Guidance System",
@@ -117,15 +174,24 @@
       "Responsive, clean dashboard built with Next.js App Router and Tailwind CSS",
       "Documented user manual and deployment pipeline on Vercel"
     ],
-    "tags": ["Next.js", "TypeScript", "MongoDB", "LLM Integration", "Tailwind CSS", "PDF Parsing"],
+    "tags": [
+      "Next.js",
+      "TypeScript",
+      "MongoDB",
+      "LLM Integration",
+      "Tailwind CSS",
+      "PDF Parsing"
+    ],
     "image": "assets/images/aspire.png",
     "fallbackImage": "porto2.png",
     "links": {
       "demo": "https://aspire-mu.vercel.app/",
+      "github": "https://github.com/BryanDhaniel/ASPIRE",
+      "docs": "docs/aspire-documentation.html",
       "pdf": "porto 2.pdf"
     },
     "featured": false,
-    "order": 5
+    "order": 6
   },
   {
     "id": "favehotel-app",
@@ -143,15 +209,23 @@
       "End-to-end user testing and on-site staff training sessions conducted solo",
       "Complete user documentation and operation manual authored for hotel staff"
     ],
-    "tags": ["Flutter", "Dart", "QR Scanner", "Spreadsheet API", "Mobile UX", "Operations"],
+    "tags": [
+      "Flutter",
+      "Dart",
+      "QR Scanner",
+      "Spreadsheet API",
+      "Mobile UX",
+      "Operations"
+    ],
     "image": "assets/images/favehotel.jpg",
     "fallbackImage": "porto.jpeg",
     "links": {
+      "docs": "docs/favehotel-app-documentation.html",
       "pdf": "porto 1.pdf",
       "drive": "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing"
     },
     "featured": false,
-    "order": 6
+    "order": 7
   },
   {
     "id": "library-system",
@@ -169,13 +243,22 @@
       "Robust input sanitization and exception handling preventing state corruption",
       "Comprehensive architectural user manual detailing system class diagrams"
     ],
-    "tags": ["Java", "OOP", "Data Structures", "RBAC", "Console UI", "Algorithms"],
+    "tags": [
+      "Java",
+      "OOP",
+      "Data Structures",
+      "RBAC",
+      "Console UI",
+      "Algorithms"
+    ],
     "image": "assets/images/library.png",
     "fallbackImage": "porto 3.png",
     "links": {
+      "github": "https://github.com/andiZghafa/Console-Based-Library-Management-System",
+      "docs": "docs/library-system-documentation.html",
       "pdf": "porto 3.pdf"
     },
     "featured": false,
-    "order": 7
+    "order": 8
   }
 ]
