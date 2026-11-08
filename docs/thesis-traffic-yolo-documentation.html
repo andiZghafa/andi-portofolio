@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Bandung Urban Traffic Analysis via YOLOv11 &mdash; Thesis Research Documentation</title>
+    <title>Bandung Urban Traffic Analysis via YOLOv11: Thesis Research Documentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -238,11 +238,11 @@
         <div class="doc-meta">
           <strong>Penulis:</strong> Andi Ziyadh Ghafa Ramadhan (NIM: 1301224086) &middot;
           <strong>Pembimbing:</strong> Dr. Edward Ferdian, S.T., B.Sc., M.Sc. &amp; Dr. Ema Rachmawati, S.T., M.T. &middot;
-          <strong>Tahun:</strong> 2025 &ndash; 2026
+          <strong>Tahun:</strong> 2025 - 2026
         </div>
         <div style="display: flex; gap: 10px; flex-wrap: wrap;">
           <a href="../index.html#projects" class="doc-nav-btn">&larr; Kembali ke Portofolio</a>
-          <a href="Andi_Ghafa_Thesis_Paper_ICOICT.pdf" target="_blank" class="doc-nav-btn">Unduh Paper Ilmiah (PDF) 📄</a>
+          <a href="Andi_Ghafa_Thesis_Paper_ICOICT.pdf" target="_blank" class="doc-nav-btn">Unduh Paper Ilmiah (PDF)</a>
           <a href="https://drive.google.com/drive/folders/1uMvcc6kVqGnQQrBfZKppbOnqAGGQic4M?usp=sharing" target="_blank" class="doc-nav-btn">Dataset &amp; Google Drive ↗</a>
           <a href="https://youtu.be/9cTdaF5clIw" target="_blank" class="doc-nav-btn">Demo Video CCTV (YouTube) ↗</a>
           <button onclick="window.print()" class="doc-nav-btn">Cetak / Simpan PDF</button>
@@ -258,7 +258,7 @@
           Kota Bandung menempati peringkat ke-12 kota termacet di dunia berdasarkan <em>TomTom Traffic Index</em>, dengan pertumbuhan jumlah kendaraan mencapai <strong>9,34% per tahun</strong>, jauh melampaui pertumbuhan infrastruktur jalan yang hanya <strong>1,46%</strong>. Kecepatan rata-rata kendaraan saat jam sibuk merosot hingga <strong>14,1 km/jam</strong>.
         </p>
         <p>
-          Mayoritas model *computer vision* dan *object detection* standar industri (seperti model dasar YOLO yang dilatih dengan dataset COCO dari negara-negara Barat) didominasi oleh deteksi mobil berukuran besar. Ketika diterapkan pada lalu lintas kota di Asia Tenggara seperti Bandung&mdash;di mana <strong>sepeda motor mendominasi lebih dari 60% populasi kendaraan</strong>&mdash;model standar mengalami kegagalan fatal:
+          Mayoritas model *computer vision* dan *object detection* standar industri (seperti model dasar YOLO yang dilatih dengan dataset COCO dari negara-negara Barat) didominasi oleh deteksi mobil berukuran besar. Ketika diterapkan pada lalu lintas kota di Asia Tenggara seperti Bandung, di mana <strong>sepeda motor mendominasi lebih dari 60% populasi kendaraan</strong>, model standar mengalami kegagalan deteksi:
         </p>
         <ul>
           <li><strong>Ukuran Piksel Sangat Kecil:</strong> Sepeda motor pada rekaman CCTV persimpangan jalan memiliki area piksel 3 hingga 5 kali lebih kecil dibandingkan mobil.</li>
@@ -294,7 +294,7 @@
         </p>
         <ul>
           <li><strong>17 Titik CCTV Strategis:</strong> Mengakses persimpangan padat seperti SP Buahbatu, Suniaraja, Moh Toha - Sartika Asih, Pasirkoja, SP Telkom Gasibu, SP Tol Pasteur, Jalaprang, dan Antapani.</li>
-          <li><strong>Temporal Sampling:</strong> Menangkap screenshot frame resolusi tinggi setiap 10 detik selama jendela waktu jam sibuk (11:00 &ndash; 14:00 WIB) untuk merepresentasikan variasi pencahayaan dan kepadatan lalu lintas.</li>
+          <li><strong>Temporal Sampling:</strong> Menangkap screenshot frame resolusi tinggi setiap 10 detik selama jendela waktu jam sibuk (11:00 - 14:00 WIB) untuk merepresentasikan variasi pencahayaan dan kepadatan lalu lintas.</li>
           <li><strong>Anotasi Ground-Truth:</strong> Sebanyak 1.515 frame dianotasi secara manual menggunakan platform Roboflow selama 1 bulan dengan bounding box presisi.</li>
           <li><strong>Data Augmentation:</strong> Menerapkan <em>Horizontal Flip</em> (mengajarkan invarian arah gerak kendaraan) dan <em>Noise Injection / Grain</em> (mensimulasikan noise ISO sensor kamera CCTV kota pada kondisi pencahayaan rendah). Total dataset diperkaya menjadi <strong>3.737 citra dengan 21.277 instans kendaraan</strong> (62,5% sepeda motor, 37,5% mobil).</li>
         </ul>

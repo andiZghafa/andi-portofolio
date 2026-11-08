@@ -1,7 +1,7 @@
 {
   "name": "andi-portfolio",
   "version": "2.0.0",
-  "description": "Andi Ziyadh Ghafa Ramadhan — Professional Portfolio with Built-in CMS",
+  "description": "Andi Ziyadh Ghafa Ramadhan: Portfolio with Built-in CMS",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

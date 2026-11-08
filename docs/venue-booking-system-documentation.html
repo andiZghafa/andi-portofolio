@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Venue Booking System — Dokumentasi Teknis &amp; Operasional</title>
+    <title>Venue Booking System: Arsitektur &amp; Logika Sistem</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -190,7 +190,7 @@
           <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
           <span class="badge badge-neutral">Dokumentasi Teknis Lapangan</span>
         </div>
-        <h1>Multi-Destination Venue Booking &mdash; Arsitektur &amp; Logika Sistem</h1>
+        <h1>Multi-Destination Venue Booking: Arsitektur &amp; Logika Sistem</h1>
         <div class="doc-meta">
           <strong>Pengembang:</strong> Andi Ziyadh Ghafa Ramadhan (IT Development &amp; Data Management Intern) &middot;
           <strong>Unit:</strong> PT Taman Wisata Candi Borobudur, Prambanan &amp; Ratu Boko &middot;
@@ -281,7 +281,7 @@
       <section class="section-card">
         <h2>3. Algoritma Pendeteksi Konflik Multi-Fase</h2>
         <p>
-          Kunci utama dari sistem ini adalah validasi rentang waktu secara menyeluruh (<em>multi-phase window</em>). Sistem tidak hanya memeriksa waktu acara inti, melainkan mencakup jendela persiapan dan pembersihan lapangan:
+          Kunci utama dari sistem ini adalah validasi rentang waktu menyeluruh (<em>multi-phase window</em>). Validasi mencakup jendela persiapan (load-in), waktu acara utama, dan pembersihan lapangan (tear-down):
         </p>
         <pre><code>[ Waktu Persiapan / Load-In ] ──► [ Acara Inti ] ──► [ Waktu Pembongkaran / Tear-Down ]
 |◄────────────────────────── RENTANG BLOKIR JADWAL TOTAL ─────────────────────────►|</code></pre>

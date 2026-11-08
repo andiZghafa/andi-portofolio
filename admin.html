@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content" />
-    <title>CMS Studio — Andi Ghafa Portfolio Manager</title>
+    <title>CMS Studio: Andi Ghafa Portfolio Manager</title>
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F4EDE0" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14213D" />
@@ -337,7 +337,7 @@
                 <!-- Title -->
                 <div class="form-group full">
                   <label class="form-label" for="editTitle">Project Title *</label>
-                  <input type="text" id="editTitle" class="form-input" required placeholder="e.g. ASPIRE — Career Recommendation Platform" />
+                  <input type="text" id="editTitle" class="form-input" required placeholder="e.g. ASPIRE: Career Recommendation Platform" />
                 </div>
 
                 <!-- Subtitle -->
@@ -584,7 +584,7 @@
             const catBadge = p.category ? `<span class="category-tag" style="font-size: 10px;">${p.category.toUpperCase()}</span>` : '';
             const featuredBadge = p.featured 
               ? `<span style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--status-online);" title="Featured"></span>`
-              : `<span style="color: var(--text-muted); font-size: 12px;">—</span>`;
+              : `<span style="color: var(--text-muted); font-size: 12px;">-</span>`;
             
             const tagsHTML = (p.tags || []).slice(0, 3).map(t => `<span class="tech-chip" style="font-size: 11px;">${escapeHTML(t)}</span>`).join(' ');
 

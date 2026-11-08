@@ -1,6 +1,6 @@
-# Andi Ziyadh Ghafa Ramadhan — Portfolio
+# Andi Ziyadh Ghafa Ramadhan: Portfolio
 
-Personal portfolio website showcasing my work in enterprise software, web applications, and mobile systems.
+Personal portfolio website documenting my work in enterprise software, web systems, computer vision, and mobile tools.
 
 - **Live URL**: [https://andi-portofolio-one.vercel.app](https://andi-portofolio-one.vercel.app)
 - **LinkedIn**: [linkedin.com/in/andighafa](https://www.linkedin.com/in/andighafa/)
@@ -10,26 +10,41 @@ Personal portfolio website showcasing my work in enterprise software, web applic
 
 ## Overview
 
-I built this portfolio to document and present the systems I've worked on, ranging from enterprise production tools during my role as **IT Development and Data Management Intern** at PT Taman Wisata Candi (TWC / InJourney) to academic and freelance projects.
+I built this portfolio to document the systems I have engineered, ranging from enterprise production tools built during my role as **IT Development and Data Management Intern** at PT Taman Wisata Candi (TWC / InJourney) to academic research and mobile tools.
 
-Instead of heavy frontend frameworks that require multi-gigabyte build chains, this site is built with vanilla HTML5, CSS3, and JavaScript. It loads instantly, works offline, and renders smoothly on mobile and desktop.
+The site is built with vanilla HTML5, CSS3, and JavaScript: no bulky framework builds, instant load times, clean keyboard accessibility, and full mobile responsiveness.
 
 ### Featured Projects
 
-1. **Prambanan & Ratu Boko Enterprise POS**: Cashier point-of-sale system deployed across ticketing counters in Candi Prambanan and Candi Ratu Boko. Integrates with the company ERP, handles multi-warehouse stock mutations, and connects directly to Bluetooth Classic thermal printers via a Capacitor Android bridge.
-2. **TWC Venue Booking Platform**: Multi-destination scheduling system built for PT Taman Wisata Candi to manage venue reservations, setup load-in windows, and Ramayana Ballet seating tiers without double-booking collisions.
-3. **Museum Candi Prambanan Web Portal**: Official website (`museumprambanan.twc.id`) featuring archaeological artifact galleries, visitor tracking, and a curator CMS dashboard.
-4. **ASPIRE Career & Course Platform**: Next.js and MongoDB web application that parses student transcripts and recommends tailored electives and career paths.
-5. **FaveHotel Laundry App**: Flutter mobile logbook with QR code scanning to replace paper records during hotel linen processing.
-6. **Library Management System**: Object-oriented console system demonstrating custom data structures, transaction tracking, and role-based access control.
+1. **Prambanan & Ratu Boko Enterprise POS**: Cashier point-of-sale system deployed across ticketing and merchant counters in Candi Prambanan and Candi Ratu Boko. Connects with company ERP, handles multi-warehouse stock mutations, and prints directly to Bluetooth Classic ESC/POS thermal printers via a native Capacitor Android bridge.
+2. **TWC Multi-Destination Venue Booking Platform**: Enterprise scheduling platform built for PT Taman Wisata Candi to coordinate multi-day venue rentals, setup load-in windows, and tiered seating layouts without double-booking collisions.
+3. **Museum Candi Prambanan Web Portal**: Official website (`museumprambanan.twc.id`) featuring archaeological artifact galleries, live visitor tracking, and a curator CMS dashboard.
+4. **InJourney Destinations AI Ticketing Assistant & Knowledge Base**: Domain knowledge base and prompt guardrails powering the customer support AI chatbot deployed on `ticket.injourneydestination.id` via Mekari Qontak.
+5. **Bandung Urban Traffic Density Estimation via YOLOv11 & DeepSORT**: Undergraduate research defense at Telkom University. Solved motorcycle detection failure in Southeast Asian traffic, reaching 65.5% mAP@50 and 98.1% field counting accuracy across 17 Bandung CCTV feeds. Published in ICOICT 2026.
+6. **ASPIRE Career & Course Platform**: Next.js and MongoDB web application that parses student transcripts from PDF and uses an LLM pipeline to recommend personalized career paths and university electives.
+7. **FaveHotel Laundry & Inventory App**: Flutter mobile logbook with QR code scanning to replace paper records during hotel linen processing, syncing directly with cloud spreadsheets.
+8. **Console-Based Library Management System**: Java console application implementing core OOP principles, custom data structures, role-based access control, and transaction ledgers.
 
 ---
 
-## Built-in Project Manager (CMS Studio)
+## Technical Documentation
 
-To make it easy to add new portfolio cards or update descriptions without editing HTML tags by hand, the site uses a structured data layer (`data/projects.json`) paired with a lightweight admin panel (`admin.html`).
+Every project includes a dedicated technical documentation page under `docs/` detailing real system architecture, constraints, database schemas, and workflows:
 
-There are two ways to use it:
+- `docs/pos-system-documentation.html`: Architecture, Bluetooth SPP bridge, multi-warehouse schema, shift reconciliation.
+- `docs/venue-booking-system-documentation.html`: Multi-phase atomic booking validation, seating tiers, role permissions.
+- `docs/museum-prambanan-documentation.html`: Laravel and Vite architecture, artifact catalog, curator CMS.
+- `docs/injourney-ai-agent-documentation.html`: Knowledge Base grounding, intent trees, hallucination guardrails, human handover.
+- `docs/thesis-traffic-yolo-documentation.html`: Municipal CCTV crawler, dataset curation, YOLOv11 and DeepSORT metrics, confusion matrix.
+- `docs/aspire-documentation.html`: Next.js App Router, PDF parsing engine, prompt orchestration.
+- `docs/favehotel-app-documentation.html`: Flutter architecture, camera QR scanner, Google Sheets sync, operational impact.
+- `docs/library-system-documentation.html`: Java OOP design patterns, RBAC, BST indexing, transaction validation.
+
+---
+
+## Project Manager (CMS Studio)
+
+To update portfolio items or descriptions without editing HTML tags by hand, the site includes a structured data layer (`data/projects.json`) paired with an admin panel (`admin.html`).
 
 ### 1. Local Server Mode (Direct Disk Save)
 
@@ -40,14 +55,14 @@ npm start
 # or: node server.js
 ```
 
-Open `http://localhost:3000/admin.html` (or press `Ctrl` + `Shift` + `A` on the main page). Any edits or new project additions save directly to `data/projects.json` on disk, and uploaded screenshots go straight to `assets/images/`.
+Open `http://localhost:3000/admin.html` (or press `Ctrl` + `Shift` + `A` on the main page). Any edits or new project additions save directly to `data/projects.json` on disk, and uploaded screenshots go to `assets/images/`.
 
-### 2. Static / GitHub Pages Mode
+### 2. Static / Direct Browser Mode
 
 If opened directly in a browser without Node running:
 
 - Open `admin.html`
-- Fill in the project fields and click **Save** (it updates the browser session)
+- Edit or add project records and click **Save** (updates browser session)
 - Click **Export JSON** to download the updated `projects.json`
 - Replace `data/projects.json` in your local folder and push to Git.
 
@@ -64,12 +79,19 @@ If opened directly in a browser without Node running:
 ├── data/
 │   └── projects.json     # Project data source
 ├── css/
-│   └── style.css         # Typography, responsive layout, Navy/Cream/Coral themes
+│   └── style.css         # Design system: Navy, Cream, and Coral palette
 ├── js/
 │   └── app.js            # Card rendering, filtering, search, and detail modal
-├── docs/
-│   ├── pos-system-documentation.html           # Technical manual for POS system
-│   └── venue-booking-system-documentation.html # Technical manual for Venue Booking
+├── docs/                 # Complete technical documentation pages
+│   ├── pos-system-documentation.html
+│   ├── venue-booking-system-documentation.html
+│   ├── museum-prambanan-documentation.html
+│   ├── injourney-ai-agent-documentation.html
+│   ├── thesis-traffic-yolo-documentation.html
+│   ├── aspire-documentation.html
+│   ├── favehotel-app-documentation.html
+│   ├── library-system-documentation.html
+│   └── Andi_Ghafa_Thesis_Paper_ICOICT.pdf
 ├── assets/
 │   └── images/           # Screenshots and project visuals
 └── Andi_Ghafa_CV.pdf     # Resume
@@ -79,27 +101,16 @@ If opened directly in a browser without Node running:
 
 ## Running Locally
 
-You don't need any npm dependencies to run this site:
+No npm dependencies required:
 
 - **Quick view**: Double-click `index.html` in any browser, or use VS Code's Live Server.
-- **With local CMS server**: Run `npm start` and visit `http://localhost:3000`.
+- **With local CMS server**: Run `npm start` and open `http://localhost:3000`.
 
 ---
 
 ## Deployment
 
-The site is fully static and can be deployed anywhere:
+The site is fully static:
 
-### GitHub Pages
-
-1. Push the repository to GitHub:
-   ```bash
-   git add .
-   git commit -m "Update portfolio"
-   git push origin main
-   ```
-2. In your repo on GitHub, go to **Settings** &rarr; **Pages**, set branch to `main`, and save.
-
-### Vercel / Netlify
-
-Import the repository. No build command is required, output directory is `./`.
+- **GitHub Pages**: Push to `main`, go to **Settings** > **Pages**, select `main` branch root, and save.
+- **Vercel / Netlify**: Import the repository with zero build command and `./` root directory.

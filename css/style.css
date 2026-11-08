@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Andi Ziyadh Ghafa Ramadhan — Portfolio Design System
+   Andi Ziyadh Ghafa Ramadhan: Portfolio Design System
    Audited & Engineered with:
    - /ui-ux-pro-max: Editorial Navy, Warm Cream & Vibrant Coral Palette
    - /make-interfaces-feel-better: Concentric radii, tabular nums, text-wrap, image depth outlines, scale(0.96) press
@@ -29,9 +29,9 @@
   --bg-surface-elevated: #EDE5D5;  /* Deeper cream for interactive chips & inputs */
   --bg-muted: #E2D7C3;             /* Tactile divider/boundary fill */
   
-  --text-primary: #14213D;         /* Oxford Navy (13.6:1 contrast ratio against cream — AAA) */
+  --text-primary: #14213D;         /* Oxford Navy (13.6:1 contrast ratio against cream: AAA) */
   --text-secondary: #2C3C5E;       /* Slate Navy (7.8:1 contrast ratio) */
-  --text-muted: #53637F;           /* Balanced Slate Navy (4.8:1 contrast ratio — AA passed) */
+  --text-muted: #53637F;           /* Balanced Slate Navy (4.8:1 contrast ratio: AA passed) */
   
   --border-subtle: rgba(20, 33, 61, 0.12); /* Crisp navy-tinted boundary */
   --border-strong: rgba(20, 33, 61, 0.24); /* Interactive boundary */
@@ -93,9 +93,9 @@
   --bg-surface-elevated: #24365C;  /* Higher elevation layer */
   --bg-muted: #2E436E;             /* Boundary fill */
 
-  --text-primary: #F4EDE0;         /* Linen Cream (13.6:1 contrast ratio against #14213D — AAA) */
+  --text-primary: #F4EDE0;         /* Linen Cream (13.6:1 contrast ratio against #14213D: AAA) */
   --text-secondary: #C8D1DF;       /* Clear Cream-Slate (8.2:1 contrast ratio) */
-  --text-muted: #95A5BC;           /* Readable Slate (5.4:1 contrast ratio — AA passed) */
+  --text-muted: #95A5BC;           /* Readable Slate (5.4:1 contrast ratio: AA passed) */
 
   --border-subtle: rgba(244, 237, 224, 0.12); /* Subtle cream separator */
   --border-strong: rgba(244, 237, 224, 0.24); /* 3:1 non-text boundary */
