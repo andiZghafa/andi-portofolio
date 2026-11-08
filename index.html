@@ -36,8 +36,17 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" />
+    <noscript>
+      <style>
+        .t-stagger-line {
+          opacity: 1;
+          transform: none;
+          filter: none;
+        }
+      </style>
+    </noscript>
   </head>
-  <body>
+<body>
     <!-- Sticky Glass Navigation -->
     <nav class="site-nav" aria-label="Main Navigation">
       <div class="container nav-wrap">
@@ -47,15 +56,13 @@
         </a>
 
         <ul class="nav-menu">
-          <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#toolbox" class="nav-link">Toolbox</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
-          <!-- Theme Toggle -->
           <button
             id="themeToggle"
             class="btn-icon"
@@ -64,391 +71,138 @@
           >
             <!-- Icon injected by app.js -->
           </button>
-
-          <!-- CMS Studio Link -->
-          <a
-            href="admin.html"
-            class="btn-cms-nav"
-            title="Manage portfolio projects via CMS Studio (Ctrl+Shift+A)"
-          >
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-            </svg>
-            <span>CMS</span>
-          </a>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero: who, what, proof -->
     <header class="hero-section">
-      <div class="container">
+      <div class="container t-stagger" id="heroReveal">
         <div class="hero-grid">
-          <!-- Left: Narrative & Primary CTAs -->
           <div class="hero-content">
-            <div class="hero-status-pill">
+            <p class="hero-eyebrow t-stagger-line t-stagger-line--1">
               <span class="status-indicator"></span>
-              <span>Available for Software Engineering &amp; Full-Stack Roles</span>
-            </div>
-
-            <h1 class="hero-headline">Andi Ziyadh<br />Ghafa Ramadhan</h1>
-
-            <div class="hero-role-strip">
-              <span class="hero-role-title">Full-Stack &amp; Systems Engineer</span>
-              <span class="hero-role-sep">&middot;</span>
-              <span class="hero-role-cred">S.Kom Informatics (Cum Laude, GPA 3.66)</span>
-            </div>
-
-            <p class="hero-bio">
-              I engineer production web platforms, high-reliability enterprise systems, and applied AI workflows. Proven track record deploying live cashier POS and venue management engines across
-              <strong>Candi Prambanan &amp; Keraton Ratu Boko</strong> under
-              <strong>PT Taman Wisata Candi (InJourney)</strong>, engineering AI customer support agents for live ticketing portals, and defending computer vision research in vehicle tracking (YOLOv11).
+              <span>Open to software engineering roles</span>
             </p>
 
-            <!-- CTA Buttons -->
-            <div class="hero-actions">
-              <a href="#projects" class="btn btn-primary">
-                <span>Explore Selected Work</span>
+            <h1 class="hero-headline t-stagger-line t-stagger-line--2">
+              Andi Ziyadh<br />Ghafa Ramadhan
+            </h1>
+
+            <p class="hero-bio t-stagger-line t-stagger-line--3">
+              Full-stack engineer. I built the cashier POS that runs at
+              <strong>Prambanan</strong> and <strong>Keraton Ratu Boko</strong>,
+              and I'm looking for my first full-time software role.
+            </p>
+
+            <div class="hero-actions t-stagger-line t-stagger-line--4">
+              <a href="#projects" class="btn btn-primary btn-lg">
+                <span>View projects</span>
                 <svg
-                  width="15"
-                  height="15"
+                  width="16"
+                  height="16"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                 >
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
+                  <path d="M12 5v14" />
+                  <path d="m19 12-7 7-7-7" />
                 </svg>
               </a>
-              <a href="Andi_Ghafa_CV.pdf" target="_blank" class="btn btn-secondary">
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
+              <a
+                href="Andi_Ghafa_CV.pdf"
+                target="_blank"
+                class="btn btn-secondary btn-lg"
+              >
                 <span>Download CV</span>
               </a>
-              <button
-                class="btn btn-outline"
-                data-copy-email="ghafaat@gmail.com"
-                title="Click to copy email address"
-              >
-                <svg
-                  width="15"
-                  height="15"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                  <path
-                    d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                  />
-                </svg>
-                <span>Copy Email</span>
-              </button>
             </div>
           </div>
 
-          <!-- Right: Authentic Portrait Anchor -->
-          <div class="hero-portrait-card">
-            <div class="hero-portrait-wrap">
-              <img
-                src="assets/images/andi-portrait.jpg"
-                alt="Andi Ziyadh Ghafa Ramadhan, Software Engineer"
-                class="hero-portrait-img"
-              />
-              <div class="hero-portrait-badge">
-                <div>
+          <div class="hero-visual t-stagger-line t-stagger-line--5">
+            <div class="hero-portrait-card">
+              <div class="hero-portrait-wrap">
+                <img
+                  src="assets/images/andi-portrait.jpg"
+                  alt="Andi Ziyadh Ghafa Ramadhan, Software Engineer"
+                  class="hero-portrait-img"
+                />
+                <div class="hero-portrait-badge">
                   <div class="hero-portrait-badge-name">Andi Ghafa, S.Kom</div>
-                  <div class="hero-portrait-badge-role">Informatics &middot; Cum Laude</div>
+                  <div class="hero-portrait-badge-role">
+                    Full-Stack Engineer
+                  </div>
                 </div>
-                <span class="hero-portrait-badge-dot" title="Active"></span>
               </div>
             </div>
-            <div class="hero-portrait-chips">
-              <span class="hero-portrait-chip">Laravel</span>
-              <span class="hero-portrait-chip">React / Next.js</span>
-              <span class="hero-portrait-chip">Flutter</span>
-              <span class="hero-portrait-chip">MySQL</span>
-              <span class="hero-portrait-chip">C++</span>
-              <span class="hero-portrait-chip">YOLOv11</span>
-            </div>
           </div>
         </div>
 
-        <!-- Bento Stats Highlights -->
-        <div class="bento-stats">
-          <div class="stat-card">
-            <div class="stat-card-label">Enterprise Production</div>
-            <div class="stat-card-value">TWC Heritage POS</div>
-            <div class="stat-card-desc">
-              POS &amp; inventory mutations live at Prambanan &amp; Keraton Ratu Boko
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-label">Academic Excellence</div>
-            <div class="stat-card-value">3.66 Cum Laude</div>
-            <div class="stat-card-desc">
-              S.Kom Informatics, Telkom University &middot; Top percentile
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-label">Research &amp; AI</div>
-            <div class="stat-card-value">YOLOv11 &amp; DeepSORT</div>
-            <div class="stat-card-desc">
-              Bandung CCTV traffic density tracking &amp; InJourney AI agent
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-card-label">Network &amp; Teaching</div>
-            <div class="stat-card-value">MTCNA &amp; TA Lead</div>
-            <div class="stat-card-desc">
-              MikroTik Certified &middot; Taught C++ &amp; algorithms to 30+ students
-            </div>
-          </div>
-        </div>
-
-        <!-- Emil Kowalski Subtle Scroll Prompt -->
-        <div class="hero-scroll-hint">
-          <span>Scroll to explore engineering background &amp; work</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m6 9 6 6 6-6"/>
-          </svg>
-        </div>
+        <ul class="hero-proof t-stagger-line t-stagger-line--6">
+          <li>
+            <span class="hero-proof-value">2 live sites</span>
+            <span class="hero-proof-label">
+              Cashier POS at Prambanan and Ratu Boko
+            </span>
+          </li>
+          <li>
+            <span class="hero-proof-value">3.66 GPA</span>
+            <span class="hero-proof-label">Cum Laude, Telkom University</span>
+          </li>
+          <li>
+            <span class="hero-proof-value">YOLOv11</span>
+            <span class="hero-proof-label">
+              Thesis on Bandung traffic tracking
+            </span>
+          </li>
+        </ul>
       </div>
     </header>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-header">
-          <div>
-            <div class="section-label">01 / Background</div>
-            <h2 class="section-title">About Me</h2>
-          </div>
-        </div>
-
-        <div class="about-grid">
-          <!-- Left: Narrative Column -->
-          <div class="about-narrative">
-            <p class="about-lead">
-              Full-stack software engineer and Informatics graduate from <strong style="color: var(--text-primary)">Telkom University</strong> (Cum Laude, GPA 3.66/4.00), pairing computer vision thesis research with hands-on enterprise software delivery.
-            </p>
-            <p>
-              My focus centers on the intersection of full-stack engineering, high-reliability business platforms, and real-world hardware integration. For <strong style="color: var(--text-primary)">PT Taman Wisata Candi (InJourney Destinations)</strong>, I engineered mission-critical operations software: the multi-venue cashier POS and automated inventory engine deployed at <strong style="color: var(--text-primary)">Candi Prambanan &amp; Keraton Ratu Boko</strong>, the internal venue reservation system, the conversational customer support AI knowledge base at <strong style="color: var(--text-primary)">ticket.injourneydestination.id</strong>, and the official public web portal <strong style="color: var(--text-primary)">museumprambanan.twc.id</strong>.
-            </p>
-            <p>
-              Beyond production software, I hold an industry-recognized <strong style="color: var(--text-primary)">MTCNA (MikroTik Certified Network Associate)</strong> certification for network routing and subnetting, and mentored over 30 undergraduate students as a <strong style="color: var(--text-primary)">Lecturer Assistant for Data Structures and Algorithm Design in C++</strong>.
-            </p>
-            
-            <!-- Badges Strip -->
-            <div class="about-badges-strip">
-              <span class="about-badge-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                </svg>
-                Telkom Univ &middot; Cum Laude 3.66
-              </span>
-              <span class="about-badge-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="20" height="8" x="2" y="14" rx="2"/>
-                  <path d="M6 18h.01M10 18h.01"/>
-                  <path d="M2 14V6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/>
-                </svg>
-                MTCNA Network Associate
-              </span>
-              <span class="about-badge-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="16 18 22 12 16 6"/>
-                  <polyline points="8 6 2 12 8 18"/>
-                </svg>
-                Lecturer Assistant &middot; C++
-              </span>
-              <span class="about-badge-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v4M12 14v4M16 14v4"/>
-                </svg>
-                TWC InJourney Production
-              </span>
-            </div>
-          </div>
-
-          <!-- Right: Capability Cards Column -->
-          <div class="about-cards-col">
-            <div class="about-feat-card">
-              <div class="about-card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="18" height="18" x="3" y="3" rx="2"/>
-                  <path d="m9 8 3 3-3 3M15 16h-3"/>
-                </svg>
-              </div>
-              <div>
-                <div class="about-card-title">Production Systems &amp; Hardware Bridge</div>
-                <div class="about-card-text">
-                  Direct thermal ESC/POS printing, dual barcode/QR scanner integration, and automated inventory reconciliation built for real cashier workflows at Prambanan &amp; Keraton Ratu Boko.
-                </div>
-              </div>
-            </div>
-
-            <div class="about-feat-card">
-              <div class="about-card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a8 8 0 0 0-8 8c0 3.5 2.5 6.5 6 7.5V20a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2v-2.5c3.5-1 6-4 6-7.5a8 8 0 0 0-8-8z"/>
-                  <path d="M9 10h.01M15 10h.01M9.5 14a3.5 3.5 0 0 0 5 0"/>
-                </svg>
-              </div>
-              <div>
-                <div class="about-card-title">Applied AI &amp; Computer Vision</div>
-                <div class="about-card-text">
-                  Vehicle movement tracking with YOLOv11 &amp; DeepSORT on Bandung intersection CCTV, alongside enterprise customer service AI agents powered by custom Knowledge Bases.
-                </div>
-              </div>
-            </div>
-
-            <div class="about-feat-card">
-              <div class="about-card-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect width="16" height="16" x="4" y="4" rx="2"/>
-                  <rect width="6" height="6" x="9" y="9" rx="1"/>
-                  <path d="M15 2v2M9 2v2M20 15h2M20 9h2M9 22v-2M15 22v-2M2 9h2M2 15h2"/>
-                </svg>
-              </div>
-              <div>
-                <div class="about-card-title">Systems Architecture &amp; Mentorship</div>
-                <div class="about-card-text">
-                  Certified MikroTik (MTCNA) network topology design and subnet routing, paired with teaching complex pointer manipulation, memory, and algorithms in C++.
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Selected Work / Projects Section -->
+    <!-- Selected Work -->
     <section id="projects" class="section">
       <div class="container">
         <div class="section-header">
-          <div>
-            <div class="section-label">02 / Selected Work</div>
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-desc">
-              Applications engineered with modern full-stack architectures,
-              mobile frameworks, and LLM integrations.
-            </p>
-          </div>
-          <span
-            id="projectCount"
-            style="
-              font-family: var(--font-mono);
-              font-size: 13px;
-              color: var(--text-muted);
-              background: var(--bg-surface-elevated);
-              padding: 5px 12px;
-              border-radius: var(--radius-full);
-              border: 1px solid var(--border-subtle);
-            "
-          >
-            Loading...
-          </span>
+          <h2 class="section-title">Projects</h2>
         </div>
 
-        <!-- Filter & Search Toolbar -->
-        <div class="projects-toolbar">
-          <div
-            class="filter-group"
-            role="tablist"
-            aria-label="Project Categories"
-          >
+        <!-- Lead + featured projects (rendered by js/app.js) -->
+        <div id="projectsGrid" class="projects-grid"></div>
+
+        <!-- Remaining projects, collapsed by default -->
+        <div class="t-acc" id="projectsAcc" data-open="false" hidden>
+          <div class="acc-row">
             <button
-              class="filter-btn active"
-              data-filter="all"
-              role="tab"
-              aria-selected="true"
+              class="more-toggle t-acc-head"
+              type="button"
+              aria-expanded="false"
+              aria-controls="projectsMore"
             >
-              All
-            </button>
-            <button
-              class="filter-btn"
-              data-filter="web"
-              role="tab"
-              aria-selected="false"
-            >
-              Full-Stack Web
-            </button>
-            <button
-              class="filter-btn"
-              data-filter="mobile"
-              role="tab"
-              aria-selected="false"
-            >
-              Mobile
-            </button>
-            <button
-              class="filter-btn"
-              data-filter="ai"
-              role="tab"
-              aria-selected="false"
-            >
-              AI &amp; ML
-            </button>
-            <button
-              class="filter-btn"
-              data-filter="system"
-              role="tab"
-              aria-selected="false"
-            >
-              Systems &amp; OOP
+              <span class="more-toggle-label">Show more projects</span>
+              <span class="t-acc-chevron">
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M4 6.5L8 10.5L12 6.5" />
+                </svg>
+              </span>
             </button>
           </div>
-
-          <div class="search-box">
-            <svg
-              class="search-icon"
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-            </svg>
-            <input
-              type="text"
-              id="projectSearch"
-              class="search-input"
-              placeholder="Search projects or tech tags..."
-              aria-label="Search projects"
-            />
+          <div class="t-acc-panel" id="projectsMore">
+            <div class="t-acc-panel-inner projects-more-inner" inert>
+              <div id="projectsMoreGrid" class="projects-grid"></div>
+            </div>
           </div>
-        </div>
-
-        <!-- Projects Bento Grid (Dynamic) -->
-        <div id="projectsGrid" class="projects-grid">
-          <!-- Populated by js/app.js -->
         </div>
 
         <!-- Semantic fallback if JavaScript is disabled -->
@@ -801,351 +555,250 @@
       </div>
     </section>
 
-    <!-- Toolbox / Skills Bento Section -->
-    <section id="toolbox" class="section">
+    <!-- About and skills -->
+    <section id="about" class="section">
       <div class="container">
         <div class="section-header">
-          <div>
-            <div class="section-label">03 / Toolbox</div>
-            <h2 class="section-title">Technical Skills</h2>
-            <p class="section-desc">
-              Technologies and tools I utilize across full-stack development,
-              mobile systems, and data pipelines.
-            </p>
-          </div>
+          <h2 class="section-title">About</h2>
         </div>
 
-        <div class="skills-bento">
-          <!-- Card 1: Programming Languages -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-card-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
-              </div>
-              <h3 class="skill-card-title">Programming Languages</h3>
-            </div>
-            <div class="skill-items-grid">
-              <span class="skill-item">TypeScript</span>
-              <span class="skill-item">JavaScript (ES6+)</span>
-              <span class="skill-item">Java (OOP)</span>
-              <span class="skill-item">C++ (Algorithms)</span>
-              <span class="skill-item">Python</span>
-              <span class="skill-item">Dart</span>
-              <span class="skill-item">SQL</span>
-            </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              I'm an Informatics graduate from <strong>Telkom University</strong>
+              (Cum Laude, GPA 3.66). My thesis counted vehicles entering and
+              leaving Bandung from CCTV footage, using YOLOv11 and DeepSORT.
+            </p>
+            <p>
+              At <strong>PT Taman Wisata Candi (InJourney)</strong> I work on
+              the cashier POS, the venue booking tool, and the knowledge base
+              behind the ticketing chat assistant. I'm also MTCNA certified and
+              have helped teach C++ data structures.
+            </p>
           </div>
 
-          <!-- Card 2: Web & Frameworks -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-card-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="8" y1="21" x2="16" y2="21" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                </svg>
-              </div>
-              <h3 class="skill-card-title">Frameworks &amp; Web Development</h3>
+          <dl class="skills-list">
+            <div class="skills-row">
+              <dt>Languages</dt>
+              <dd>TypeScript, JavaScript, Java, C++, Python</dd>
             </div>
-            <div class="skill-items-grid">
-              <span class="skill-item">Next.js (App Router)</span>
-              <span class="skill-item">React.js</span>
-              <span class="skill-item">Tailwind CSS</span>
-              <span class="skill-item">Node.js</span>
-              <span class="skill-item">Express</span>
-              <span class="skill-item">RESTful APIs</span>
-              <span class="skill-item">HTML5 / Semantic CSS</span>
+            <div class="skills-row">
+              <dt>Web</dt>
+              <dd>Laravel, React, Next.js, Node.js, Tailwind CSS</dd>
             </div>
-          </div>
-
-          <!-- Card 3: Mobile & Systems -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-card-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
-                  <line x1="12" y1="18" x2="12.01" y2="18" />
-                </svg>
-              </div>
-              <h3 class="skill-card-title">Mobile &amp; Systems Engineering</h3>
+            <div class="skills-row">
+              <dt>Mobile &amp; network</dt>
+              <dd>Flutter, MikroTik RouterOS, Linux</dd>
             </div>
-            <div class="skill-items-grid">
-              <span class="skill-item">Flutter</span>
-              <span class="skill-item">Dart Mobile UI</span>
-              <span class="skill-item">QR Integration</span>
-              <span class="skill-item">MikroTik RouterOS (MTCNA)</span>
-              <span class="skill-item">Computer Networking</span>
-              <span class="skill-item">Linux CLI</span>
+            <div class="skills-row">
+              <dt>Data &amp; AI</dt>
+              <dd>MySQL, MongoDB, YOLOv11, LLM knowledge bases</dd>
             </div>
-          </div>
-
-          <!-- Card 4: Databases, AI & Tools -->
-          <div class="skill-card">
-            <div class="skill-card-head">
-              <div class="skill-card-icon">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <ellipse cx="12" cy="5" rx="9" ry="3" />
-                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
-                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
-                </svg>
-              </div>
-              <h3 class="skill-card-title">Databases, AI &amp; Architecture</h3>
-            </div>
-            <div class="skill-items-grid">
-              <span class="skill-item">Knowledge Base &amp; AI Agents</span>
-              <span class="skill-item">Mekari Qontak Omnichannel</span>
-              <span class="skill-item">LLM Prompt Engineering</span>
-              <span class="skill-item">MongoDB &amp; MySQL</span>
-              <span class="skill-item">Computer Vision Models</span>
-              <span class="skill-item">Data Structures &amp; OOP</span>
-              <span class="skill-item">Git &amp; GitHub</span>
-              <span class="skill-item">Vercel Deployment</span>
-            </div>
-          </div>
+          </dl>
         </div>
       </div>
     </section>
 
-    <!-- Experience & Education Section -->
+    <!-- Experience -->
     <section id="experience" class="section">
       <div class="container">
         <div class="section-header">
-          <div>
-            <div class="section-label">04 / Journey</div>
-            <h2 class="section-title">Experience &amp; Education</h2>
-          </div>
+          <h2 class="section-title">Experience</h2>
         </div>
 
         <div class="timeline-stream">
-          <!-- Role 0: TWC / InJourney -->
           <div class="timeline-entry">
             <div class="timeline-date-col">Aug 2026 - Present</div>
             <div class="timeline-body-col">
-              <div class="timeline-header">
-                <h3 class="timeline-title">IT Development and Data Management Intern</h3>
-                <span class="timeline-org"
-                  >@ PT Taman Wisata Candi (TWC) / InJourney Destination Management</span
-                >
-                <span class="timeline-badge">Yogyakarta, Indonesia</span>
-              </div>
-              <p class="timeline-desc">
-                &bull; Revamped the UI of <strong>museumprambanan.twc.id</strong>, providing a cleaner catalog interface for Prambanan Temple's official museum website.<br>
-                &bull; Engineered the domain Knowledge Base and prompt guardrails for the customer service AI agent deployed live on <strong>ticket.injourneydestination.id</strong>, resolving visitor ticketing inquiries.<br>
-                &bull; Assisted in building a Point-of-Sale (POS) system for the Prambanan F&amp;B and retail units, connecting transaction records with the company ERP for financial auditing.<br>
-                &bull; Worked directly with enterprise ERP workflows, vendor management, and cross-departmental operations.
+              <h3 class="timeline-title">
+                IT Development and Data Management Intern
+              </h3>
+              <p class="timeline-org">
+                PT Taman Wisata Candi (InJourney), Yogyakarta
               </p>
+              <ul class="timeline-list">
+                <li>
+                  Worked on the cashier POS and inventory system used at
+                  Prambanan and Keraton Ratu Boko.
+                </li>
+                <li>
+                  Wrote the knowledge base and prompt guardrails for the AI
+                  assistant on <strong>ticket.injourneydestination.id</strong>.
+                </li>
+                <li>
+                  Rebuilt the catalog interface of
+                  <strong>museumprambanan.twc.id</strong>.
+                </li>
+              </ul>
             </div>
           </div>
 
-          <!-- Role 1 -->
           <div class="timeline-entry">
             <div class="timeline-date-col">Sep 2025 - Jan 2026</div>
             <div class="timeline-body-col">
-              <div class="timeline-header">
-                <h3 class="timeline-title">Lecturer Assistant &middot; Data Structures</h3>
-                <span class="timeline-org">@ Telkom University</span>
-                <span class="timeline-badge">Bandung, Indonesia</span>
-              </div>
-              <p class="timeline-desc">
-                &bull; Assisted in teaching core data structure concepts to 30+ students using C++.<br>
-                &bull; Provided feedback on algorithm design and efficiency in assignments and projects.<br>
-                &bull; Supervised students during lab sessions and examinations.
-              </p>
+              <h3 class="timeline-title">
+                Lecturer Assistant, Data Structures
+              </h3>
+              <p class="timeline-org">Telkom University, Bandung</p>
+              <ul class="timeline-list">
+                <li>Helped 30+ students learn data structures in C++.</li>
+                <li>
+                  Gave feedback on algorithm assignments and supervised labs and
+                  exams.
+                </li>
+              </ul>
             </div>
           </div>
 
-          <!-- Role 2 -->
           <div class="timeline-entry">
             <div class="timeline-date-col">Jul 2025 - Sep 2025</div>
             <div class="timeline-body-col">
-              <div class="timeline-header">
-                <h3 class="timeline-title">Internship &middot; Mobile &amp; Systems</h3>
-                <span class="timeline-org">@ FaveHotel</span>
-                <span class="timeline-badge">Bogor, Indonesia</span>
-              </div>
-              <p class="timeline-desc">
-                &bull; Designed and built a digital laundry logbook application to replace manual record-keeping.<br>
-                &bull; Developed a QR code-based inventory tracking system integrated with spreadsheets for real-time monitoring.<br>
-                &bull; Collaborated with 10+ hotel staff to ensure systems met functional requirements and provided training for end-users.
-              </p>
+              <h3 class="timeline-title">Mobile &amp; Systems Intern</h3>
+              <p class="timeline-org">FaveHotel, Bogor</p>
+              <ul class="timeline-list">
+                <li>Built a digital laundry logbook to replace paper records.</li>
+                <li>Trained 10+ hotel staff to use it.</li>
+              </ul>
             </div>
           </div>
 
-          <!-- Role 3 -->
-          <div class="timeline-entry">
-            <div class="timeline-date-col">Jan 2024 - Jan 2026</div>
-            <div class="timeline-body-col">
-              <div class="timeline-header">
-                <h3 class="timeline-title">Logistics &amp; Media Production Member</h3>
-                <span class="timeline-org">@ Student Volunteer</span>
-                <span class="timeline-badge">Bandung, Indonesia</span>
-              </div>
-              <p class="timeline-desc">
-                &bull; Coordinated cross-division event planning for workshops, seminars, and community service projects, managing end-to-end resource allocation across venues, equipment, and transport.<br>
-                &bull; Led social media strategy and promotional campaigns for student volunteer events, driving visibility across platforms.<br>
-                &bull; Produced original content from concept to shoot and built partnerships with external organizations for collaborative campaigns.
-              </p>
-            </div>
-          </div>
-
-          <!-- Education -->
           <div class="timeline-entry">
             <div class="timeline-date-col">Sep 2022 - Jan 2026</div>
             <div class="timeline-body-col">
-              <div class="timeline-header">
-                <h3 class="timeline-title">
-                  Bachelor of Informatics (S.Kom.) &middot; Cum Laude
-                </h3>
-                <span class="timeline-org">@ Telkom University, Bandung</span>
-                <span class="timeline-badge">GPA 3.66 / 4.00</span>
-              </div>
-              <p class="timeline-desc">
-                Graduated with Latin honors (Cum Laude). Published an undergraduate defense paper at an academic conference, focusing on Computer Vision for International Conference on Information and Communication Technology (2026).<br>
-                <strong>Relevant Coursework:</strong> Statistics, Calculus, Programming, Project Management, Big Data &amp; AI, Data Visualization, Machine Learning.
+              <h3 class="timeline-title">
+                Bachelor of Informatics (S.Kom.), Cum Laude
+              </h3>
+              <p class="timeline-org">
+                Telkom University, Bandung &middot; GPA 3.66 / 4.00
               </p>
+              <ul class="timeline-list">
+                <li>
+                  Thesis on computer vision, published at the International
+                  Conference on Information and Communication Technology (2026).
+                </li>
+              </ul>
             </div>
           </div>
 
-          <!-- Certifications & Achievements -->
-          <div class="timeline-entry">
-            <div class="timeline-date-col">2026</div>
-            <div class="timeline-body-col">
-              <div class="timeline-header">
-                <h3 class="timeline-title">Certifications &amp; Achievements</h3>
-                <span class="timeline-org">Professional Credentials</span>
+          <!-- Volunteering and certifications, collapsed by default -->
+          <div class="t-acc" id="experienceAcc" data-open="false">
+            <div class="acc-row acc-row--timeline">
+              <button
+                class="more-toggle t-acc-head"
+                type="button"
+                aria-expanded="false"
+                aria-controls="experienceMore"
+                data-closed-label="Show volunteering and certifications"
+                data-open-label="Show less"
+              >
+                <span class="more-toggle-label"
+                  >Show volunteering and certifications</span
+                >
+                <span class="t-acc-chevron">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path d="M4 6.5L8 10.5L12 6.5" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <div class="t-acc-panel" id="experienceMore">
+              <div class="t-acc-panel-inner" inert>
+                <div class="timeline-entry">
+                  <div class="timeline-date-col">Jan 2024 - Jan 2026</div>
+                  <div class="timeline-body-col">
+                    <h3 class="timeline-title">
+                      Logistics &amp; Media Production Member
+                    </h3>
+                    <p class="timeline-org">Student Volunteer, Bandung</p>
+                    <ul class="timeline-list">
+                      <li>
+                        Coordinated venues, equipment and transport for
+                        workshops and seminars.
+                      </li>
+                      <li>
+                        Ran social media and content for volunteer events.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="timeline-entry">
+                  <div class="timeline-date-col">2026</div>
+                  <div class="timeline-body-col">
+                    <h3 class="timeline-title">Certifications</h3>
+                    <p class="timeline-org">Professional credentials</p>
+                    <ul class="timeline-list">
+                      <li>
+                        <strong>MTCNA</strong>, MikroTik Certified Network
+                        Associate
+                      </li>
+                      <li><strong>TOEFL</strong> score 610</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
-              <p class="timeline-desc">
-                &bull; <strong>MikroTik Certified Network Associate (MTCNA)</strong>: Networking &amp; MikroTik RouterOS (2026)<br>
-                &bull; <strong>TOEFL Score: 610</strong>: Academic English reading, listening, writing, and comprehension (2026)<br>
-                &bull; <strong>Academic Research Publication</strong>: Undergraduate defense paper published in Computer Vision (2026)
-              </p>
             </div>
           </div>
-        </div>
         </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact -->
     <section id="contact" class="section">
       <div class="container">
         <div class="contact-card">
-          <div class="section-label">05 / Get in Touch</div>
-          <h2>Let's build something reliable and impactful together.</h2>
+          <h2>Let's work together.</h2>
           <p>
-            I am currently open to full-time junior / entry-level software
-            engineering roles, full-stack development, and technical
-            collaborations.
+            I'm looking for a junior or entry-level software engineering role.
+            Email is the fastest way to reach me.
           </p>
-          <div class="contact-buttons">
-            <a href="mailto:ghafaat@gmail.com" class="btn btn-primary">
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
-                />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-              <span>Email: ghafaat@gmail.com</span>
-            </a>
+          <a href="mailto:ghafaat@gmail.com" class="btn btn-primary btn-lg">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+              />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <span>ghafaat@gmail.com</span>
+          </a>
+          <div class="contact-links">
             <button
-              class="btn btn-secondary"
+              class="contact-link"
+              type="button"
               data-copy-email="ghafaat@gmail.com"
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                <path
-                  d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
-                />
-              </svg>
-              <span>Copy Address</span>
+              Copy email
             </button>
             <a
+              class="contact-link"
               href="https://www.linkedin.com/in/andighafa/"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn-outline"
+              >LinkedIn</a
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-                />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-              <span>LinkedIn</span>
-            </a>
             <a
+              class="contact-link"
               href="https://github.com/andiZghafa"
               target="_blank"
               rel="noopener noreferrer"
-              class="btn btn-outline"
+              >GitHub</a
             >
-              <svg
-                width="15"
-                height="15"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-                />
-              </svg>
-              <span>GitHub</span>
-            </a>
           </div>
         </div>
       </div>

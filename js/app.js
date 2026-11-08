@@ -1,6 +1,6 @@
 /**
  * Andi Ziyadh Ghafa Ramadhan: Portfolio Client Controller
- * Architecture: Modular Vanilla JS with Reactive State, Search & Filter,
+ * Architecture: Modular Vanilla JS with Reactive State, Project Disclosure,
  * Dynamic Modal Drawer, Theme Engine, and Toast Manager.
  */
 
@@ -9,14 +9,12 @@
 
   // --- STATE ---
   let projects = [];
-  let activeFilter = "all";
-  let searchQuery = "";
+  const FEATURED_FALLBACK_COUNT = 5;
 
   // DOM Elements
   const projectsGrid = document.getElementById("projectsGrid");
-  const projectCount = document.getElementById("projectCount");
-  const filterButtons = document.querySelectorAll("[data-filter]");
-  const searchInput = document.getElementById("projectSearch");
+  const projectsMoreGrid = document.getElementById("projectsMoreGrid");
+  const projectsAcc = document.getElementById("projectsAcc");
   const themeToggle = document.getElementById("themeToggle");
   const projectModal = document.getElementById("projectModal");
   const modalCloseBtn = document.getElementById("modalCloseBtn");
@@ -425,79 +423,53 @@
   }
 
   // --- RENDERING PROJECTS ---
+  function splitProjects() {
+    const featured = projects.filter((p) => p.featured);
+    const lead = featured.length ? featured : projects.slice(0, FEATURED_FALLBACK_COUNT);
+    const more = projects.filter((p) => !lead.includes(p));
+    return { lead, more };
+  }
+
   function renderProjects() {
     if (!projectsGrid) return;
 
-    // Filter projects
-    const filtered = projects.filter((p) => {
-      const projectCats = [
-        (p.category || "").toLowerCase(),
-        ...((p.categories || []).map((c) => c.toLowerCase())),
-      ];
-      const matchCategory =
-        activeFilter === "all" ||
-        projectCats.includes(activeFilter.toLowerCase());
-      const query = searchQuery.toLowerCase().trim();
-      const matchSearch =
-        !query ||
-        p.title.toLowerCase().includes(query) ||
-        (p.description && p.description.toLowerCase().includes(query)) ||
-        (p.role && p.role.toLowerCase().includes(query)) ||
-        (p.tags && p.tags.some((t) => t.toLowerCase().includes(query)));
+    const { lead, more } = splitProjects();
 
-      return matchCategory && matchSearch;
-    });
-
-    if (projectCount) {
-      projectCount.textContent = `${filtered.length} project${filtered.length === 1 ? "" : "s"}`;
-    }
-
-    if (filtered.length === 0) {
-      projectsGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; background: var(--bg-surface); border: 1px dashed var(--border-strong); border-radius: var(--radius-lg);">
-          <svg style="width: 48px; height: 48px; color: var(--text-muted); margin-bottom: 12px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <h3 style="font-family: var(--font-display); font-size: 18px; margin-bottom: 6px;">No projects found</h3>
-          <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">Try adjusting your search query or category filter.</p>
-          <button id="resetFilterBtn" class="btn btn-secondary" style="font-size: 13px; padding: 6px 14px;">Reset filters</button>
-        </div>
-      `;
-      const resetBtn = document.getElementById("resetFilterBtn");
-      if (resetBtn) {
-        resetBtn.addEventListener("click", () => {
-          activeFilter = "all";
-          searchQuery = "";
-          if (searchInput) searchInput.value = "";
-          updateFilterButtons();
-          renderProjects();
-        });
-      }
-      return;
-    }
-
-    projectsGrid.innerHTML = filtered
-      .map((p) => createProjectCardHTML(p))
+    projectsGrid.innerHTML = lead
+      .map((p, i) => createProjectCardHTML(p, i === 0))
       .join("");
 
-    // Attach listeners
+    if (projectsMoreGrid && projectsAcc) {
+      projectsMoreGrid.innerHTML = more
+        .map((p) => createProjectCardHTML(p, false))
+        .join("");
+      projectsAcc.hidden = more.length === 0;
+      const label = projectsAcc.querySelector(".more-toggle-label");
+      const toggle = projectsAcc.querySelector(".t-acc-head");
+      if (toggle && label) {
+        toggle.dataset.closedLabel = `Show ${more.length} more project${more.length === 1 ? "" : "s"}`;
+        toggle.dataset.openLabel = "Show fewer projects";
+        label.textContent = toggle.dataset.closedLabel;
+      }
+    }
+
+    // Open the details modal from a card click (links keep their own behavior)
     document.querySelectorAll(".project-card").forEach((card) => {
       card.addEventListener("click", (e) => {
-        // If clicking on an external link directly, don't trigger modal
         if (e.target.closest("a")) return;
-        const id = card.dataset.id;
-        openProjectModal(id);
+        openProjectModal(card.dataset.id);
       });
     });
 
     document.querySelectorAll("[data-open-modal]").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        const id = btn.dataset.openModal;
-        openProjectModal(id);
+        openProjectModal(btn.dataset.openModal);
       });
     });
   }
 
-  function createProjectCardHTML(p) {
+  function createProjectCardHTML(p, isLead = false) {
     const categoryLabels = {
       web: "Full-Stack Web",
       mobile: "Mobile App",
@@ -514,7 +486,7 @@
       p.fallbackImage || p.image || "assets/images/aspire.png";
 
     const tagsHTML = (p.tags || [])
-      .slice(0, 4)
+      .slice(0, 3)
       .map(
         (tag) => `
       <span class="tech-chip">${escapeHTML(tag)}</span>
@@ -565,32 +537,24 @@
     }
 
     return `
-      <article class="project-card" data-id="${p.id}" tabindex="0" role="region" aria-label="${escapeHTML(p.title)}">
+      <article class="project-card${isLead ? " is-lead" : ""}" data-id="${p.id}" tabindex="0" role="region" aria-label="${escapeHTML(p.title)}">
         <div class="project-thumb-wrap">
-          <img 
-            src="${escapeHTML(imgSrc)}" 
-            alt="${escapeHTML(p.title)}" 
-            class="project-thumb-img" 
+          <img
+            src="${escapeHTML(imgSrc)}"
+            alt="${escapeHTML(p.title)}"
+            class="project-thumb-img"
             loading="lazy"
             onerror="this.onerror=null; this.src='${escapeHTML(fallbackSrc)}';"
           />
-          <div class="thumb-overlay">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-            <span>Overview</span>
-          </div>
         </div>
         <div class="project-content">
-          <div class="project-meta-row">
-            <span class="category-tag">${catLabel}</span>
-            <span class="project-period">${escapeHTML(p.period || "")}</span>
-          </div>
+          <span class="category-tag">${catLabel}</span>
           <h3 class="project-title">${escapeHTML(p.title)}</h3>
-          ${p.role ? `<div class="project-role">${escapeHTML(p.role)}</div>` : ""}
           <p class="project-desc">${escapeHTML(p.description)}</p>
           <div class="tags-row">${tagsHTML}</div>
           <div class="project-actions-row">
             ${primaryActionHTML}
-            <button class="btn-card-action btn-card-secondary btn-quick-view" data-open-modal="${p.id}">
+            <button class="btn-card-action btn-card-ghost btn-quick-view" data-open-modal="${p.id}">
               <span>Details</span>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
@@ -732,7 +696,7 @@
 
     const icon =
       type === "success"
-        ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>`
+        ? `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>`
         : `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`;
 
     toast.innerHTML = `${icon}<span>${escapeHTML(message)}</span>`;
@@ -760,13 +724,34 @@
       .replace(/'/g, "&#039;");
   }
 
-  function updateFilterButtons() {
-    filterButtons.forEach((btn) => {
-      if (btn.dataset.filter === activeFilter) {
-        btn.classList.add("active");
-      } else {
-        btn.classList.remove("active");
-      }
+  // --- DISCLOSURES (transitions.dev accordion) ---
+  function initAccordions() {
+    document.querySelectorAll(".t-acc").forEach((acc) => {
+      const head = acc.querySelector(".t-acc-head");
+      const label = acc.querySelector(".more-toggle-label");
+      const inner = acc.querySelector(".t-acc-panel-inner");
+      if (!head) return;
+      head.addEventListener("click", () => {
+        const open = acc.getAttribute("data-open") === "true";
+        acc.setAttribute("data-open", String(!open));
+        head.setAttribute("aria-expanded", String(!open));
+        // Collapsed content must not be reachable by keyboard or screen reader
+        if (inner) inner.inert = open;
+        if (label && head.dataset.closedLabel) {
+          label.textContent = open
+            ? head.dataset.closedLabel
+            : head.dataset.openLabel;
+        }
+      });
+    });
+  }
+
+  // --- HERO REVEAL (transitions.dev texts reveal, plays once) ---
+  function initHeroReveal() {
+    const hero = document.getElementById("heroReveal");
+    if (!hero) return;
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => hero.classList.add("is-shown"));
     });
   }
 
@@ -775,23 +760,6 @@
     // Theme Switcher
     if (themeToggle) {
       themeToggle.addEventListener("click", toggleTheme);
-    }
-
-    // Category Filters
-    filterButtons.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        activeFilter = btn.dataset.filter;
-        updateFilterButtons();
-        renderProjects();
-      });
-    });
-
-    // Search Input
-    if (searchInput) {
-      searchInput.addEventListener("input", (e) => {
-        searchQuery = e.target.value;
-        renderProjects();
-      });
     }
 
     // Modal Close
@@ -834,8 +802,8 @@
           .writeText(email)
           .then(() => {
             btn.innerHTML = `
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" style="animation: copyCheck 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;"><polyline points="20 6 9 17 4 12"/></svg>
-            <span style="color: #22c55e; font-weight: 700;">Copied!</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation: copyCheck 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span style="font-weight: 700;">Copied!</span>
           `;
             showToast(`Copied ${email} to clipboard!`, "success");
             setTimeout(() => {
@@ -866,6 +834,8 @@
   document.addEventListener("DOMContentLoaded", () => {
     initTheme();
     initEvents();
+    initAccordions();
+    initHeroReveal();
     loadProjects();
   });
 
