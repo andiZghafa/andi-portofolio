@@ -2,7 +2,7 @@
 
 Personal portfolio website documenting my work in enterprise software, web systems, computer vision, and mobile tools.
 
-- **Live URL**: [https://andi-portofolio-one.vercel.app](https://andi-portofolio-one.vercel.app)
+- **Live URL**: [andiportofolio.my.id](https://andiportofolio.my.id)
 - **LinkedIn**: [linkedin.com/in/andighafa](https://www.linkedin.com/in/andighafa/)
 - **Contact**: ghafaat@gmail.com
 
