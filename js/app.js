@@ -33,6 +33,17 @@
       document.head.appendChild(metaTheme);
     }
     metaTheme.setAttribute("content", color);
+
+    // Sync SVG favicon rim accent with active theme state
+    const faviconEl = document.getElementById("siteFavicon");
+    if (faviconEl) {
+      const rimColor = theme === "dark" ? "%23FF6B5B" : "%23F4EDE0";
+      const rimOpacity = theme === "dark" ? "0.42" : "0.16";
+      faviconEl.setAttribute(
+        "href",
+        `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='%2314213D'/><rect x='0.5' y='0.5' width='31' height='31' rx='7.5' stroke='${rimColor}' stroke-opacity='${rimOpacity}' stroke-width='1'/><path d='M11.75 9.5L7.75 22.5' stroke='%23FF6B5B' stroke-width='2.8' stroke-linecap='round'/><path d='M15.25 22.5L19.5 9.5L23.75 22.5' stroke='%23F4EDE0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/><path d='M16.75 18.25H22.25' stroke='%23F4EDE0' stroke-width='2.4' stroke-linecap='round'/></svg>`,
+      );
+    }
   }
 
   function initTheme() {
@@ -59,11 +70,15 @@
 
   function updateThemeIcon(theme) {
     if (!themeToggle) return;
-    const icon =
-      theme === "dark"
-        ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`
-        : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
-    themeToggle.innerHTML = icon;
+    if (themeToggle.classList.contains("t-icon-swap")) {
+      themeToggle.setAttribute("data-state", theme);
+    } else {
+      const icon =
+        theme === "dark"
+          ? `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`
+          : `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>`;
+      themeToggle.innerHTML = icon;
+    }
     themeToggle.setAttribute(
       "aria-label",
       `Switch to ${theme === "dark" ? "light" : "dark"} mode`,
@@ -554,9 +569,14 @@
           <div class="tags-row">${tagsHTML}</div>
           <div class="project-actions-row">
             ${primaryActionHTML}
-            <button class="btn-card-action btn-card-ghost btn-quick-view" data-open-modal="${p.id}">
+            <button class="btn-card-action btn-card-ghost btn-quick-view t-learn" data-open-modal="${p.id}">
               <span>Details</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <span class="t-learn-chevron" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="t-learn-arm t-learn-arm-top" d="M6 4L10 8"/>
+                  <path class="t-learn-arm t-learn-arm-bot" d="M10 8L6 12"/>
+                </svg>
+              </span>
             </button>
           </div>
         </div>
@@ -685,7 +705,7 @@
     setTimeout(() => {
       projectModal.classList.remove("active", "closing");
       document.body.style.overflow = "";
-    }, 180);
+    }, 150);
   }
 
   // --- TOAST MANAGER (Symmetric Smooth Transitions) ---

@@ -26,6 +26,11 @@
       content="#14213D"
     />
 
+    <!-- Favicon & App Icons -->
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" id="siteFavicon" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,7 +56,44 @@
     <nav class="site-nav" aria-label="Main Navigation">
       <div class="container nav-wrap">
         <a href="#" class="nav-brand" aria-label="Andi Ghafa home">
-          <span>/andighafa</span>
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 32 32" fill="none">
+              <rect width="32" height="32" rx="8" fill="#14213D" />
+              <rect
+                x="0.5"
+                y="0.5"
+                width="31"
+                height="31"
+                rx="7.5"
+                stroke="#F4EDE0"
+                stroke-opacity="0.18"
+                stroke-width="1"
+              />
+              <path
+                class="brand-mark-slash"
+                d="M11.75 9.5L7.75 22.5"
+                stroke="#FF6B5B"
+                stroke-width="2.8"
+                stroke-linecap="round"
+              />
+              <path
+                class="brand-mark-a"
+                d="M15.25 22.5L19.5 9.5L23.75 22.5"
+                stroke="#F4EDE0"
+                stroke-width="2.6"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                class="brand-mark-bar"
+                d="M16.75 18.25H22.25"
+                stroke="#F4EDE0"
+                stroke-width="2.4"
+                stroke-linecap="round"
+              />
+            </svg>
+          </span>
+          <span class="brand-wordmark">/andighafa</span>
           <span class="brand-badge">S.Kom</span>
         </a>
 
@@ -65,11 +107,47 @@
         <div class="nav-actions">
           <button
             id="themeToggle"
-            class="btn-icon"
+            class="btn-icon t-icon-swap"
+            data-state="light"
             aria-label="Toggle dark/light theme"
             title="Toggle theme"
           >
-            <!-- Icon injected by app.js -->
+            <span class="t-icon" data-icon="light" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              </svg>
+            </span>
+            <span class="t-icon" data-icon="dark" aria-hidden="true">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2" />
+                <path d="M12 20v2" />
+                <path d="m4.93 4.93 1.41 1.41" />
+                <path d="m17.66 17.66 1.41 1.41" />
+                <path d="M2 12h2" />
+                <path d="M20 12h2" />
+                <path d="m6.34 17.66-1.41 1.41" />
+                <path d="m19.07 4.93-1.41 1.41" />
+              </svg>
+            </span>
           </button>
         </div>
       </div>
