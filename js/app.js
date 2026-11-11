@@ -38,10 +38,10 @@
     const faviconEl = document.getElementById("siteFavicon");
     if (faviconEl) {
       const rimColor = theme === "dark" ? "%23FF6B5B" : "%23F4EDE0";
-      const rimOpacity = theme === "dark" ? "0.42" : "0.16";
+      const rimOpacity = theme === "dark" ? "0.45" : "0.18";
       faviconEl.setAttribute(
         "href",
-        `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='%2314213D'/><rect x='0.5' y='0.5' width='31' height='31' rx='7.5' stroke='${rimColor}' stroke-opacity='${rimOpacity}' stroke-width='1'/><path d='M11.75 9.5L7.75 22.5' stroke='%23FF6B5B' stroke-width='2.8' stroke-linecap='round'/><path d='M15.25 22.5L19.5 9.5L23.75 22.5' stroke='%23F4EDE0' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/><path d='M16.75 18.25H22.25' stroke='%23F4EDE0' stroke-width='2.4' stroke-linecap='round'/></svg>`,
+        `data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' fill='none'><rect width='32' height='32' rx='8' fill='%2314213D'/><rect x='0.5' y='0.5' width='31' height='31' rx='7.5' stroke='${rimColor}' stroke-opacity='${rimOpacity}' stroke-width='1'/><g transform='translate(4, 4)'><path d='M3.5 20.5L12 3.5L14 7.5L7 20.5H3.5Z' fill='%23F4EDE0'/><path d='M12 3.5L20.5 20.5H16.5L13.5 14.5L12 11.5V3.5Z' fill='%23FF6B5B'/><path d='M7 16.5H16.5L15 13.5H8.5L7 16.5Z' fill='%23F4EDE0' fill-opacity='0.9'/></g></svg>`,
       );
     }
   }
@@ -375,28 +375,30 @@
         role: "Solo Developer & Software Engineering Intern",
         period: "Jul 2025 - Sep 2025",
         description:
-          "Production web application built to digitize manual paper logbooks in hotel laundry operations, featuring real-time linen batch tracking, cloud spreadsheet synchronization, and Vercel cloud deployment.",
+          "Production web application built to digitize manual paper logbooks in hotel laundry operations, featuring 3 dedicated linen tracking stations (Fren Linen, Fast Items, Rewash Station), instant spreadsheet sync, and direct Excel (.xlsx) export.",
         overview:
-          "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live on Vercel, the app enables staff to record incoming/outgoing linen batches, track weights and counts, and synchronize records instantly to cloud spreadsheets with zero operational downtime.",
+          "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live on Vercel with open-source code on GitHub, the updated web platform features a focused interface with three distinct operation stations (Fren Linen for 8 standard linens, Fast Items for 6 specialized fabrics, and a Rewash Station for stained items), direct Excel (.xlsx) export, and instant cloud spreadsheet synchronization.",
         keyFeatures: [
-          "Direct linen batch recording: logs incoming/outgoing linens, unit weights, item classifications, and timestamped shift logs",
-          "Instant bidirectional cloud synchronization with spreadsheets, cutting weekly management reporting time from 5 hours to instant",
-          "Deployed on Vercel (favehotellaundrylogbook.vercel.app) with responsive web access for both desktop front-desk and tablet use",
-          "Built with Flutter Web & Dart, optimized for rapid data entry with minimal network bandwidth overhead",
-          "On-site staff onboarding and complete operational documentation delivered for hotel housekeeping operations",
+          "Modular Three-Station Workflow: Fren Linen (8 standard hotel linens), Fast Items (6 specialized fabrics), and dedicated Rewash Station for defect and stain quarantine",
+          "Direct Excel Export: One-click .xlsx report generation formatted specifically for hotel housekeeping audits",
+          "Instant Cloud Synchronization: Bidirectional data sync with Google Sheets, cutting weekly reporting overhead from 5 hours to instant",
+          "Responsive Flutter Web Architecture: Deployed on Vercel (favehotellaundrylogbook.vercel.app) with lightweight network footprint for hotel front-desk and laundry terminals",
+          "Open-Source GitHub Repository: Public codebase documenting architecture, state models, and theme styling (github.com/andiZghafa/Favehotel-LaundryApp)",
         ],
         tags: [
           "Flutter Web",
           "Dart",
-          "Spreadsheet API",
           "Vercel",
-          "Operations",
+          "GitHub",
+          "Excel (.xlsx)",
+          "Spreadsheet API",
           "Inventory Management",
         ],
-        image: "assets/images/favehotel.jpg",
-        fallbackImage: "porto.jpeg",
+        image: "assets/images/favehotel-web.png",
+        fallbackImage: "assets/images/favehotel.jpg",
         links: {
           demo: "https://favehotellaundrylogbook.vercel.app/",
+          github: "https://github.com/andiZghafa/Favehotel-LaundryApp",
           docs: "docs/favehotel-app-documentation.html",
           pdf: "porto 1.pdf",
           drive:

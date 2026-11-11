@@ -223,27 +223,29 @@
     "categoryLabel": "Production Web App",
     "role": "Solo Developer & Software Engineering Intern",
     "period": "Jul 2025 - Sep 2025",
-    "description": "Production web application built to digitize manual paper logbooks in hotel laundry operations, featuring real-time linen batch tracking, cloud spreadsheet synchronization, and Vercel cloud deployment.",
-    "overview": "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live on Vercel, the app enables staff to record incoming/outgoing linen batches, track weights and counts, and synchronize records instantly to cloud spreadsheets with zero operational downtime.",
+    "description": "Production web application built to digitize manual paper logbooks in hotel laundry operations, featuring 3 dedicated linen tracking stations (Fren Linen, Fast Items, Rewash Station), instant spreadsheet sync, and direct Excel (.xlsx) export.",
+    "overview": "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live on Vercel with open-source code on GitHub, the updated web platform features a focused interface with three distinct operation stations (Fren Linen for 8 standard linens, Fast Items for 6 specialized fabrics, and a Rewash Station for stained items), direct Excel (.xlsx) export, and instant cloud spreadsheet synchronization.",
     "keyFeatures": [
-      "Direct linen batch recording: logs incoming/outgoing linens, unit weights, item classifications, and timestamped shift logs",
-      "Instant bidirectional cloud synchronization with spreadsheets, cutting weekly management reporting time from 5 hours to instant",
-      "Deployed on Vercel (favehotellaundrylogbook.vercel.app) with responsive web access for both desktop front-desk and tablet use",
-      "Built with Flutter Web & Dart, optimized for rapid data entry with minimal network bandwidth overhead",
-      "On-site staff onboarding and complete operational documentation delivered for hotel housekeeping operations"
+      "Modular Three-Station Workflow: Fren Linen (8 standard hotel linens), Fast Items (6 specialized fabrics), and dedicated Rewash Station for defect and stain quarantine",
+      "Direct Excel Export: One-click .xlsx report generation formatted specifically for hotel housekeeping audits",
+      "Instant Cloud Synchronization: Bidirectional data sync with Google Sheets, cutting weekly reporting overhead from 5 hours to instant",
+      "Responsive Flutter Web Architecture: Deployed on Vercel (favehotellaundrylogbook.vercel.app) with lightweight network footprint for hotel front-desk and laundry terminals",
+      "Open-Source GitHub Repository: Public codebase documenting architecture, state models, and theme styling (github.com/andiZghafa/Favehotel-LaundryApp)"
     ],
     "tags": [
       "Flutter Web",
       "Dart",
-      "Spreadsheet API",
       "Vercel",
-      "Operations",
+      "GitHub",
+      "Excel (.xlsx)",
+      "Spreadsheet API",
       "Inventory Management"
     ],
-    "image": "assets/images/favehotel.jpg",
-    "fallbackImage": "porto.jpeg",
+    "image": "assets/images/favehotel-web.png",
+    "fallbackImage": "assets/images/favehotel.jpg",
     "links": {
       "demo": "https://favehotellaundrylogbook.vercel.app/",
+      "github": "https://github.com/andiZghafa/Favehotel-LaundryApp",
       "docs": "docs/favehotel-app-documentation.html",
       "pdf": "porto 1.pdf",
       "drive": "https://drive.google.com/drive/folders/14KmCJALAOIj8jx7pWVYclDdgkDH3fQur?usp=sharing"
