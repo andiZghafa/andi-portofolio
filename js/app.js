@@ -377,18 +377,17 @@
         description:
           "Production web application built to digitize manual paper logbooks in hotel laundry operations, featuring 3 dedicated linen tracking stations (Fren Linen, Fast Items, Rewash Station), instant spreadsheet sync, and direct Excel (.xlsx) export.",
         overview:
-          "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live on Vercel with open-source code on GitHub, the updated web platform features a focused interface with three distinct operation stations (Fren Linen for 8 standard linens, Fast Items for 6 specialized fabrics, and a Rewash Station for stained items), direct Excel (.xlsx) export, and instant cloud spreadsheet synchronization.",
+          "During my industrial internship at FaveHotel Bogor, housekeeping and laundry staff relied on handwritten paper logbooks to track hundreds of daily linen movements (bedsheets, towels, pillowcases) between hotel floors and laundry facilities, leading to inventory discrepancies and delayed reports. I designed, engineered, and deployed the FaveHotel Laundry Logbook web application from scratch. Deployed live at laundry.andiportofolio.my.id with open-source code on GitHub, the updated web platform features a focused interface with three distinct operation stations (Fren Linen for 8 standard linens, Fast Items for 6 specialized fabrics, and a Rewash Station for stained items), direct Excel (.xlsx) export, and instant cloud spreadsheet synchronization.",
         keyFeatures: [
           "Modular Three-Station Workflow: Fren Linen (8 standard hotel linens), Fast Items (6 specialized fabrics), and dedicated Rewash Station for defect and stain quarantine",
           "Direct Excel Export: One-click .xlsx report generation formatted specifically for hotel housekeeping audits",
           "Instant Cloud Synchronization: Bidirectional data sync with Google Sheets, cutting weekly reporting overhead from 5 hours to instant",
-          "Responsive Flutter Web Architecture: Deployed on Vercel (favehotellaundrylogbook.vercel.app) with lightweight network footprint for hotel front-desk and laundry terminals",
+          "Responsive Flutter Web Architecture: Deployed at laundry.andiportofolio.my.id with lightweight network footprint for hotel front-desk and laundry terminals",
           "Open-Source GitHub Repository: Public codebase documenting architecture, state models, and theme styling (github.com/andiZghafa/Favehotel-LaundryApp)",
         ],
         tags: [
           "Flutter Web",
           "Dart",
-          "Vercel",
           "GitHub",
           "Excel (.xlsx)",
           "Spreadsheet API",
@@ -397,7 +396,7 @@
         image: "assets/images/favehotel-web.png",
         fallbackImage: "assets/images/favehotel.jpg",
         links: {
-          demo: "https://favehotellaundrylogbook.vercel.app/",
+          demo: "https://laundry.andiportofolio.my.id/",
           github: "https://github.com/andiZghafa/Favehotel-LaundryApp",
           docs: "docs/favehotel-app-documentation.html",
           pdf: "porto 1.pdf",

@@ -22,7 +22,7 @@ The site is built with vanilla HTML5, CSS3, and JavaScript: no bulky framework b
 4. **InJourney Destinations AI Ticketing Assistant & Knowledge Base**: Domain knowledge base and prompt guardrails powering the customer support AI chatbot deployed on `ticket.injourneydestination.id` via Mekari Qontak.
 5. **Bandung Urban Traffic Density Estimation via YOLOv11 & DeepSORT**: Undergraduate research defense at Telkom University. Solved motorcycle detection failure in Southeast Asian traffic, reaching 65.5% mAP@50 and 98.1% field counting accuracy across 17 Bandung CCTV feeds. Published in ICOICT 2026.
 6. **ASPIRE Career & Course Platform**: Full-stack web application built with Next.js, TypeScript, and MongoDB that parses student transcripts from PDF and uses an LLM pipeline to recommend personalized career paths and university electives.
-7. **FaveHotel Laundry Logbook & Linen Inventory App**: Web and mobile application built with Flutter (deployed at [favehotellaundrylogbook.vercel.app](https://favehotellaundrylogbook.vercel.app/)) with QR code scanning to replace paper records during hotel linen processing, syncing directly with cloud spreadsheets.
+7. **FaveHotel Laundry Logbook & Linen Inventory App**: Web and mobile application built with Flutter (deployed at [laundry.andiportofolio.my.id](https://laundry.andiportofolio.my.id/)) with QR code scanning to replace paper records during hotel linen processing, syncing directly with cloud spreadsheets.
 8. **Console-Based Library Management System**: Java console application implementing core OOP principles, custom data structures, role-based access control, and transaction ledgers.
 
 ---
