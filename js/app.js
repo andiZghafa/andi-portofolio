@@ -183,10 +183,11 @@
         role: "IT Development and Data Management Intern",
         period: "2026",
         description:
-          "Internal enterprise scheduling platform utilized by PT Taman Wisata Candi to coordinate multi-day venue bookings, load-in setup windows, and tiered seating layouts without double-booking conflicts.",
+          "Internal enterprise scheduling platform utilized by PT Taman Wisata Candi to coordinate multi-day venue bookings, load-in setup windows, and tiered seating layouts without double-booking conflicts, deployed on a Rumahweb Linux VPS.",
         overview:
-          "Designed and developed an internal web enterprise platform for PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system coordinates high-capacity venue rentals across 3 premier heritage destinations (such as Lapangan Garuda, Trimurti Stage, and Ramayana Ballet stages). It features an atomic scheduling validation engine that accounts for multi-phase windows (load-in setup, main event, and tear-down unload) to eliminate scheduling collisions, coupled with an interactive seat allocation module and destination-scoped user permissions.",
+          "Designed and developed an internal web enterprise platform for PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system coordinates high-capacity venue rentals across 3 premier heritage destinations (such as Lapangan Garuda, Trimurti Stage, and Ramayana Ballet stages). It features an atomic scheduling validation engine that accounts for multi-phase windows (load-in setup, main event, and tear-down unload) to eliminate scheduling collisions, coupled with an interactive seat allocation module and destination-scoped user permissions. Deployed live on a Linux Cloud VPS (Rumahweb) at venue.andiportofolio.my.id.",
         keyFeatures: [
+          "Live Cloud VPS Deployment: Hosted on a Linux VPS via Rumahweb at venue.andiportofolio.my.id with multi-destination sales authentication",
           "Multi-phase conflict detection engine validating load-in, event, and tear-down windows before confirming bookings",
           "Dynamic Seating Chart Management (`kursi`) with row-and-column tier mapping for Ramayana Ballet Prambanan stages",
           "Destination-scoped Role-Based Access Control (Sales scoped to single sites; Admins manage cross-destination bookings)",
@@ -197,16 +198,29 @@
           "Laravel",
           "PHP",
           "Tailwind CSS",
+          "Rumahweb VPS",
           "MySQL",
           "Blade",
           "Vite",
           "Enterprise Scheduling",
           "TWC InJourney",
         ],
-        image: "assets/images/venue-booking-bg.jpg",
-        fallbackImage: "assets/images/venue-booking-logo.png",
+        image: "assets/images/venue-booking-dashboard.jpg",
+        fallbackImage: "assets/images/venue-booking-bg.jpg",
         links: {
+          demo: "https://venue.andiportofolio.my.id/",
           docs: "docs/venue-booking-system-documentation.html",
+        },
+        demoCredentials: {
+          title: "Demo Access Credentials",
+          note: "Authentication required. Log in using any destination sales account:",
+          email: "sales.borobudur@venuetracker.test",
+          alternateEmails: [
+            "sales.prambanan@venuetracker.test",
+            "sales.ratuboko@venuetracker.test",
+          ],
+          password: "password",
+          role: "Destination Sales PIC (Borobudur, Prambanan, Ratu Boko)",
         },
         featured: true,
         order: 2,
@@ -669,6 +683,35 @@
       `;
     }
 
+    let credentialsHTML = "";
+    if (p.demoCredentials) {
+      const creds = p.demoCredentials;
+      const alternates = (creds.alternateEmails || [])
+        .map((em) => `<code class="demo-cred-code">${escapeHTML(em)}</code>`)
+        .join(" / ");
+      credentialsHTML = `
+        <div class="demo-credentials-card" role="region" aria-label="Demo Access Credentials">
+          <div class="demo-credentials-header">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>${escapeHTML(creds.title || "Demo Access Credentials")}</span>
+          </div>
+          <p class="demo-credentials-desc">${escapeHTML(creds.note || "Authentication required. Log in using any destination sales account:")}</p>
+          <div class="demo-credentials-grid">
+            <div class="demo-cred-item">
+              <span class="demo-cred-label">Email:</span>
+              <code class="demo-cred-code">${escapeHTML(creds.email)}</code>
+              ${alternates ? `<span class="demo-cred-hint">Or switch to: ${alternates}</span>` : ""}
+            </div>
+            <div class="demo-cred-item">
+              <span class="demo-cred-label">Password:</span>
+              <code class="demo-cred-code">${escapeHTML(creds.password)}</code>
+              ${creds.role ? `<span class="demo-cred-hint">Scope: ${escapeHTML(creds.role)}</span>` : ""}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
     modalContent.innerHTML = `
       <div class="modal-img-wrap">
         <img 
@@ -693,7 +736,8 @@
         <h4 style="font-family: var(--font-display); font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary);">Tech Stack &amp; Tools</h4>
         <div style="display: flex; flex-wrap: wrap; gap: 8px;">${tagsHTML}</div>
       </div>
-      <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; gap: 12px;">
+      ${credentialsHTML}
+      <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-subtle); display: flex; flex-wrap: wrap; gap: 12px;">
         ${actionButtonsHTML}
       </div>
     `;

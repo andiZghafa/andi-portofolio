@@ -47,9 +47,10 @@
     "category": "web",
     "role": "IT Development and Data Management Intern",
     "period": "2026",
-    "description": "Internal enterprise scheduling platform utilized by PT Taman Wisata Candi to coordinate multi-day venue bookings, load-in setup windows, and tiered seating layouts without double-booking conflicts.",
-    "overview": "Designed and developed an internal web enterprise platform for PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system coordinates venue rentals across heritage destinations (such as Lapangan Garuda, Trimurti Stage, and Ramayana Ballet stages). It features an atomic scheduling validation engine that accounts for multi-phase windows (load-in setup, main event, and tear-down unload) to eliminate scheduling collisions, coupled with an interactive seat allocation module and destination-scoped user permissions.",
+    "description": "Internal enterprise scheduling platform utilized by PT Taman Wisata Candi to coordinate multi-day venue bookings, load-in setup windows, and tiered seating layouts without double-booking conflicts, deployed on a Rumahweb Linux VPS.",
+    "overview": "Designed and developed an internal web enterprise platform for PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system coordinates venue rentals across heritage destinations (such as Lapangan Garuda, Trimurti Stage, and Ramayana Ballet stages). It features an atomic scheduling validation engine that accounts for multi-phase windows (load-in setup, main event, and tear-down unload) to eliminate scheduling collisions, coupled with an interactive seat allocation module and destination-scoped user permissions. Deployed live on a Linux Cloud VPS (Rumahweb) at venue.andiportofolio.my.id.",
     "keyFeatures": [
+      "Live Cloud VPS Deployment: Hosted on a Linux VPS via Rumahweb at venue.andiportofolio.my.id with multi-destination sales authentication",
       "Multi-phase conflict detection engine validating load-in, event, and tear-down windows before confirming bookings",
       "Dynamic Seating Chart Management (`kursi`) with row-and-column tier mapping for Ramayana Ballet Prambanan stages",
       "Destination-scoped Role-Based Access Control (Sales scoped to single sites; Admins manage cross-destination bookings)",
@@ -60,16 +61,29 @@
       "Laravel",
       "PHP",
       "Tailwind CSS",
+      "Rumahweb VPS",
       "MySQL",
       "Blade",
       "Vite",
       "Enterprise Scheduling",
       "TWC InJourney"
     ],
-    "image": "assets/images/venue-booking-bg.jpg",
-    "fallbackImage": "assets/images/venue-booking-logo.png",
+    "image": "assets/images/venue-booking-dashboard.jpg",
+    "fallbackImage": "assets/images/venue-booking-bg.jpg",
     "links": {
+      "demo": "https://venue.andiportofolio.my.id/",
       "docs": "docs/venue-booking-system-documentation.html"
+    },
+    "demoCredentials": {
+      "title": "Demo Access Credentials",
+      "note": "Authentication required. Log in using any destination sales account:",
+      "email": "sales.borobudur@venuetracker.test",
+      "alternateEmails": [
+        "sales.prambanan@venuetracker.test",
+        "sales.ratuboko@venuetracker.test"
+      ],
+      "password": "password",
+      "role": "Destination Sales PIC (Borobudur, Prambanan, Ratu Boko)"
     },
     "featured": true,
     "order": 2
