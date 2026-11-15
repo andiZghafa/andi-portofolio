@@ -8,9 +8,10 @@
     "categoryLabel": "Full-Stack Web & POS System",
     "role": "IT Development and Data Management Intern",
     "period": "Aug 2026 - Present",
-    "description": "Enterprise point-of-sale ecosystem built for Candi Prambanan and Keraton Ratu Boko units to connect live data with company ERP, featuring multi-warehouse inventory mutations and direct Bluetooth thermal ESC/POS printing.",
-    "overview": "Assisted in engineering the Point-of-Sale (POS) and retail management system for Prambanan F&B and ticketing units under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system connects cashier transactions directly with the enterprise ERP for financial audit and inventory tracking. Built with Laravel 13, Inertia.js, and React 19, paired with a Capacitor Android native bridge for direct Bluetooth Classic (SPP) ESC/POS thermal printing to BP-LITE80D printers with zero browser dialog delay. Handles multi-warehouse inventory, cashier shift reconciliation, and cashier payment method classification toggles for accounting administration.",
+    "description": "Enterprise point-of-sale ecosystem built for Candi Prambanan and Keraton Ratu Boko units to connect live data with company ERP, featuring multi-warehouse inventory mutations, direct Bluetooth thermal ESC/POS printing, and live deployment on a Rumahweb Linux VPS.",
+    "overview": "Assisted in engineering the Point-of-Sale (POS) and retail management system for Prambanan F&B and ticketing units under PT Taman Wisata Candi Borobudur, Prambanan & Ratu Boko (TWC / InJourney). The system connects cashier transactions directly with the enterprise ERP for financial audit and inventory tracking. Built with Laravel 13, Inertia.js, and React 19, paired with a Capacitor Android native bridge for direct Bluetooth Classic (SPP) ESC/POS thermal printing to BP-LITE80D printers with zero browser dialog delay. Deployed live on a Linux Cloud VPS (Rumahweb) at pos.andiportofolio.my.id with Nginx and automated CI/CD deployment, managing multi-warehouse inventory, cashier shift reconciliation, and payment method classification toggles for accounting administration.",
     "keyFeatures": [
+      "Live Cloud VPS Deployment: Hosted on a Linux VPS via Rumahweb with custom domain pos.andiportofolio.my.id, Nginx reverse proxy, and automated GitHub Actions CI/CD pipeline",
       "Native Android Bluetooth Classic (SPP) ESC/POS printing bridge eliminating print dialog delays (<0.5s auto-cut)",
       "Automated data sync with company ERP for end-of-day audit accuracy",
       "Multi-Warehouse Inventory Architecture tracking real-time stock mutations, transfers, and FEFO batch allocations",
@@ -22,6 +23,7 @@
       "Laravel",
       "Inertia.js",
       "React",
+      "Rumahweb VPS",
       "Capacitor",
       "Android",
       "Bluetooth ESC/POS",
@@ -29,9 +31,10 @@
       "MySQL",
       "Payment Classification"
     ],
-    "image": "assets/images/pos-checkout.png",
-    "fallbackImage": "assets/images/pos-dashboard.png",
+    "image": "assets/images/pos-dashboard.png",
+    "fallbackImage": "assets/images/pos-checkout.png",
     "links": {
+      "demo": "https://pos.andiportofolio.my.id/",
       "docs": "docs/pos-system-documentation.html"
     },
     "featured": true,

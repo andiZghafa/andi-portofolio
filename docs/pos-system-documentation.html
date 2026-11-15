@@ -612,6 +612,10 @@
           <span class="topbar-title">Prambanan &amp; Ratu Boko POS</span>
         </div>
         <div class="topbar-actions">
+          <a href="https://pos.andiportofolio.my.id/" target="_blank" rel="noopener noreferrer" class="topbar-btn topbar-btn-primary">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Live Demo ↗</span>
+          </a>
           <button onclick="window.print()" class="topbar-btn topbar-btn-secondary" title="Cetak atau Simpan PDF">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             <span>Cetak PDF</span>
@@ -626,7 +630,8 @@
         <div class="badge-row">
           <span class="badge">Sistem Kasir Internal POS</span>
           <span class="badge badge-neutral">Prambanan &amp; Keraton Ratu Boko</span>
-          <span class="badge badge-neutral">PT Taman Wisata Candi (TWC)</span>
+          <span class="badge badge-neutral">pos.andiportofolio.my.id</span>
+          <span class="badge badge-neutral">Rumahweb Linux VPS</span>
         </div>
         <h1 class="doc-hero-title">Point of Sale (POS) &amp; Multi-Gudang: Catatan Teknis &amp; Implementasi</h1>
         <div class="doc-meta-strip">
@@ -637,11 +642,15 @@
           <span class="doc-meta-item"><strong>Tahun:</strong> 2026</span>
         </div>
         <div class="doc-hero-actions">
+          <a href="https://pos.andiportofolio.my.id/" target="_blank" rel="noopener noreferrer" class="hero-action-btn hero-action-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <span>Kunjungi Live Demo ↗</span>
+          </a>
           <a href="../index.html#projects" class="hero-action-btn hero-action-secondary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
             <span>Kembali ke Portofolio</span>
           </a>
-          <button onclick="window.print()" class="hero-action-btn hero-action-primary">
+          <button onclick="window.print()" class="hero-action-btn hero-action-secondary">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
             <span>Cetak / Simpan PDF</span>
           </button>
@@ -656,12 +665,18 @@
         <p>
           Sistem Point of Sale (POS) ini saya kembangkan untuk menangani transaksi ritel, tiket, dan suvenir di loket kasir kawasan <strong>Candi Prambanan</strong> dan <strong>Keraton Ratu Boko</strong>. Sebelum sistem ini berjalan, kasir menghadapi kendala pencatatan stok multi-gudang yang lambat dan proses cetak struk via web browser yang memicu dialog pratinjau (<em>print preview</em>) dengan jeda 3 sampai 5 detik di tiap antrean pengunjung.
         </p>
-        <div class="screenshot-container">
-          <img src="../assets/images/pos-checkout.png" alt="Antarmuka Kasir POS Prambanan" />
-          <div class="screenshot-caption">Gambar 1: Antarmuka POS Checkout kasir dengan integrasi keyboard shortcuts, pemilihan gudang aktif, dan klasifikasi metode bayar.</div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 16px 0;">
+          <div class="screenshot-container" style="margin: 0;">
+            <img src="../assets/images/pos-dashboard.png" alt="Dashboard POS &amp; Monitoring Penjualan" loading="lazy" />
+            <div class="screenshot-caption">Gambar 1A: Dashboard manajemen penjualan &amp; stok POS live di pos.andiportofolio.my.id (VPS Rumahweb).</div>
+          </div>
+          <div class="screenshot-container" style="margin: 0;">
+            <img src="../assets/images/pos-checkout.png" alt="Antarmuka Kasir POS Prambanan" loading="lazy" />
+            <div class="screenshot-caption">Gambar 1B: Antarmuka POS Checkout kasir loket dengan integrasi Bluetooth thermal print ESC/POS.</div>
+          </div>
         </div>
         <p>
-          Aplikasi dibangun dengan stack <strong>Laravel 13 + Inertia.js 3 + React 19</strong>, dipaketkan ke tablet kasir Android menggunakan <strong>Capacitor</strong> agar dapat berbicara langsung dengan printer thermal via Bluetooth Serial (SPP).
+          Aplikasi dibangun dengan stack <strong>Laravel 13 + Inertia.js 3 + React 19</strong>, dipaketkan ke tablet kasir Android menggunakan <strong>Capacitor</strong> agar dapat berbicara langsung dengan printer thermal via Bluetooth Serial (SPP), serta dideploy secara mandiri pada <strong>Linux Cloud VPS (Rumahweb)</strong> dengan Nginx dan automated deployment.
         </p>
       </section>
 
@@ -748,6 +763,11 @@ Transfer Stok Antar Gudang: Gudang Asal ──► Status Transit ──► Gudan
               <td><strong>Frontend Kasir</strong></td>
               <td>Inertia.js 3 + React 19</td>
               <td>SPA responsif untuk interaksi kasir tanpa reload layar.</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment &amp; Hosting</strong></td>
+              <td>Rumahweb Linux Cloud VPS</td>
+              <td>Server VPS mandiri dengan Nginx reverse proxy, SSL HTTPS otomatis, dan automated CI/CD deployment di pos.andiportofolio.my.id.</td>
             </tr>
             <tr>
               <td><strong>Styling</strong></td>

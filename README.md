@@ -16,7 +16,7 @@ The site is built with vanilla HTML5, CSS3, and JavaScript: no bulky framework b
 
 ### Featured Projects
 
-1. **Prambanan & Ratu Boko Enterprise POS**: Full-stack web and POS cashier system built with Laravel 13, React 19, and Inertia.js, deployed across ticketing and merchant counters in Candi Prambanan and Keraton Ratu Boko. Connects with company ERP, handles multi-warehouse stock mutations, and prints directly to Bluetooth Classic ESC/POS thermal printers via a native Capacitor Android bridge.
+1. **Prambanan & Ratu Boko Enterprise POS**: Full-stack web and POS cashier system built with Laravel 13, React 19, and Inertia.js (deployed live on a Rumahweb Linux VPS at [pos.andiportofolio.my.id](https://pos.andiportofolio.my.id/)), deployed across ticketing and merchant counters in Candi Prambanan and Keraton Ratu Boko. Connects with company ERP, handles multi-warehouse stock mutations, and prints directly to Bluetooth Classic ESC/POS thermal printers via a native Capacitor Android bridge.
 2. **TWC Multi-Destination Venue Booking Platform**: Enterprise scheduling platform built for PT Taman Wisata Candi to coordinate multi-day venue rentals, setup load-in windows, and tiered seating layouts without double-booking collisions.
 3. **Museum Candi Prambanan Web Portal**: Official website (`museumprambanan.twc.id`) featuring archaeological artifact galleries, live visitor tracking, and a curator CMS dashboard.
 4. **InJourney Destinations AI Ticketing Assistant & Knowledge Base**: Domain knowledge base and prompt guardrails powering the customer support AI chatbot deployed on `ticket.injourneydestination.id` via Mekari Qontak.
