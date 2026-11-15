@@ -237,6 +237,7 @@
         padding: 32px;
         margin-bottom: 24px;
         box-shadow: 0 1px 3px rgba(20, 33, 61, 0.04);
+        overflow-x: auto;
       }
       h2 {
         font-family: var(--font-display);
@@ -293,6 +294,27 @@
         border-radius: 0 8px 8px 0;
         font-size: 14px;
         margin: 16px 0;
+      }
+      .screenshot-container {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        margin: 16px 0;
+        background: #F8F5EE;
+      }
+      .screenshot-container img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        display: block;
+      }
+      .screenshot-caption {
+        padding: 8px 14px;
+        background: #F8F5EE;
+        font-size: 12.5px;
+        color: var(--text-muted);
+        border-top: 1px solid var(--border);
+        font-family: var(--font-mono);
       }
       @media print {
         @page {

@@ -42,39 +42,12 @@ Every project includes a dedicated technical documentation page under `docs/` de
 
 ---
 
-## Project Manager (CMS Studio)
-
-To update portfolio items or descriptions without editing HTML tags by hand, the site includes a structured data layer (`data/projects.json`) paired with an admin panel (`admin.html`).
-
-### 1. Local Server Mode (Direct Disk Save)
-
-When running locally with Node:
-
-```bash
-npm start
-# or: node server.js
-```
-
-Open `http://localhost:3000/admin.html` (or press `Ctrl` + `Shift` + `A` on the main page). Any edits or new project additions save directly to `data/projects.json` on disk, and uploaded screenshots go to `assets/images/`.
-
-### 2. Static / Direct Browser Mode
-
-If opened directly in a browser without Node running:
-
-- Open `admin.html`
-- Edit or add project records and click **Save** (updates browser session)
-- Click **Export JSON** to download the updated `projects.json`
-- Replace `data/projects.json` in your local folder and push to Git.
-
----
-
 ## File Structure
 
 ```text
 .
 ├── index.html            # Main portfolio page
-├── admin.html            # Project manager interface (CMS Studio)
-├── server.js             # Zero-dependency local Node server for disk saves
+├── server.js             # Zero-dependency local Node server for local preview
 ├── package.json          # npm start / dev scripts
 ├── data/
 │   └── projects.json     # Project data source
@@ -104,7 +77,7 @@ If opened directly in a browser without Node running:
 No npm dependencies required:
 
 - **Quick view**: Double-click `index.html` in any browser, or use VS Code's Live Server.
-- **With local CMS server**: Run `npm start` and open `http://localhost:3000`.
+- **With local server**: Run `npm start` and open `http://localhost:3000`.
 
 ---
 

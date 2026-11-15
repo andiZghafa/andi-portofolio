@@ -108,19 +108,6 @@
       }
     }
 
-    // Merge any draft projects from localStorage (CMS live-preview sync)
-    const localDrafts = localStorage.getItem("andi-cms-drafts");
-    if (localDrafts) {
-      try {
-        const drafts = JSON.parse(localDrafts);
-        if (Array.isArray(drafts) && drafts.length >= projects.length) {
-          projects = drafts;
-        }
-      } catch (e) {
-        console.error("Error parsing CMS drafts:", e);
-      }
-    }
-
     // Sort projects by order
     projects.sort((a, b) => (a.order || 99) - (b.order || 99));
     renderProjects();
@@ -847,15 +834,6 @@
       if (e.key === "Escape") {
         closeProjectModal();
       }
-      // Secret Developer / CMS Studio shortcut: Ctrl+Shift+A or Cmd+Shift+A
-      if (
-        (e.ctrlKey || e.metaKey) &&
-        e.shiftKey &&
-        (e.key === "A" || e.key === "a")
-      ) {
-        e.preventDefault();
-        window.location.href = "admin.html";
-      }
     });
 
     // Copy Email to Clipboard with Tactile Icon & State Transition
@@ -907,7 +885,7 @@
     loadProjects();
   });
 
-  // Expose global for potential CMS sync
+  // Expose global for debugging and external integration
   window.AndiPortfolio = {
     loadProjects,
     showToast,

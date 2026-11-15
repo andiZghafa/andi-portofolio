@@ -1,5 +1,5 @@
 /**
- * Lightweight Zero-Dependency Local CMS Server
+ * Lightweight Zero-Dependency Local Dev Server
  * Built with native Node.js modules (http, fs, path).
  * Allows managing portfolio projects locally and auto-saving directly to data/projects.json.
  */
@@ -214,9 +214,8 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, () => {
   console.log(`\n======================================================`);
-  console.log(`✨ Andi Ghafa Portfolio & CMS Server is running!`);
+  console.log(`✨ Andi Ghafa Portfolio Server is running!`);
   console.log(`🌐 Website:      http://localhost:${PORT}`);
-  console.log(`🛠️ CMS Studio:  http://localhost:${PORT}/admin.html`);
-  console.log(`💾 Storage:      Direct Disk-Write (${DATA_FILE})`);
+  console.log(`💾 Data:         ${DATA_FILE}`);
   console.log(`======================================================\n`);
 });
